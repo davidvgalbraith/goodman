@@ -34,6 +34,32 @@ function Permutation(source) {
         }
         return new Permutation(result.join(''));
     }
+    // compute the decomposition in disjoint cycles
+    this.toCycles = function() {
+        var result = [];
+        while (_.reduce(result, function(accum, p) { return accum + p.source.length; }, 0) < this.source.length) {
+            var index = findUnused(result);
+            var cycle = [];
+            while (!_.contains(cycle, index)) {
+                cycle.push(index);
+                index = this.source[index];
+            }
+            result.push(new Permutation(cycle.join('')));
+        }
+
+        return result;
+    }
+}
+
+// given an array of cycles, find a number that appears in none of them
+function findUnused(used) {
+    var all = _.chain(used).pluck('source').flatten().value();
+    var k;
+    for (k = 0; k < all.length + 1; k++) {
+        if (!_.contains(all, k + '')) {
+            return k + '';
+        }
+    }
 }
 
 // make every possible permutation on count objects
