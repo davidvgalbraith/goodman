@@ -1,7 +1,12 @@
 var _ = require('underscore');
 
+// give it a string e.g. "543210"
+// and it'll be the permutation that sends 0 to 5, 1 to 4, etc.
+//
 function Permutation(source) {
     this.source = source.split('');
+    // compute the product of this and another permutation, this on the left
+    // returns another permutation
     this.compose = function(perm) {
         var ps = perm.source;
         if (ps.length !== this.source.length) {
@@ -13,6 +18,8 @@ function Permutation(source) {
         }
         return new Permutation(result.join(''));
     }
+    // compute the inverse of this permutation
+    // this permutation times its inverse should always be the identity
     this.inverse = function() {
         var result = [];
         for (var k = 0; k < this.source.length; k++) {
@@ -29,6 +36,7 @@ function Permutation(source) {
     }
 }
 
+// make every possible permutation on count objects
 function assemblePermutations(count) {
     var result = [];
     var base = _.range(count);
@@ -61,5 +69,3 @@ _.each(all, function(perm) {
         console.log(perm.source);
     }
 });
-
-//console.log(new Permutation(
