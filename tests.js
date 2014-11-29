@@ -6,17 +6,22 @@ function log(perm) {
     console.log(perm.source);
 }
 
-var horror = new p.Permutation('1023');
+var horror = new p.Permutation('103245');
 
 var all = p.assemblePermutations(horror.source.length);
-
+var count = 0;
 _.each(all, function(perm) {
-    var s = perm.compose(horror).compose(perm.inverse()).source.join('');
-    if (s === '0132') {
-        console.log(perm.source);
-        console.log(perm.toCycles());
+    var s = perm.compose(horror).compose(perm.inverse()).source;
+    if (s === '102354') {
+        console.log('source', perm.source);
+        console.log('inverse', perm.inverse().source)
+        console.log('cycles', perm.toCycles());
+        console.log();
+        count++;
     }
 });
+
+console.log(count)
 
 // var a = new p.Permutation('452301');
 // var b = new p.Permutation('230145');

@@ -4,7 +4,7 @@ var _ = require('underscore');
 // and it'll be the permutation that sends 0 to 5, 1 to 4, etc.
 //
 function Permutation(source) {
-    this.source = source.split('');
+    this.source = source;
     // compute the product of this and another permutation, this on the left
     // returns another permutation
     this.compose = function(perm) {
@@ -12,39 +12,39 @@ function Permutation(source) {
         if (ps.length !== this.source.length) {
             throw new Error('cannot compose permutations of different lengths: ' +  this.source.length + ' ' + ps.length);
         }
-        var result = [];
+        var result = '';
         for (var k = 0; k < ps.length; k++) {
-            result.push(ps[this.source[k]]);
+            result += (ps[this.source[k]]);
         }
-        return new Permutation(result.join(''));
+        return new Permutation(result);
     }
     // compute the inverse of this permutation
     // this permutation times its inverse should always be the identity
     this.inverse = function() {
-        var result = [];
+        var result = '';
         for (var k = 0; k < this.source.length; k++) {
             for (var l = 0; l < this.source.length; l++) {
                 if (this.source[l] === k + '') {
-                    result.push(l);
+                    result += l;
                 }
             }
         }
         if (result.length !== this.source.length) {
             throw new Error('you fucked up inverse');
         }
-        return new Permutation(result.join(''));
+        return new Permutation(result);
     }
     // compute the decomposition in disjoint cycles
     this.toCycles = function() {
         var result = [];
-        while (_.reduce(result, function(accum, p) { return accum + p.source.length; }, 0) < this.source.length) {
+        while (_.reduce(result, function(accum, p) { return accum + p.length; }, 0) < this.source.length) {
             var index = findUnused(result);
             var cycle = [];
             while (!_.contains(cycle, index)) {
                 cycle.push(index);
                 index = this.source[index];
             }
-            result.push(new Permutation(cycle.join('')));
+            result.push(cycle.join(''));
         }
 
         return result;
@@ -53,7 +53,7 @@ function Permutation(source) {
 
 // given an array of cycles, find a number that appears in none of them
 function findUnused(used) {
-    var all = _.chain(used).pluck('source').flatten().value();
+    var all = _.flatten(used.map(function(str) { return str.split(''); }));
     var k;
     for (k = 0; k < all.length + 1; k++) {
         if (!_.contains(all, k + '')) {
