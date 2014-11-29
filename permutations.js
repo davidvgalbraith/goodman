@@ -55,17 +55,11 @@ function assemblePermutations(count) {
 function fact(n) {
     if (n <= 0) {
         return 1;
-    } 
+    }
     return n * fact(n - 1);
 }
 
-var horror = new Permutation('102354');
-
-var all = assemblePermutations(6);
-
-_.each(all, function(perm) {
-    var s = perm.compose(horror).compose(perm.inverse()).source.join('');
-    if (s === '103245') {
-        console.log(perm.source);
-    }
-});
+module.exports = {
+    assemblePermutations: assemblePermutations,
+    Permutation: Permutation
+}
