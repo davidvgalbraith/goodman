@@ -15,12 +15,15 @@ function Permutation(source) {
     }
     this.inverse = function() {
         var result = [];
-        for (var k = 0; k <= this.source.length; k++) {
+        for (var k = 0; k < this.source.length; k++) {
             for (var l = 0; l < this.source.length; l++) {
-                if (this.source[l] === k) {
+                if (this.source[l] === k + '') {
                     result.push(l);
                 }
             }
+        }
+        if (result.length !== this.source.length) {
+            throw new Error('you fucked up inverse');
         }
         return new Permutation(result.join(''));
     }
@@ -54,7 +57,6 @@ var all = assemblePermutations(6);
 
 _.each(all, function(perm) {
     var s = perm.compose(horror).compose(perm.inverse()).source.join('');
-//    console.log(s);
     if (s === '103245') {
         console.log(perm.source);
     }
