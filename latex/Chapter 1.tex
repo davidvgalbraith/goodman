@@ -1,0 +1,254 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\usepackage{amsthm}
+\usepackage{ textcomp }
+\usepackage{ amssymb }
+\usepackage{amsmath}
+\newcommand{\ints}{\mathcal{Z}}
+\newcommand{\nats}{\mathcal{N}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\fs}{f_1 \ldots f_k}
+\newcommand{\poly}{\sum_na_nx^n}
+\newcommand{\andd}{\text{ and }}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Chapter 1}
+\author{Dave}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{What is symmetry?}
+
+\be
+\item You can rotate $180$\textdegree or flip it over (or not).
+\item You can rotate it 90$n$\textdegree or flip it over (or not).
+\item Yeah.
+\ee
+
+\section{Symmetries of the Rectangle and Square}
+
+That was easy.
+
+\section{Multiplication Tables}
+
+\be
+\item You can rotate it 120$n$\textdegree or flip it through any of its 3 axes or not. No tables.
+\item \be
+\item $r^4 = e \rightarrow r^{4n+m}$ where $0 \le m < 4 = r^{4n}r^m = e^nr^m = r^m$. 
+\item $r^{3k}r^k = r^{4k} = (r^4)^k = e^k = e$ so basically any time the exponent is divisible by 4 you get the identity and $k + k \% 4$ is divisible by 4.
+\ee
+\item \be
+\item $a$ is $a$, each $r$ you times $a$ by increments the letter of $a$ by one.
+\item Both are $d$.
+\item Yup
+\item You get the powers of $r$ by taking powers of $r$ and the other stuff by c.
+\ee
+\ee
+
+\section{Symmetries and Matrices}
+
+\be
+\item Verified.
+\item Nah.
+\item $T\inv = A\inv(x-b) = A\inv x - (A\inv b)$ which is affine.
+\item Let $x$ be on $[a_1, a_2]$ and then $T(x) = T(sa_1 + (1-s)a_2) = sTa_1 + (1-s)Ta_2$ which if you check out the definition of segment you see that that is the segment $[T(a_1), T(a_2)]$.
+\item This follows from 1.4.4 above, since each point on $[a_1, a_2]$ is in $R$ so each point on $T([a_1, a_2]) = [T(a_1), T(a_2)]$ is in $T(R)$.
+\item Let $v$ be such a vertex then let $T(v) \in [u, w]$ some segment in $T(R)$ then $T\inv([u, w])$ must be $v, T\inv(w)$ since $v$ is a vertex and so that means that $u=T(v)$ so $T(v)$ is an endpoint of any segment that contains it so a vertex.
+\item A symmetry can be expressed as an affine transformation as the book told me so we just proved this statement for affine transformations so it applies to symmetries.
+\item The symmetries take vertices to vertices and so there can be no more symmetries of this triangle than there are permutations of three objects of which there are six and we already found six symmetries so that's how many there are.
+\ee
+
+\section{Permutations}
+
+\be
+\item Yeah ok sure.
+\item Label the vertices 1 2 3 and label the things you're permuting 1 2 3 and map a final position of vertices to the equivalent final position of things.
+\item Maybe someday, you can put the past away.
+\item There are no patterns, everything is cows.
+\item A 2-cycle is the product of 1 2-cycles. So suppose a $k$-cycle is the product of $k-1$ 2-cycles and then given a $k$-cycle that maps $x$ to a final position of $y$ you can factor out the 2-cycle $)(x y)$ and then what's left is a $k-1$ cycle mapping $y$ to its final position and all the other elements to their final positions while leaving $x$ where it is so you can chop that up into 2-cycles by the induction hypothesis.
+\item Flip it over.
+\item Cut it up into 2-cycles and apply them in reverse order, since a 2-cycle is its own inverse.
+\item $(1 2) (2 3) = 312$ while $(2 3) (1 2) = 231$. $S_n$ for $n\ge 3$ has a subgroups fixing $n-3$ elements isomorphic to $S_3$, so they all have this non-commutative multiplication and are not commutative.
+\item $\sigma(j) = 2j$ for the first $n$, $2j -2n + 1$ for the others.
+\item When you apply a cycle of length $k$ $k$ times, every element goes back to where it started, so you get the identity so it has order $k$. When you have a product of cycles, you need to get all of therm to get all the elements back to where they started at the same time. Each one gets its elements back at multiples of its order, so at common multiples you get the identity. The least common multiple is the first value for which this occurs.
+\item The order of the shuffle on $n$ cards is $n$.
+\item Given $x \in X$, we have either $x\in X_1$ or $X \in X_2$. Suppose $x \in X_1$. Then $\pi_1\pi_2(x) = \pi_1(x) = \pi(x) = \pi_2(\pi(x)) = \pi_2(\pi_1(x))$ and same idea for $x \in X_2$.
+\item \be
+\item Let $k$ be the smallest integer such that $\pi(x_k) \in \{x_0, x_1, ... x_k\}$. Then $\pi(x_k) = x_0$, because if it were anything else then $\pi$ wouldn't be a bijection, since $\pi(n-1) = x_n$ already for $n=1...k$.
+\item $X_1$ is invariant because $\pi(x_n) = x_{n + 1 \% k + 1}$ and $X_2$ is invariant because $\pi$ restricted to $X_2$ is the identity.
+\ee
+\ee
+
+\section{Divisibility in the Integers}
+
+\be
+\item \be
+\item If $a > 0$ take $s=-a, d=2$, otherwise take $s=a, d=2$.
+\item Suppose $r = d + k$ for $k \ge 0$ then $a = q(d + 1) + k$ and so we have $0 < k < r$ fulfilling the same condition we put on $r$ but we already supposed $r$ was the smallest.
+\ee
+\item\be
+\item Let $x = am + bn, y = a'm + b'n$. $x + y = am + bn + a'm + b'n = (a + a')m + (b + b')n$.
+\item $xI(m,n) = \{axm + bxn, a, b \in \ints \subset I(m, n)$ because $x\ints \subset \ints$.
+\item Suppose $m = xb$ and $n = yb$ then $am + a'n = axb + a'yb = b(ax + a'y)$ so $b$ divides all $I(m, n)$.
+\ee
+\item Suppose $p$ is not prime. Then $p = ab$ for some $a, b \in \nats$, but $p$ does not divide $a$ or $b$ because it is greater than they are.
+\item \be \item 4 \item lol \ee
+\item If and only if $x$ divides $y$ then $-x$ divides $y$ too. So the gcd is unaffected by minus.
+\item Let $a$ be our gcd then suppose $b > a$ also divides $m$ and $n$ then $b$ divides $a$ since $a$ is our gcd but it can't because it's bigger.
+\item If $p$ divides $a$ then their gcd is at least $p$ but 1 isn't prime so the gcd can't be 1 if it's $p$ so they can't be relatively prime. Similarly, if the gcd is 1 then it can't be prime so it can't be $p$.
+\item Suppose $bx = ay$ then $sa + tb = 1 \rightarrow sax + tbx = x \rightarrow a(sx + yb) = x$.
+\item A product of several integers is an iterated product of 2, use the above.
+\item \be \item No programs please \item The second one is way harder \ee
+\item \be \item Same argument as 2. \item Follows from c. \item $k=1$ is trivial. For $k=2$, the book covers it pretty well. So suppose for some $k$ that $I(n_1\ldots n_k) = \ints d$. Then $x \in I(n_1 \ldots n_{k+1}) = \sum_{c=1}^{k+1} a_cn_c$ for some set of $a$ coefficients which is equal to $\sum_{c=1}^ka_cn_c + c_{k+1}n_{k+1} = dm_1 + n_{k+1}m_2$ by the hypothesis. Thus $I(n_1\ldots n_{k+1}) = d\ints + n_{k+1}\ints$ which is $gcd(d, n_{k+1})\ints$ by the base case. It is apparent that $gcd(d, n_{k+1}) = gcd(n_1 \ldots n_{k+1})$, because the former divides all of the $n$s and any number that divides $d$ also divides $n_1 \ldots n_k$.  \ee
+\item \be
+\item Nope: 2, 3, and 4 are relatively prime but not pairwise. The reverse is true though.
+\item By 11b, the gcd is the smallest element of $I \cap \nats$. If $1 \in I$, it is necessarily the smallest, and therefore the gcd.
+\ee
+\item \be \item Calculate the gcd of the first two, and then calculate the gcd of that gcd and the next one until there aren't any more. \item Nah. \ee
+\item Every integer is a product of primes, so two numbers with no common prime factors have no common factors other than 1 so it is their gcd. If two numbers do have a common prime factor $p$, the gcd is at least as big as $p$ since it divides both of them, and all primes are greater than 1 so they are not relatively prime.
+\item $n=1$ is trivial. Suppose the assertion holds for arbitrary $n$. Then suppose $k$ is divisible by $a_1\ldots a_{n+1}$ but not by $a$. Then $k/a_1$ is divisible by $a_2 \ldots a_{n+1}$ but not by $a/a_1$, contradicting the induction hypothesis. Thus there is no such $k$.
+\ee
+
+\section{Modular Arithmetic}
+
+\be
+\item Follows from 1.7.5 and the fact that those are properties of addition.
+\item Same as 1.
+\item Same as 2.
+\item $4^2 = 16 = 4$ mod 12 and so all powers of 4 are 4, including 237.
+\item Nope. Let $a$ be an invertible zero divisor then there exist $b, c$ such that $ab = 1$ and $ac = 0$ where $c \not=0$ except then $c = (ab)c = (ac)b = 0$.
+\item It's unique because if $ab = 1$ and $ac = 1$ then $c = (ab)c = b(ac) = b$.
+\item Yeah. Modulo 6, $3*2 = 0$ and $3 * 4 = 0$. 
+\item lol they don't pay me enough for that one
+\item The zero divisors are not relatively prime to $n$. The others are invertible. Yeah.
+\item Same words as 9.
+\item It says it's invertible because $as = 1-nt = 1$ mod $n$.
+\item It says it's not invertible because if there existed a $b$ such that $ab = 1$ mod $n$ then $ab = 1 + cn$ for some $c$ by definition so $ab - cn = 1$.
+\item It's not surjective because it's a map between sets of the same cardinality and it leaves 1 out of the range so it's gotta take some other value more than once just to be defined at all points. And so let $k$ be the smallest number such that $ak \in \{0, a, 2a\ldots\}$. Then $ak = aj$ where $0 \le j < k$. And so $ak - aj = 0$. So $a(k-j)$ = 0. Except for all $0 < j < k$ we already know that $a(j-k) \not = 0$ by our hypothesis on $k$. And so the only possibility is $j=0$ so $ak = 0$. 
+\item \be \item Because $a$ and $n$ are relatively prime, there's some $c$ such that $ac = 1$ mod $n$. And so $acb = b$ mod $n$.
+\item Repeatedly add $n$ to $b$ and divide by $a$ until you get an integer, which is $x$.
+\item 64
+\ee 
+\item $\ints ab$ mod $a$ = 0 and $\ints ab$ mod $b$ = 0, so $x_0 + \ints ab = x_0$ mod $a$ and $x_0$ mod $b$. If $n \not \in \ints ab$, then $n = abc + d$ for some nonzero, non-$a$, non-$b$ $d$, so $x_0 + n$ = $x_0 + d \not = \alpha$ mod $a$, $\not = \beta$ mod $b$.
+\item 23
+\ee
+
+\section{Polynomials}
+
+\be
+\item Follows from those being field properties.
+\item $fg = \sum_k (\sum_i a_ib_{k-i})x^k = \sum_i (\sum_k b_i a_{k-i})x^k$ because letters are arbitrary so multiplication is commutative. A similar proof gives associativity.
+\item \be
+\item If the leading term of $f$ is $ax^n$ and that of $g$ is $bx^m$, then the leading term of $fg$ is $abx^{m+n}$. It is evident that no other term has higher degree than this, so the degree of $fg $ is $m + n$.
+\item $f + g = ax^n + bx^m + \ldots$. If $m = n$, the leading term of $f + g$ is $(a + b)x^n$, which has degree no higher than $n$; otherwise, the leading term is whichever has higher order,  so deg$(f + g) \le $ max(deg($f$), deg($g$)).
+\ee
+\item Let $p = af + bg, q = a'f + b'g$. \be
+\item $p + q = af + bg + a'f + b'g = (a + a')f + (b + b')g \in I$.
+\item $qp = (af + bg)(a'f + b'g) = aa'ff + afb'g + bga'f + bgb'g = (aa'f + ab'g) f + (ba'f + bgb')g$.
+\item $(af + bg) / p = a(f/p) + b(g/p)$. 
+\ee
+\item By Prop 1.8.16 the GCD is an element of $I$ so if $h$ weren't a GCD then there would be some element of lesser degree that was since polynomials of the same degree differ only by a constant so if one polynomial of some degree is a GCD then all polynomials of that degree are. Except we already said that $h$ has least degree in $I$, so there can be no such element.
+\item By Jazzercise 1.8.5 a GCD is the element of least degree in $I$. Since 0 is nobody's GCD, since it doesn't divide anything, if 1 $\in I$ then 1 must be the element of least degree in there so they are relatively prime. And if $1 \not \in I$ then some element of higher degree must be the GCD from 1.8.16 and the fact that constant polynomials differ by multiplication by a constant so if $1 \not \in I$ then $x \not \in I$ where $x \in K$ where $K$ is the field. So if the GCD has degree more than 1 as it must in this case then they're not relatively prime.
+\item $I(p, f)$ either contains 1 or doesn't. If it does, then they are relatively prime by 1.8.6. If it doesn't, then by 1.8.5 some polynomial $h$ of degree $> 0$ is their GCD. 
+\item \be
+\item $fg$, $f$, and $g$ all have a 'unique' factorization into irreducible polynomials. The factorization of $fg$ is the product of the factorizations of $f$ and $g$. The factorization of $fg$ contains $p$, so either the factorization of $f$ or the factorization of $g$ must contain $p$.
+\item $r=1$ is trivial, $r=2$ is proven above. Suppose the assertion holds for some $r-1$. Then $f_1f_2\cdots f_r = (f_1f_2\cdots f_{r-1})f_r$. From the $r=2$ case, we know that $p$ divides either the first product in this product or $f_r$. From the $r-1$ case, we know that if $p$ divides the first product, then $p$ divides one of the $f_k$ for $1 \le k \le r-1$. So $p$ must divide one of the factors.
+\ee
+\item We'll use induction on the degree $d$. For $d=1$ it holds because $K$ is a field. So suppose factorizations are unique for some degree $d-1$ and all lesser degrees. Then suppose $f=f_1f_2\cdots f_n = g_1g_2\cdots g_m$. Since $f$ is divisible by $f_1$, the product $\prod_k g_k$ is divisible by $f_1$. That means one of the $g_k$ is divisible by $f_1$. That means one of the $g_k$ is 'equal' to $f_1$, since the $g_k$ are irreducible. Suppose without loss of generality that $g_1 = f_1$. Then $f/f_1 = f_2\cdots f_n = g_2 \cdots g_m$. By the induction hypothesis, essential equality holds for each of the remaining factors on a right hand side, so the theorem follows.
+\item \be \item The GCD is 5 = $(x-3)(x^3 - 3x + 3) - (x^2 - 4)(x^2 + 3x - 1).$
+\item The GCD is $10x - 20 = (x^2 - 4)(4-x) + (x^3 - 4x^2 + 6x - 4)$.
+\ee
+\item Um, I think I hear my Mom calling me.
+\item Definition: Let $f$ be the GCD of the $\fs$ then $f$ divides $\fs$ and if $g$ also divides $\fs$ then $g$ divides $f$. 
+So if $x=$GCD($\fs$) and $y=$GCD($f_1, $GCD($f_2\ldots f_n$)) and $z=$GCD($f_2\ldots f_n$) then $y$ divides $f_1$ and $z$ and any other polynomial that divides $f_1$ and $z$ divides $y$. In particular, $x$ divides $y$, since $x$ divides $f_1$ and $f_2\ldots f_n$, so it must divide $z$ since $z$ is a GCD. Also, $y$ divides $x$, since $y$ divides $f_1$ by definition and $f_2 \ldots f_n$ because it divides $z$ which divides them, so it must divide $x$ since $x$ is their GCD. So $y = x$.
+\item \be
+\item If $m \in K[x]$, then $-m \in K[x]$.
+\item If $a \in K[x]$ and $b \in K[x]$, $ab \in K[x]$.
+\item If $p$ divides $\fs$, then $p$ divides all elements of $I$ since division is distributive over multiplication.
+\item Theorem 16 gives the case $k=2$. So suppose the GCD is an element of $I$ of smallest degree for some $k-1$. By Exercise 12, $f = \gcd(\fs) = \gcd(f_1, \gcd(f_2 \ldots f_k))$. By the inductive hypothesis, $\gcd(f_2 \ldots f_k)$ is an element of $I(f_2 \ldots f_k)$ of lowest degree. That means it's a linear combination of $f_2 \ldots f_k $ with coefficients in $K[x]$. Thus we can apply the $k=2$ base case on $f_1$ and this GCD, whence $f$ is an element of $I(\fs)$ of smallest degree.
+$fK[x]\subset I$ because $f \in I$. And $I \subset fK[x]$ because every element in $I$ is divisible by $f$. So $I = fK[x]$.
+\ee
+\item Suppose that $a$ and $b$ are relatively prime polynomials, that $x$ is a polynomial, and $a$ and $b$ divide $x$. Then $ab$ divides $x$. \begin{proof} Since $a$ and $b$ are relatively prime, there exist polynomials $s$ and $t$ such that $as + tb  = 1$. Then multiply both sides by $x$ to find $sax + tbx = x$. And then $x = ac = bd$ by hypothesis so plug that in and find $sabd + tbac = x \rightarrow ab(sd + tc) = x$ so $x$ is divisible by $ab$. \end{proof}
+\item If $\fs$ are relatively prime and they all divide $g$ then $\prod_kf_k$ divides $g$. \begin{proof} Since $\fs$ are relatively prime, there exist polynomials $a_1, a_2 \ldots a_k$ such that $\sum_ka_kf_k = 1$. Then multiply both sides by $g$ to find $\sum_kga_kf_k = g$. The unique prime factorization of $g$ includes all the $\fs$, so you can factor them all out of each term just as we did in the last exercise to find that $\prod_kf_k$ divides $g$.  \end{proof}
+\item \be \item We have an algorithm to compute the GCD of two polynomials so using exercise 12 we can use that algorithm $k-1$ times to get the GCD of $k$ polynomials
+\item
+\ee
+\item \be \item $p(r/s) = 0 \rightarrow s^np(r/s) = 0 \rightarrow a_0s^n + a_1rs^{n-1} + \ldots + a_nr^n = 0$ and so $s$ is a factor of the first $n-1$ terms in this sum so there is some $Q$ such that $sQ + a_nr^n = 0$ so $a_nr^n = -Qs$ which since $r$ is not divisible by $s$ that means $a_n$ must be. \\ Similarly, the last $n-1$ terms of that sum are divisible by $r$, so using the same construction it is clear that $a_0$ is divisible by $r$. 
+\item In a monic polynomial $a_n$ is 1 so $s$ must be 1 since only 1 divides 1 so the root is $r/1 = r$, an integer.
+\item $1^2 < 2$ and $2^2 > 2$ so there's no integer between 1 and 2 so there's no integer whose square is 2 and since all rational roots of monic polynomials are integers there is no rational root of $x^2 - 2$. 
+\ee
+\item \be
+\item If $f$ has a root $a$, then you can factor out $x-a$ from your polynomial by Prop 1.8.22 so it's not irreducible. If $f$ has no root, then you can't factor out anything because the only way to factor anything out of a polynomial of degree 2 or 3 is to factor out something of degree 1 which looks like $x-a$. 
+\item Yes that is what I proved in part a, applied to $\ints$.
+\item $f(x) = x^3 - 3x + 1$ is also a polynomial in $\ints[x]$ so its roots must be integers by Ex 17 but $f(-2) = -1, f(-1) = 3, f(0) = 1, f(1) = -1, f(2) = 3$ and below -2 it decreases forever and after 2 it increases forever so it has no integer roots so it has no rational roots so it's irreducible.
+\ee
+\ee
+
+\section{Counting}
+
+\be
+\item When $n=0$ the binomial theorem reduces to 1=1. So suppose the binomial theorem is true for some $n$. Then $(x + y)^{n+1} = (x + y)(x+y)^{n} = (x+y)\sum_{k=0}^n {n \choose k}x^ky^{n-k} = \sum_{k=0}^n {n \choose k} x^{k+1}y^{n-k} + \sum_{k=0}^n {n \choose k} x^ky+{n-k+1}$ where we used the distributive property of multiplication over addition back there. So if we add these sums up termwise then it becomes evident that the coefficient of $x^ky^{n+1-k}$ in the combined sum is ${n \choose k-1} + {n \choose k} = \frac{n!}{k!(n-k)!} + \frac{n!}{(k-1)!(n + 1 - k)!} = \frac{n!(n + 1 - k) + n!k}{k(n+1-k)(k-1)!(n-k)!} = \frac{(n+1)!}{k!(n + 1 - k)!} = {n + 1 \choose k}$. 
+\item Take the binomial theorem and set $x=1, y=2$.
+\item Take the binomial theorem and set $x=-1, y=4$. 
+\item At the bottom of page 60, we differentiated the binomial theorem. Differentiate that shit again, and the result is $n(n - 1) (x + 1)^{n - 2} = \sum_{k=0}^n k(k-1){n \choose k}x^{k-2}.$ Substitute $x=1$, and you get the result. Therefore $\sum_{k=0}^nk^2{n \choose k} = n(n -1)2^{n - 2} + \sum_{k = 0}^n k {n \choose k} = n(n-1)2^{n-2} + n2^{n-1}$. 
+\item There's ${14 \choose 4}$ total paths, and there's ${14 \choose 4} - {9 \choose 3}{5 \choose 1}$ paths that avoid the pastry shop, where we subtracted from the total the number of paths home that go by the pastry store, which we calculated by calculating all paths from school to the pastries and multiplying by the paths from pastries to home.
+\item There are ${n \choose k}$ paths from home to $(k, n-k)$, and then there are ${n \choose n-k} = {n \choose k}$ paths from the intersection to the restaurant. So the total paths through $(k, n-k)$ is ${n \choose k}^2$. Since all paths to $(n, n)$ must pass through one of these points, and the total number of paths to $(n, n)$ is ${2n \choose n}$, $\sum_{k=0}^n {n \choose k}^2 = {2n \choose n}$. 
+\item 142 numbers are divisible by 7, 23 are divisible by 7 and 6, and 572 are not divisible by 5, 6, or 7, by my calculations.
+\item \be
+\item Same as the derangements on 10 objects, 1333961. 
+\item ${10 \choose 3} *$ derangements on 7 objects.
+\item No idea. I thought it was just derangements on 10 objects divided by 20 for rotational symmetry but then that wasn't an integer.
+\ee
+\item Put a prime number $p$ into Euler's theorem, then it states $a^{\phi(p)} = 1 \mod p$ as long as $a$ is relatively prime to $p$ and so all $a<p$ are relatively prime to a prime $p$ and $\phi(p) = p-1$ so you get the Fermat theorem.
+\item $(1 + kp)^{p^s} = \sum_{n=0}^{p^s} {p^s \choose n} 1^n (kp)^{p^s - n} = (kp)^{p^s} + p^s(kp)^{p^s - 1} + \frac{(kp)^2 p^s(p^s - 1)}{2}  + \ldots + 1$ and so in that first term it is the case for all $s > 0$ and prime $p$ that $p^s > s+1$ so that term is zero modulo $p^{s+1}$. And for $p^s > n > 0$ the expression ${p^s \choose n}(kp)^{p^s - n}$ is divisible by $p^{s+1}$ because the numerator of the combinatoric term always contains $p^s$ and the term $(kp)^{p^s - n}$ contributes at least one more factor of $p$ so all of these terms are 0 mod $p^{s+1}$ and finally the last term of the series is ${p^s \choose p^s} * (p^sp)^{p^s - p^s} = 1$ which is the only nonzero contribution to the sum. \\ 
+Modulo $p^{k+2}$, we get an additional nonzero contribution to the sum in the second to last term of the series, $kp^{s+1}$, which is not zero as long as $k$ is not divisible by $p$, which it isn't. So this sum is 1 + $kp^{s+1} \not= 1 \mod p^{s+2}$.
+\item \be \item By Fermat's little theorem, $a^{p-1} = 1 + kp$ for some integer $k$. Thus $a^{p^s(p-1)} = (1 + kp)^{p^s}$. Now use the previous exercise. 
+\item $\phi(p^{s+1}) = p^s(p-1)$.
+\ee
+\item \be \item $a$ is relatively prime to $n$ if and only if it has a multiplicative inverse modulo $n$, so $a^{\prod_{j \not = i}\phi(p_j^{k_j})}$ has inverse $a^{-\prod_{j \not = i}\phi(p_j^{k_j})}$ so $b$ is relatively prime to $n$.
+\item $b^{\phi(p_i^{k_i})} = a^{\prod_j\phi(p_j^{k_j})} = a^{\phi(n)}$. By 1.9.11,  $b^{\phi(p_i^{k_i})} = 1 \mod p_i^{k_i}$ so $a^{\phi(n)} = 1 \mod p_i^{k_i}$.
+\item  Since we just used an arbitrary $i$ back there, $a^{\phi(n)} = 1 \mod p_i^{k_i}$ for all $i$. Since the $p_i$ are relatively prime, this means $a^{\phi(n)}$ is divisible by $\prod_ip_i^{k_i} = n$.
+\ee
+\ee
+\section{Groups}
+\be
+\item One could in principle verify associativity for the 64 choices of 3 elements of this group to multiply together, although the book itself asserts this property is obvious on page 30. It has an identity element $e$, and the inverse of $r^1$ is $r^3$ and the inverse of $r^2$ is $r^2$.
+\item It's associative because multiplication in the complex numbers is. Its identity element is 1. The inverse of $-i$ is $i$. The inverse of -1 is -1.
+\item Yes.
+\item Map $1 \rightarrow 0, i \rightarrow 1, -1 \rightarrow 2, -i \rightarrow 3$. 
+\item $T(x) = x$ is an identity element, composition of functions is associative, and the maps are bijective so they have inverses. $T\inv$ is distance-preserving if $T$ is.
+\item Composition is associative, bijective maps with continuous inverses have continuous inverses, and $f(x) = x$ is a homeomorphism.
+\item Same as above.
+\item Same as above.
+\item The inverse of $f(x) = Sx + b$ is $g(y) = S\inv(y - b) = S\inv y - (S\inv b),$ an affine transformation. The product is associative because it's composition. $f(x) = Ex + 0$ is the identity affine transform, where $E$ is the identity matrix and 0 is the zero vector.
+\item Let $(a, b, c, d)$ be shorthand for one of these messy guys then $(a, b, c, d) * (e, f, g, h) = (ae + bg, af + bh, ce + dg, cf + dh)$. The proof is arduous but the point is they are invertible as long as $ad \not = bc$ and the inverse of $(a, b, c, d)$ is $(\frac{1}{a - \frac{bc}{d}}, \frac{1}{b - \frac{ad}{b}}, \frac{c}{bc - ad}, \frac{a}{ad - bc})$.
+\ee
+\section{Rings and Fields}
+\be
+\item 1*1 = 1, -1 * -1 = 1 so they are indeed units. And so 0$x$ = 0 for all $x$, and if $|a| > 1$ then $|ab| \ge a > 1$, so there are no other inverses.
+\item It's been established that it's an abelian group under addition. So $1p = p$ for all $p$, so 1 is the multiplicative identity. The unique inverse in the set of all functions of $\poly$ is $\frac{1}{\poly}$; only if $a_n = 0$ for $n > 0, a_n \not = 0$ for $n = 0$ is this inverse a polynomial. So the only units are the nonzero constants. Multiplication is associative and distributive because it inherits them from the field properties of $K$.  
+\item The associativity and distributivity again follow from those properties of $K$. The units are all the monomials, since $ax^k$ has inverse $a\inv x^{-k}$ but with more than one term the function $\frac{1}{a_1x^{a} + a_2x^{b}}$ where $a, b, a_1, b_1 \not = 0 \andd a \not= b$ is not a Laurent polynomial.
+\item Map $a_ne^{int} \rightarrow a_nx^n$, then it is apparent that the trig polynomials are isomorphic to the Laurent polynomials. That means they're a subring of the complex continuous functions, since the Laurent polynomials are such a subring.
+\item The map $f(x, y, z) = (x, y, z)$ is the identity map. Associativity and distributivity follow from those properties of the real numbers. It's closed under product using the definition of polynomial multiplication: you always get a polynomial when you multiply polynomials. The units are the constant polynomials.
+\item \be
+\item Under pointwise addition and multiplication, as long as $X$ is nonempty, the set of these functions inherits the ring properties from the real numbers. The multiplicative identity is the function $f(x) = 1 \forall x \in X$. The units are the invertible functions.
+\item It is a ring as above, and the identity is the function that is 0 on $S$ and 1 elsewhere. It's closed under multiplication and addition, since $0*0 = 0 \andd 0 + 0 = 0$. 
+\ee
+\item It's closed under multiplication since given $f, g, \epsilon$ there exists a $\delta$ such that if $|x - x'| < \delta$ then $|f(x) - f(x')| < \epsilon$ and $|g(x) - g(x')| < \epsilon$. So $|f(x)g(x) - f(x')g(x')| = |f(x)g(x) - f(x)g(x') + f(x)g(x') - f(x')g(x')| = |f(x)(g(x) - g(x')) + g(x')(f(x) - f(x'))| < |f(x)\epsilon + g(x')\epsilon|$ so by taking small enough $\epsilon$ we can shrink the difference to arbitrary size. The multiplicative identity is the constant function 1, and the units are the functions that take no zeros, because if a continuous $f$ takes no zeros then $1/f$ is continuous. That's because if $\lim_{x \rightarrow c} f(x) = f(c)$, then $\lim_{x\rightarrow c} 1/f(x) = 1/f(c)$ as long as both sides are defined.
+\item It's closed under multiplication, because for every $\epsilon > 0 \exists N$ such that $f(N) < \epsilon$ if $f$ is a function in this set so if $f$ and $g$ are two such functions then for any $\epsilon > 0$ we can find $N$ such that $f(N)g(N) < \epsilon^2$ so the limit of the product is 0. And they inherit the other properties of fields from the ring of functions that they're a subring of. And there's no multiplicative identity, because for any $f$ in this set we can find an $N$ such that $f(N) < 1$ so basically consider the function $g(x) = -1/x$ if $x < -1, 1$ if $-1 \le x \le 1$, and $1/x$ if $x > 1$. Then  $f(N)g(n) = 1/N * $(something less than 1) which is not going to turn out to be $1/N$.
+\item It's a bijection since its domain and range both have $ab$ elements. Let $n, m \in \ints_{ab}$. Then $\phi(n + m) = ([n + m]_a, [n + m]_b) = ([n]_a, [n]_b) + ([m]_a,[m]_b) = \phi(n) + \phi(m)$. And $\phi(nm) = ([nm]_a, [nm]_b) = ([n]_a, [n]_b)([m]_a,[m]_b) = \phi(n)\phi(m)$ by the properties of modular arithmetic.
+\item Given $\alpha, \beta, a \andd b,$ let $x = \phi\inv([\alpha]_a,[\beta]_b)$. Then $x \in \ints_{ab}$ is congruent to $\alpha \mod a \andd \beta \mod b$ from the definition of $\phi$. Since $\phi$ is a bijection, $x$ is unique.
+\item Let $(a, b)$ denote one of these guys then $(-a, -b)$ is its inverse and $(a, b)(c, d) = (ac + 2bd, ad + bc)$ so it's closed under sums and products and it inherits associativity and commutativity and distributivity from the rationals. $f(a + b\sqrt{2}) = a - b\sqrt{2}$ is an isomorphism since $f((a, b)(c, d)) = (ac + 2bd, -ad - bc) = f(a, b)f(c, d)$. 
+\ee
+\section{An Application to Cryptography}
+Skipped it. Sorry.
+\end{document}  
