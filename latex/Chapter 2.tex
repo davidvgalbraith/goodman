@@ -1,0 +1,260 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\usepackage{amsthm}
+\usepackage{ textcomp }
+\usepackage{ amssymb }
+\usepackage{amsmath}
+\newcommand{\ints}{\mathcal{Z}}
+\newcommand{\nats}{\mathcal{N}}
+\newcommand{\reals}{\mathcal{R}}
+\newcommand{\comps}{\mathcal{C}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\fs}{f_1 \ldots f_k}
+\newcommand{\poly}{\sum_na_nx^n}
+\newcommand{\andd}{\text{ and }}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\ct}{\cos\theta}
+\newcommand{\st}{\sin\theta}
+\newcommand{\cycle}{(a_1, a_2, \ldots a_n)}
+\newcommand{\picycle}{ (\pi(a_1), \pi(a_2) \ldots \pi(a_n))}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Chapter 1}
+\author{Dave}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{First results}
+\be
+\item It's isomorphic to the symmetry group of the rectangle, with the same transformations.
+\item It's isomorphic to $\ints_2$, since you can only put the dots in the place they started or on the ends of the other diagonal.
+\item $e'g = g \ra e'gg\inv = gg\inv = e$.
+\item The column starting with $x$ is given by the range of $R_x$, while the row is given by $L_x$, both of which are bijections.
+\item In any isomorphism $f: G \ra H$, $f(x^2) = f(x)^2$ for $x \in G$. So if we let $G$ be the group of the rectangle, we have $f(x^2) = 1$ for all $x \in G$, since $x^2 = 1$. But then if $H$ is $\ints_4$, we only have $y^2 = 1_H$ if $y = 1_H$, so no homomorphism between these two groups can be bijective.
+\item $n=1$ is trivial. $\psi(g^2) = \psi(g)\psi(g) = \psi(g)^2$. So suppose that $\psi(g^n) = \psi(g)^n$ for some $n$. Then $\psi(g^{n+1}) = \psi(g^n)\psi(g) = \psi(g)^n\psi(g) = \psi(g)^{n + 1}$. 
+\item  If $ab = ba$ for all $a, b \in G$, then $g(ab) = g(ba) \lra g(a)g(b) = g(b)g(a)$ for an isomorphism $g: G \ra H$. Since $g$ is bijective, its range is all of $H$, so this implies that $H$ is abelian.
+\item The given hint is the entire proof.
+\item The given hint is the entire proof.
+\item The given hint is the entire proof.
+\item The given hint is the entire proof.
+\item $\Phi(10)$ is isomorphic to $\ints_4$, $\Phi(8)$ is isomorphic to the symmetries of the rectangle.
+\item The identity is its own inverse, so every other element $g$ in a group has a unique inverse that is either $g$ or not $g$. If $g\inv = h \not= g$, then $h\inv = g$, so for each element that is not its own inverse we have another element that is not its own inverse. Since non-self-inverting elements come in pairs like this, there is an even number of them. Since there is an odd number of non-identity elements, there must be at least one left over whose only option for an inverse is itself.
+\item The given hint is the entire proof.
+\item \begin{itemize}
+\item a $\rightarrow$ b: If $G$ is abelian, $a\inv b\inv = b\inv a\inv = (ab)\inv$.
+\item b $\rightarrow$ a: If $(ab)\inv = b\inv a\inv  = a\inv b\inv$, then taking inverses of both sides we get $ab = ba$.
+\item b $\rightarrow$ c: c is in fact exactly what b states.
+\item c $\rightarrow$ b: b is in fact exactly what c states.
+\item a $\rightarrow$ d: $(ab)^2 = abab$. If $G$ is abelian, this equals $aabb = a^2b^2$.
+\item d $\rightarrow$ a: If $(ab)^2 = abab = a^2b^2$, then multiplying on the left by $a\inv$ and on the right by $b\inv$ we get $ab = ba$, so $G$ is abelian.
+\item a $\rightarrow$ e: $n=1$ is the abelian condition. Suppose $(ab)^n = a^nb^n$ for some $n$. Then $(ab)^{n+1} = (ab)^n(ab) = a^nb^nab.$ $a$ commutes with $b^n$ since the group is abelian, so this equals $a^{n+1}b^{n+1}$.
+\item e $\rightarrow$ a: a is equivalent to the $n=1$ case of e.
+\end{itemize}
+\item Ok so this one's pretty involved but I'll try to make it clear. I'm going to say "associate" a lot, just warning you. So we can get the total associations for the product $abcde$ as follows. First of all, let's say you wanted to have $a$ outside of any parentheses. The number of associations fulfilling this restriction is the number of associations on 4 elements, which is 5. Second of all, let's say you wanted to associate $a$ and $b$, but separately from $c, d$ and $e$. There are two associations like this: $(ab)(cd)e$ and $(ab)c(de)$. Similarly, there are two associations where $a, b, $ and $c$ are associated, separately from $d$ and $e$. Finally, there are 5 more associations that associate $a, b, c$, and $d$ together separately from $e$. This adds up to 14, the total number of associations. Using the same tactics, we find that the total associations on six elements is $14 + 5 + 4 + 5 + 14$, which is 42 as prophesied.
+\item $N$ is clearly closed for one element, and it's closed for two elements by hypothesis. So suppose it is closed for a product of $n$ elements $a_1\cdots a_n$. Then let $x = a_1 \cdots a_{n+1} = (a_1 \cdots a_n)a_{n+1}$ by the general associative law. And so $x$ is a product of two elements, which elements are a product of $n$ elements and a product of 1 element. By the induction hypothesis, the product of $n$ elements is a member of $N$, and by the $n=1$ case the product of one element is a member of $N$, so $x$ is a product of 2 members of $N$ so by the $n=2$ case $x$ is a member of $N$. 
+\ee
+\section{Subgroups and Cyclic Groups}
+\be
+\item Since every permutation is a product of 2-cycles, we can generate all of $S_3$ if we can generate all the 2-cycles. Given two disjoint two cycles, we have the power to exchange elements $a$ and $b$, and also elements $b$ and $c$, where we didn't lose any generality because we can name elements arbitrarily and there are only 3. So to get the last 2-cycle, exchanging $a$ with $c$, all we have to do is exchange $b$ and $c$, exchange $a$ with the element in position $b$ which is now $c$, and then exchange the element in position $b$ with the element in position $c$, which are now $a$ and $b$, respectively, and it turns out we accomplished switching $a$ and $c$. \\
+If we have a 3-cycle and a 2-cycle, then we can get the other two 2-cycles by composing powers of our 3-cycle with our 2-cycle. 
+\item There's the group of all the symmetries at the top of the chart, one level below that you have the rotation subgroup and the subgroups $\{e, r^2, a, b\}$ and $\{e, r^2, c, d\}$, one level below that gives you $\{e, r^2\}$, $\{e, a\}$, $\{e, b\}$, $\{e, c\}$, $\{e, d\}$, and at rock bottom you have $\{e\}$, where any set I just listed that is contained as a set in another set I just listed is contained in it as a group.
+\item There's the group of all the symmetries at the top, then $\{e, r^2\}$, then $\{e\}$.
+\item \be
+\item One can verify this with a multiplication table. It's isomorphic to the symmetries of the rectangle.
+\item Another one for the multiplication table.
+\item Man, the tables are just batting 1000 today.
+\item Supposing we had the tables I've been talking about, they would clearly demonstrate that $H$ is closed under product and inverse and identity, so it's a group.
+\ee
+\item \be
+\item This follows from matrix multiplication and trigonometric identities.
+\item $JR_\theta = R_{-\theta}J = \left( \begin{array}{ccc} \ct & -\st \\ -\st & -\ct \end{array} \right)$.
+\item $R_{-\theta} \left[ \begin{array}{c} r\cos\phi \\ r\sin\phi \end{array} \right] = r \left[ \begin{array}{c} \cos{\phi - \theta} \\ \sin{\phi - \theta} \end{array} \right]$ and then $Jr\left[ \begin{array}{c} \cos{\phi - \theta} \\ \sin{\phi - \theta} \end{array} \right] = r\left[ \begin{array}{c} \cos{\phi - \theta} \\ \sin{\theta - \phi} \end{array} \right] = \left[ \begin{array}{c} \cos{\phi} \\ \sin{2\theta - \phi} \end{array} \right]$. So that's the explicit value of $J_\theta$ but it has no geometric meaning that I can see. But the computation makes sense when you consider that the application of $R_{-\theta}$ sends the line through $(\ct, \st)$ to the x-axis, and then applying $J$ flips the point you're interested in across the x-axis, and then $R_\theta$ sends the line through $(\ct, \st)$ back to where it came from, completing the reflection of your point across that line.
+\item Identifying $R$ with the rotation of the square and $J$ with flipping the square across the x-axis (supposing it's situated with its center at the origin of the x-y plane), one achieves an isomorphism between this group and the square.
+\ee
+\item $\langle S \rangle$ is closed under inverse, so $\langle S\inv \rangle = \langle S \rangle$. 
+\item Suppose $x \in \cap_\alpha H_\alpha$ Then for all $a$, $x\in H_a$. Then if $x\inv \not \in H_b$ for some $b$, then $H_b$ isn't a group since we already supposed $x \in H_b$. Likewise, if $x, y \in \cap_\alpha H_\alpha$, then $x, y \in H_a$ for all $a$. Therefore, if there existed some $b$ such that $xy \not \in H_b$, then $H_b$ wouldn't be a group. Since it is a group, it must contain $xy$. So $\cap_\alpha H_\alpha$ is closed under product and inverse, so it's a group.
+\item \be
+\item $aa = a^2$ by definition. So for arbitrary $k$, suppose $a^ka^l = a^{k + l}$. Then $a^ka^{l+1} = a^ka^la = a^{k+l}a = a^{k+l+1}$. A symmetric induction on $k$ holds since $a$ commutes with itself. Since $a^{-x} = (a\inv)^x$, this proof extends to the integers.
+\item By part a, $a^ka^{-k} = a^{k-k} = a^0 = e$. Since the inverse is unique, the proposition holds.
+\item $(a^k)^l = a^ka^k\cdots a^k$, where $a^k$ is repeated $l$ times. By part a, this is equal to $a^{kl}$.
+\ee
+\item Suppose $a^k = a^l$, where $0 \le k < l \le n-1$. Then let $m = l - k$. Clearly, $0 < m < n$. And yet $a^ma^k = a^l = a^k$. By exercise 2.1.3, this means $a^m = e$. Since we already supposed that $n$ was the smallest positive integer satisfying $a^n = 1$, there can be no such $k$ and $l$, so $e, a, \ldots a^{n-1}$ are distinct.
+\item 1 has order 1, 3 and 5 have order 6 (generators), 11 has order 3, and 13 has order 2.
+\item  The order of a cycle of length $k$ is $k$ because every time you apply the cycle you shift the elements by one position, and each element ends up in $k$ distinct positions as you repeatedly apply the cycle. The order of a product $ab$ of disjoint cycles is the least common multiple of $a$ and $b$, because the first one is the identity at multiples of $a$ and the second is the identity at multiples of $b$, so they are coincidentally the identity at common multiples of $a$ and $b$. Since they're disjoint, they can't cancel each other out without both being the identity.
+\item Nope. Let $a$ and $b$ be two elements of order 2. Then $(ab)^2 = a^2b^2 = ee = e$, so $ab$ is another element of order 2. It's different from $a$ and $b$ because if it was equal to either than the other would be the identity, but they both have order 2 while the identity has order 1. So any abelian group with two elements of order 2 has at least 3.
+\item $a^2$ has order 2, $a^2b$ has order 6.
+\item I found no way to prove this except as a special case of exercise 15 below. $\langle a \rangle \cap \langle b \rangle = \{e\}$ if the orders of $a$ and $b$ are relatively prime, because the groups are isomorphic to cyclic groups of relatively prime numbers, which are disjoint but for the identity.
+\item \be
+\item Suppose $a^kb^l = e$. Then $a^k = b^{-l} \in \langle b \rangle.$ Since $a^k \in \langle a \rangle$ and $\langle a \rangle \cap \langle b \rangle = \{e\}$, this means that $a^k = e$. The same logic shows that $b^l = e$. 
+\item By part a, the order of $ab$ will be the smallest $k$ such that $a^k = 1$ and $b^k = 1$. This is the least common multiple of $o(a)$ and $o(b)$. 
+\ee
+\item The proposition will hold as long as we can generate cycles of arbitrary length using 2-cycles, since any permutation is a product of cycles. Any 2-cycle can be generated by a 2-cycle, itself. Suppose then that we can express any $k$-cycle as a product of 2-cycles. Then a $k+1$-cycle $(a_1a_2\ldots a_{k+1}) = (a_1a_{k+1})(a_1a_2\ldots a_k)$. Inductively, the proposition follows.
+\item By exercise 16 above, the proposition will hold as long as we can express any elementary 2-cycle $(k$ $k+1)$ as a product of these two. To do that, apply the $n$-cycle $n-k$ times, then apply the 2-cycle, then apply the $n$-cycle $k$ more times. The first transformation moves $(k, k+1)$ to $(1, 2)$, the second one switches them there, and the third sends everything else back where it was, the element initially at position $k+1$ going to position $k$ and vice versa.
+\item There is some linear combination of the $n_k$ that adds up to $d$, so $\ints_d \subset \langle n_1, n_2 \ldots n_k \rangle$. On the other hand, $d$ divides each of the $n_k$, so it divides any linear combination of them, so $\langle n_1, n_2 \ldots n_k \rangle \subset \ints_d$.
+\item $\ints_{24}$ has subgroups generated by $[2]$ and $[3]$. Both of these contain the subgroup generated by $[6]$, and $[2]$'s also contains the one generated by $[4]$. All the aforementioned subgroups contain the one generated by $[12]$, and finally at the bottom you have $[0]$.
+\item It's isomorphic to $\ints_{24}$, so it has the same group structure as described in the previous, where we replace $[n]$, with $[a^n]$ as generative elements. $\langle a^k \rangle = \langle a \rangle$ if I didn't mention the number $k$ in the proof of the previous exercise.
+\item $\ints_{30}$ has subgroups generated by [2], [3], and [5]. The subgroups generated by [2] and [3] contain the subgroup generated by [6], while those generated by [3] and [5] contain the subgroup generated by [15]. Finally, they all contain the subgroup generated by [0].
+\item Replace 24 with 30 in the proof of Exercise 20.
+\item If $n$ is divisible by 10, there are 4 elements of order 10 in $\ints_n$. Otherwise, there are none.
+\item $\ints_{20}$ is the unique cyclic group of order 20, and it has two elements of order 4: [5] and [15]. So any group of order 20 must have two elements of order 4 if it wants to be cyclic.
+\item If $k$ divides $n$, there are $\phi(k)$ elements of order $k$ in $\ints_n$, where $\phi$ is Euler's totient function. That's because $n=kd$ so $d\ints_n$ is a subgroup of $\ints_n$ isomorphic to $\ints_k$ with $\phi(k)$ generators, so there's at least $\phi(k)$ elements of order $k$, and there can be no more because by Proposition 2.21a this subgroup is the only subgroup of $\ints_n$ isomorphic to $\ints_k$ but any other element of order $k$ would generate another such subgroup.\\
+If $k$ does not divide $n$, there are no elements of order $k$ in $\ints_n$, because if there were then $k\ints$ would be a subset of $n\ints$, in refutation of Proposition 2.21c.
+\item The claim is trivial for $\ints_1$, since it has only one subgroup. Suppose it holds for an arbitrary $\ints_n$. Then it holds for every proper subgroup of $\ints_{n+1}$, since subgroups of cyclic groups are cyclic. So it only remains to show the claim for when $H' = \ints_{n+1}$, which is the assertion of Proposition 2.24a.
+\item By 2.28a, both subgroups are equal to the subgroup generated by $[d] = \gcd(a,n) = \gcd(b, n)$.
+\item $(2^n - 1)(2^n-1) = 2^{2n} - 2^{n+1} + 1 = 1 \mod 2^n. (2^{n-1} + 1)(2^{n-1} + 1) = 2^{2n-2} + 2^n + 1 = 1 \mod 2^n. (2^{n-1} - 1)(2^{n-1} - 1) = 2^{2n-2} - 2^n + 1 = 1 \mod 2^n,$ as long as $n > 2$. 1, 2, 4, and 6 don't have order 2 in $\ints_8$, so these are the only elements of order 2 in $\phi(2^3)$. So suppose that it is the case that these are the only elements of $\phi(2^n)$ that have order 2. Then if some $x^2 = [1]$ for some $x \in \phi(2^{n+1})$, then there exists some $m$ such that $x^2 + m2^{n+1} = 1$. So it is the case that $x^2 + 2m2^n = 1$ as well, so $x^2 = 1 \mod 2^n$. Since only three elements of $\phi(2^n)$ have order 2, at most 3 elements of $\phi(2^{n+1})$ can have order 2. Since we already have three, this verifies that we've found all of them.
+\item OK
+\item \be \item Lemma: For a natural number $n$, if $n-1$ is divisible by 4, then $(n + 1) / 2$ is odd.
+\begin{proof} $n-1 = 4k \ra n + 1 = 4k+2 = 2(2k+ 1)$. Since $2k + 1$ is odd for all natural $k$, the lemma holds. 
+\end{proof}
+Anyway, $3^2 = 1$ mod 8 but not mod 16. So suppose the assertion holds for some $k$ then $3^{2^{k+1}} - 1 = 3^{2(2^k)} - 1 = (3^{2^k} + 1)(3^{2^k} - 1)$. By the induction hypothesis, $3^{2^k} - 1 = m2^{k+2}$ for some odd $m$. By the lemma and the fact that $3^{2^k} - 1$ is divisible by 4 for all natural $k$ (a consequence of the induction hypothesis), we have $3^{2^k} - 1 = 2n$ for some odd $n$. So $(3^{2^k} + 1)(3^{2^k} - 1) = 2^{k+3}mn$ for some odd $n$ and $m$, so the theorem holds. \\
+Also this is 1.9.10 with $p=2, s=1, k=1$. 
+\item OK
+\ee
+\ee
+\section{The Dihedral Groups}
+\be
+\item $jr_t(\rho\ct, \rho\st) = (\rho\cos(-\theta - t), \rho\sin(-\theta - t)) = r_{-t}j(\rho\ct, \rho\st)$. And also $r_{2t}j(\rho\ct, \rho\st) = (\rho\cos(2t - \theta), \rho\sin(2t - \theta)) = jr_{-2t}(\rho\ct, \rho\st) = j_t(\rho\ct, \rho\st)$. 
+\item \be
+\item The most general element of $D$ is a product $r_aj_br_cj_d\ldots$, since $r_xr_y = r_{x + y}$ and $j^2 = e$. Using the relations in Exercise 1, we can replace all our $j_t$ with $r_{2t}j$ and all our $jr_x$ with $r_{-x}j$. This reduces the general product to either $r_k$ for some $k$ or $r_kj$, so $D = N \cup Nj$.
+\item That's how I proved part a.
+\item Let $r_t \in N$, and let an element of $D$ be given as $r_s$ or $r_sj$. For the first one, we have $r_sr_tr_s\inv = r_{t + s - s} = r_t \in N$, and for the second, we have $(r_sj)r_t(r_sj)\inv = r_sjr_tjr_{-s} = r_sr_{-t}j^2r_{-s} = r_{-t} \in N$. So $N$ is normal.
+\ee 
+\item $R_t =\left( \begin{array}{ccc} \ct & -\st & 0 \\ \st & \ct & 0 \\ 0 & 0 & 1 \end{array} \right), J = \left( \begin{array}{ccc} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{array} \right)$.
+\item \be
+\item $r^n$ is the rotation of $2\pi$ which is the identity, while smaller powers of $r$ greater than 0 are not the identity, so this is a subgroup of order $n$.
+\item $j$ is a symmetry because if I leave the room and you flip over the figure I can't tell if you flipped it or not when I come back. Composition of symmetries is a symmetry, so $r^kj$ is a symmetry for all $k$.
+\item Suppose $r^kj = r^lj$ then $r^kj^2 = r^lj^2 \ra r^k = r^j$. Since $r$ has order $k$, the distinct flip symmetries are $r^kj$ for $k = 0 \ldots n$.
+\ee
+\item \be
+\item Since there's an odd number of vertices, the symmetry can't pass through two vertices, and if it passed through any point on an edge other than the midpoint then it wouldn't be symmetric on that edge.
+\item Let's orient the figure so that it's in the $(x, y)$ plane with a vertex at $(1, 0)$. Then there's a vertex at $(-1, 0)$ because the vertices are spaced $\pi/n$ radians apart so with $n$ even the $\frac{n}{2}$th vertex is at (-1, 0). The figure is symmetric about the line through these vertices because there's the same number of vertices above and below the line and all the angles and side lengths are congruent. So if you rotate the figure by $\pi/n$ radians, another vertex ends up at (1, 0) and it'll be symmetric about the same line and so on until you find all $n/2$ flips through vertices (once you've made $n/2$ flips, the point that was originally at (0, -1) is now at (0, 1) and the line between (0, 1) and (0, -1) is the same as the line between (0, -1) and (0, 1)).
+\item If you take the setup we had in part b and rotate it by only $\frac{\pi}{2n}$ radians, the midpoint of some side is at (1, 0) and that of some other side is at (-1, 0). The figure is symmetric about the line through these points with the same justification I used in part b.
+\ee
+\item $\{r^{2k}, r^{2k}j\}$ for $0 \le k < n$.
+\item This is the group of elements of order 2 and also the identity, namely $\{e, r^3, j, r^3j\}$.
+\item In order to get a rotational symmetry you now need to rotate by $\pi/5$ so the colors line up right so this group has 5 rotational symmetries and those symmetries multiplied by $j$ give the reflective symmetries, just like in $D_5$.
+\item Same words as the proof of Exercise 8 for the case where you color one vertex. If you color 3 of them, there are no reflective symmetries, so only the five rotations remain, so the group is isomorphic to $\ints_5$.
+\item That's the definition of $D_n$.
+\item It's isomorphic to $D_{2n}$ because it consists of products $r^ki^aj^b$ where $j$ is the reflection and $i$ flips the card over, $0 \le k < n$, and $a$ and $b$ are binary. The mapping $r^k \ra r^{2k}, i \ra i, j \ra r$ is an isomorphism between this group and $D_{2n}$.
+\ee
+\section{Homomorphisms and Isomorphisms}
+\be
+\item I'll represent a permutation by its result on (1, 2, 3, 4), i.e. 4132 is the permutation $f$ such that $f(1) = 4, f(2) = 1, f(3) = 3, f(4) = 1$. So the mapping $e \ra 1234, r \ra 4123, r^2 \ra 3412, r^3 \ra 2341, j \ra 4312, rj \ra 2431, r^2j \ra 1243, r^3j \ra 3124$ is a homomorphism from $D_4$ to $S_4$.
+\item $\psi(e, c, d, r^2) = 12, \psi($anything else$) = 21$.
+\item If $f$ and $g$ are homomorphisms, $f(g(xy)) = f(g(x)g(y)) = f(g(x))f(g(y))$.
+\item Let $x, y \in \psi\inv(B)$ then since $\psi(x) \in B$ and $\psi(y) \in B$ we have $\psi(x)\psi(y) \in B \ra \psi(xy) \in B \ra xy \in \psi\inv(B)$. Also, $\psi(x) \in B \ra \psi(x)\inv \in B$ since $B$ is a group and so since $\psi$ is a homomorphism we have $\psi(x)\inv = \psi(x\inv) \ra x\inv \in \psi\inv(B)$ so $\psi\inv(B)$ is closed under product and inverse so it's a group.
+\item Let $x, y \in gAg\inv$ then $x = gag\inv, y=gbg\inv$ for some $a, b\in A$ so $xy = gag\inv gbg\inv = gabg\inv \in gAg$. Also $x\inv = gx\inv g\inv$, so $gAg\inv$ is closed under product and inverse so it's a group.
+\item If $A$ is abelian, then $gag\inv = gg\inv a = a$ for all $a, g \in A$, so any subgroup is normal.
+\item $f(a) = f(x) \lra f(a)f(x)\inv = 1 \lra f(ax\inv) = 1 \lra ax\inv \in N$, where $f$ is our homomorphism with colonel $N$. So let $m = ax\inv$ then $x = am \lra xN = amN = aN$ since $m \in N$ and $N$ is a group.   
+\item Let $x \in A, g \in G$, then $gag\inv \in A \ra \psi(gag\inv) \in \psi(A) \ra \psi(g)\psi(a)\psi(g\inv) \in \psi(A)$. Since $\psi$ is surjective, for any $h \in H$ we can find $g\in G$ such that $\psi(g) = h$, so $\psi(A)$ is normal.
+\item If exactly one of the transformations $x, y$ exchanges top and bottom, then $\epsilon(xy) = -1$ since their composite exchanges top and bottom. Otherwise, $\epsilon(xy) = 1$ since the interchanges either don't occur or cancel each other. Since these are the rules of multiplication, $\epsilon$ is a homomorphism.
+\item $s(t(p))(x_1, x_2 \ldots x_n) = s(p(x_{t(1)}, x_{t(2)}\ldots x_{t(n)})) = p(x_{s(t(1))}, x_{s(t(2))}, \ldots x_{s(t(n))}) = st(p)(x_1, x_2 \ldots x_n)$. 
+\item $|\sigma(\Delta)| = |\Delta|$ because $|xy| = |x||y|$ and $\sigma(x_i - x_j) = \pm (x_i - x_j)$. $\epsilon(f) = -1$ if $f$ changes the sign of an odd number of $(x_i - x_j)$ factors, and $\epsilon(f) = 1$ if $f$ changes the sign of an even number of factors. So $fg$ changes the sign of however many factors $f$ changes the sign of, plus however many $g$ changes the sign of, minus two times the number of factors whose sign they both change. Since odd + odd - even = even and odd + even - even = odd and even + even - even = even, $\sigma$ is a homomorphism.
+\item If $f$ swap elements $i$ and $j$, then $f$ flips the sign of $x_i - x_j$. Also, for $i < k < j$, $f$ flips the sign of $x_k - x_i$ and $x_j - x_k$. This adds up to an even number of sign flips plus one, so it's an odd permutation, i.e. $\epsilon(f) = -1$.
+\item $T(\pi)_{ij} = 1 \lra \pi(i) = j$ so $(T(\sigma)T(\pi))_{ij} = \sum_k(T(\sigma)_{ik})(T(\pi)_{kj}) = 1 \lra \exists k | (T(\sigma))_{ik} = 1$ and $(T(\pi))_{kj} = 1 \lra \exists (i, j) | \pi(i) = k$ and $\sigma(k) = j
+\lra \sigma(\pi(i)) = j$, which is the same condition for $(T_{\sigma\pi})_{ij}$ to equal 1.
+\item \be
+\item $\pi\cycle\pi\inv =\picycle \lra \pi\cycle = \picycle\pi$ so $\pi\cycle(a_k) = \pi(a_{k+1})$ \\ and $\picycle\pi(a_k) = \picycle(\pi(a_k)) = \pi(a_{k+1})$. 
+\item Let $\pi(a_1) = b_1, \pi(a_2) = b_2, \ldots \pi(a_n) = b_n$ and apply part a.
+\item $b = gag\inv \lra bg = ga$. Two elements that are equal have the same cycle structure, and $g$'s contributions to the cycle structure of both sides can be disregarded, so $a$ and $b$ must have the same cycle structure for this equality to hold.
+\item Let $a = a_1a_2a_3\ldots$ be the cycle decomposition of $b$, and let $b = b_1b_2b_3\ldots$ be the cycle decomposition of $b$, where $a_k$ and $b_k$ have the same length for all $k$. Then if $a_k = (a_{k1}, a_{k2}, a_{k3}\ldots a_{kn}), b_k = (b_{k1}, b_{k2}, b_{k3}\ldots b_{kn})$, let $g(a_{ij}) = b_{ij}$. Since the cycles are disjoint, $g$ is a bijection, so $g \in S_n$. So $g\inv b g(a_{ij}) = g\inv b(b_{ij}) = g\inv(b_{ij+1}) = a_{ij+1} = a(a_{ij}).$ So $b = g\inv a g$, so $a$ and $b$ are conjugate.
+\ee
+\item Let $f$ be a homomorphism from $S_n$ to $\{1, -1\}$. If $f((1, 2)) = -1$, then $f(x) = -1$ for all 2-cycles $x$ by Exercise 14, so $f = \epsilon$ since all permutations are products of 2-cycles and both $f$ and $\epsilon$ are determined in the same way by the 2-cycle structure of a permutation. And if $f((1, 2)) = 1$, then $f(x)$ = 1 for all 2-cycles $x$ by Exercise 14, so $f(y) = 1$ for all cycles $y$, since $f$ is a homomorphism, $1*1 = 1$, and every cycle is a product of 2-cycles. So $\epsilon$ is the unique nontrivial homomorphism from $S_n$ to $\{1, -1\}$.
+\item If $a \in S_m$, then let $a_1a_2a_3\ldots$ be the decomposition of $a$ into 2-cycles. Then $a_1a_2a_3 \in S_n$ as well, and it is equal to the equivalent of $a$ in $S_n$ since they permute elements in the same way, so the sign of $a$ in $S_m$ is the same as the sign of its equivalent in $S_n$.
+\item It's a bijection because it has an inverse: $c_g\inv(a) = ga\inv g\inv$. It's a homomorphism because $c_g(a)c_g(b) = gag\inv gbg\inv = gabg\inv = c_g(ab).$ So it's an isomorphism.
+\item The composition of homomorphisms is a homomorphism, so $\epsilon\psi$ is a homomorphism from $S_n$ to $\{1, -1\}$. Since $\epsilon$ is the only homomorphism from $S_n$ to $\{1, -1\}$, $\epsilon\psi = \epsilon$, so $\psi$ preserves parity.
+\item \be
+\item It's a subgroup because $\det(AB) = \det(A)\det(B)$ so if $\det(A)$ is positive and $\det(B)$ is positive then $det(AB)$ is positive. Also because $\det(A\inv) = \det(A)\inv$ so if $\det(A)$ is positive then $\det(A\inv)$ is positive. It's normal because for any invertible $G$, $\det(GAG\inv) \det(G)\det(A)\det(G)\inv = \det(A)$ which is positive.
+\item If $x\in S_n$, then $T(x)$ is a row-interchange matrix, so its determinant has absolute value 1. Since $\det$ and $T$ are homomorphisms, $\det T$ is a homomorphism from $S_n$ to $\{1, -1\}$ so it must be $\epsilon$.
+\ee
+\item \be
+\item I already did this in Exercise 1.4.3.
+\item $\left( \begin{array}{cc} A & b \\ 0 & 1 \end{array} \right) \left( \begin{array}{cc} C & d \\ 0 & 1 \end{array} \right) = \left( \begin{array}{cc} AC & Ad + b \\ 0 & 1 \end{array} \right)$ so the group in question is closed under multiplication and $\left( \begin{array}{cc} A & b \\ 0 & 1 \end{array} \right)\inv = \left( \begin{array}{cc} A\inv & -A\inv b \\ 0 & 1 \end{array} \right)$ so identifying $T_{A, b}$ with $\left( \begin{array}{cc} A & b \\ 0 & 1 \end{array} \right)$ we get an isomorphism. 
+\item Let $f(T_{A, b}) = A$. Then $f(T_{A, b}T_{C, d}) = f(T_{AC, Ad + b}) = AC = f(T_{A, b})f(T_{C, d})$. The colonel $K$ of $f$ is $f\inv(E) = T_{E, b}$ for all $b$, so the map $g$ where $g(T_{A, b}) = b$ is an isomorphism from $K$ to $\reals^n$.
+\ee
+\item If $f(a) = a^n$, then $f(ab) = (ab)^n = a^nb^n$ in an abelian group, so $f$ is a homomorphism. The colonel of $f$ is the elements of order $n$. If $n$ is relatively prime to $g$, the order of $G$, then there are no such elements, because we know that $a^g = 1$ for all $a$ so if $a^n = 1$ too then $n$ would divide $g$. That means the colonel of $f$ is $e$, so $f$ is an isomorphism. 
+\ee
+\section{Cosets and Lagrange's Theorem}
+\be
+\item OK
+\item For a given $s$, $\{g_sh_rK:1 \le r \le R\}$ is a partition of $g_sH$, because the $h_rK$ are a partition of $H$, so for any $g_sh \in g_sH$ there is some unique $r'$ such that $h \in h_{r'}H, g_sh \in g_sh_{r'}H$. Since the $g_sH:1 \le s \le S$ are disjoint, $s \not = s' \ra \{g_sh_rK:1 \le r \le R\} \cap \{g_{s'}h_rK:1 \le r \le R\} = \emptyset$. Since the union of the $g_sH$ is $G$, the second sentence of this proof means that for any coset $gK$ of $K$ there is a unique $s$ such that $gK \in \{g_sh_rK:1 \le r \le R\}$, and the first sentence of the proof implies that within that set there is a unique $r$ such that $gK = g_sh_rK$. 
+\item I didn't mention finite indexes in my proof of Exercise 2, so it holds up without modification.
+\item \be 
+\item The left cosets are $H$, $(13)H$, and $(2 3)H$. The right cosets are $H$, $H(13)$ and $H(23)$. $(13)H$, $(2 3)H$, $H(13)$ and $H(23)$ are all different sets, though. 
+\item The left cosets are $K$ and $(12)K$. The right cosets are $K$ and $K(12)$. $K(12) = (12)K$.
+\ee
+\item $a \in Hb \lra b \in Ha \lra Ha = Hb \lra ba\inv \in H \lra ab\inv \in H$.
+\item $f: aH \ra Ha\inv$ is surjective because every element has an inverse, and it's injective because $f(aH) = f(bH) \ra Hb\inv = Ha\inv \ra b\inv \in Ha\inv \ra b\inv = ha\inv$ for some $h \in H \ra b = ah\inv \ra b \in aH$ since $h\inv \in H \ra aH = bH$.
+\item \begin{itemize}
+\item a $\ra$ c: If $N$ is normal then for all $g \in G, gNg\inv = N$ so $ \{gng\inv:n\in N\} = N $ which means for every $n\in N$ there exists $m \in N$ such that $gn = mg$ so $gN = Ng$.
+\item c $\ra$ b: Trivial.
+\item b $\ra$ c: If $aN = Nb$, then for every $n \in N$ there exists an $m \in N$ such that $an = mb$. Taking $n=e$, we get $a = mb \ra a \in Nb \ra Nb = Na$ by the analogue of Prop 2.1.3 for right cosets.
+\item c $\ra$ a: For $a \in G$, $aN = Na \ra \{an:n \in N\} = \{ma:m \in N\} \ra $ for any $n \in N$ there exists $m \in N$ such that $an = ma \ra ana\inv = m \in N$, so $N$ is normal.
+\end{itemize} 
+\item $N$ has two cosets, let's name them $eN$ and $aN$ for some $a \in G$. $eN = Ne$ every time, so the only possibility is that $aN = Na$ since there must be two right cosets, one of which is $Ne$. By the previous exercise, $N$ is normal.
+\item $N$ has two cosets, let's name them $N$ and $qN$, where $q \not \in N$ and $N \cap qN = \emptyset$. Lemma 1: $q^2 \in N$, because otherwise $q^2N$ would be a third coset since $q \not \in N$ so it can't equal $qN$. Lemma 2: $qN = Nq$, by Exercise 2.5.8. So if $a, b \in qN$, then $b \in Nq$, so there exist $m, n \in N$ such that $a = mq$ and $b = qn$ so $ab = mq^2n \in N$ since all three of $m, q^2$, and $n$ are in $N$. And if $a \in N, b \in Nq$, then $ab = amq = (am)q \in Nq$. And lastly if $a, b \in N$ then $ab \in N$ since $N$ is a group. In summary, $ab \in N \lra a, b \in N$ or $a, b \not \in N$.
+\item Let $c \in HaK \cap HbK$ then $c = hak = h'bk' \ra a = h\inv h'bk'k\inv \in HbK \ra HaK \subset HbK$. Vice versa, $HbK \subset HaK$, so $HaK = HbK$ if they have at least one element in common.
+\item For a real number $t$, $t + \ints$ is the set of real numbers whose decimal part is equal to $t$'s. All possible decimal parts are contained in the interval $[0, 1)$, so $\{t + \ints: 0 \le t < 1\}$ is all the unique cosets. In $\reals^2$, 
+\item They are cosets by the definition of cosets, they are distinct clearly and their union is $\ints$ so there can be no other cosets.
+\item \be
+\item If $a, b \in Z(G)$, then $ga = ag, gb = bg$ for all $g \in G$, so $gab = abg$ and $g\inv a\inv = a\inv g\inv$ and $gag\inv = gg\inv a = a \in Z(G)$, so $Z(G)$ is a normal subgroup. 
+\item $\{e\}$
+\ee
+\item \be
+\item $\{e, r^2\}$.
+\item $\{e, r^{n/2}\}$ if $n/2$ is an integer, $\{e\}$ otherwise.
+\ee
+\item Long story short, it's the nonzero scalar multiples of the identity matrix, in both $\reals^2$ and $\reals^3$.
+\item $A_n$ exists, so $S_n$ has a subgroup of index 2. Suppose some subgroup $A$ has index 2. Then define $\epsilon(x) = 1$ if $x \in A$, -1 otherwise. By Exercise 2.5.9, $\epsilon$ is a homomorphism from $S_n$ to $\{1, -1\}$. Since the parity homomorphism is unique, $\epsilon$ must be the parity homomorphism, so $A = A_n$ by the definition of $\epsilon$.
+\ee
+\section{Equivalence Relations and Set Partitions}
+\be
+\item $x \sim x$ for all $x \in Y$ since $f(x) = f(x)$. And if $f(x) = f(y)$ then $f(y) = f(x)$. And if $f(x) = f(y)$ and $f(y) = f(z)$ then $f(x) = f(z)$. So $\sim$ is an equivalence relation. If $x \sim y$, then there exists a z such that $f(x) = z$ and $f(y) = z$, so $x$ and $y$ are in $f\inv(z)$. So the partition associated to $\sim$ is the sets $f\inv(y)$ for $y \in Y$.
+\item Let $G$ be our group. $x = exe\inv$ for all $x\in G$, and if $y = gxg\inv$ then $x = g\inv yg$, and if $y = gxg\inv$ and $z = hyh\inv$ then $z = hgxg\inv h\inv = (hg)x(hg)\inv$ so conjugacy is an equivalence relation.
+\item The conjugacy classes in $S_3$ are the distinct cycle structures by 2.4.14. That's the identity, the 2-cycles, and the 3-cycles.
+\item The symmetric group of the square is isomorphic to a subgroup of $S_4$ so we can use 2.4.14 to see that the distinct cycle structures of elements of $D_4$ understood as elements of $S_4$ are the conjugacy classes. That means our classes are the identity, the powers of $r$ (4-cycles), $j$ (a 2-cycle), and the products of $j$ and a power of $r$ (products of a 2-cycle and a 4-cycle).
+\item Similar to Exercise 4, we have $e$, the powers of $r$, $j$, and the products of $j$ with powers of $r$.
+\item $N$ is normal $\lra aNa\inv = N \lra ana\inv \in N$ for all $n \in N \lra $ for all $n \in N$, $[n] \subset N \lra N$ is a union of conjugacy classes.
+\ee
+\section{Quotient Groups and Homomorphism Theorems}
+\be
+\item $x \sim_\phi y \lra \phi(x) = \phi(y) \lra \pi(x) = \pi(y) \lra x \sim_\pi y \lra xN = yN \lra x \sim_N y$.
+\item \be
+\item $A(BC) = A\{bc: b\in b, c \in C\} = \{a(bc) : a \in A, b \in B, c \in C\} = \{(ab)c : a\in A, b \in B, c \in C\} = (AB)C$.
+\item $(aN)(bN) = \{anbm: n, m \in N\} = a\{nbm : n, m \in N\}^*$ and so for $n, m \in N$, $nbm \in bN \lra nbmN = bN$ because first of all $mN = N$ and second of all $nbN = bN \lra b\inv nb \in N$ which is true because $N$ is normal so $*$ reduces to $a(bN) = abN$.
+\item Yarp.
+\ee
+\item \be
+\item $T_{A\inv, -A\inv b}T_{A, b}(x) = T_{A\inv, -A\inv b}(Ax + b) = A\inv Ax + A\inv b - A\inv b = x$.
+\item $T_{A, b}T_{E, c}T_{A, b}\inv(x) = T_{A, b}T_{E, c}(A\inv x - A\inv b) = T_{A, b}(A\inv x - A\inv b + c) = x + Ac$.
+\ee
+\item By 2.7.19c, $|AN/N| = |A| / |A \cap N|.$ By Lagrange's theorem, $|AN / N| = |AN| / |N|$. By the transitive property of equality, $|AN|= |A| |N|/ |A \cap N|$.
+\item $T_{a, b; c, d}T_{e, f; g, h} = T_{ae + bg, af + bh; ce + dg; cf + dh}; T_{a, b; c, d}\inv = T_{\frac{d}{da - bc}, \frac{b}{b - ad}; \frac{c}{bc - da}, \frac{a}{ad-b}}$ by my calculations and the map $f(\left( \begin{array}{cc} a & b \\ c & d \end{array} \right) ) = T_{a, b; c, d}$ is a surjective homomorphism from $GL(2, \comps)$ to the transform group and its colonel is the matrices such that $f(\left( \begin{array}{cc} a & b \\ c & d \end{array} \right) )(z) = \frac{az + b}{cz + d} = z \lra b = 0, c = 0, a = d\not = 0$ which is $Z(GL(2, \comps))$ so by the homomorphism theorem the transformation group is isomorphic to $GL(2, \comps) / Z(GL(2, \comps))$. 
+\item \be
+\item Composition of automorphisms is an automorphism, the identity is an automorphism, and the inverse of an automorphism is an automorphism, so Aut($G$) is a group.
+\item $c(g)(c(h)(x)) = c(g)(hxh\inv) = ghxh\inv g\inv = c(gh)(x)$, so $c$ is a homomorphism.
+\item $g \in$ ker($c) \lra gxg\inv = x \forall x \in G \lra gx = xg \forall x \in G \lra g \in Z(G)$. 
+\item By the homomorphism theorem, the image of $c$ is isomorphic to $G$ modulo the colonel of $c$, so Int($G) \cong G/Z(G)$.
+\ee
+\item The cosets of $N$ are $N$ and $jN$, and since $j^2 = e$ the group of cosets is isomorphic to $\ints_2$.
+\item The center of $S_3$ is just the identity so there are six inner automorphisms so all the automorphisms are inner. 
+\item \begin{itemize}
+\item Normality of $C$: Let $xyx\inv y\inv \in C, g \in G$ then $gxyx\inv y\inv g\inv = $\\$ gx (g\inv g) y (g\inv g) x\inv (g\inv g) y\inv  g\inv = $\\$(gxg\inv)(gyg\inv)(gxg\inv)\inv(gyg\inv)\inv$, so $C$ is normal.
+\item $G/C$ is abelian: Let $aC, bC \in G/C$, then $aCbC = abC = \{ab[xyx\inv y\inv]:x, y \in G\}$. Setting $x=b\inv, y = a\inv$, we find that $abb\inv a\inv ba = ba \in abC \lra abC = baC \lra aCbC = bCaC$, so $G/C$ is abelian.
+\item If $H$ is a normal subgroup of $G$ such that $G/H$ is abelian, then $C \subset H$: Suppose $G/H$ is abelian, and let $a, b \in G$. Then $abH = baH \lra a\inv b\inv ab \in H$ by Proposition 2.5.3, so $C \subset H$.
+\end{itemize}
+\item Any quotient of an abelian group is isomorphic to the image of a homomorphism, and the image of a homomorphism of an abelian group is abelian since the homomorphism respects multiplication.
+\item The cosets of the center of $G$ are a partition of $G$ so $G = \cup_k a^kZ(G)$ where $a \not \in Z(G)$ if there is such an $a$. So suppose there exists some pair $a, b \in G$ such that $ab \not = ba$. Then $b \not \in a^kZ(G)$ for any $k$ because $b \in a^kZ(G) \lra b = a^kz$ for some $z \in Z(G) \lra ab = aa^kz = a^kza = ba$ since $a$ commutes with $z$ and $a$. Since we couldn't find a $b$, every element of $G$ is in $Z(G)$, so $G$ is abelian.
+\item Nope remember that transformation group I was screaming about in Exercise 5 well that group is abelian and yet $GL(2, \comps)$ is not abelian.
+\ee
+\end{document}  
