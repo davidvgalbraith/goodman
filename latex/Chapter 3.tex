@@ -1,0 +1,198 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\usepackage{amsthm}
+\usepackage{ textcomp }
+\usepackage{ amssymb }
+\usepackage{amsmath}
+\usepackage{ wasysym }
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\comps}{\mathbb{C}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\gt}{G_{\text{tor}}}
+\newcommand{\ann}{\text{ann}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\fs}{f_1 \ldots f_k}
+\newcommand{\poly}{\sum_na_nx^n}
+\newcommand{\andd}{\text{ and }}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\ct}{\cos\theta}
+\newcommand{\st}{\sin\theta}
+\newcommand{\cycle}{(a_1, a_2, \ldots a_n)}
+\newcommand{\picycle}{ (\pi(a_1), \pi(a_2) \ldots \pi(a_n))}
+\newcommand{\tai}{\tilde{A_i}}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Chapter 3}
+\author{Dave}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{Direct Products}
+\be
+\item $(e_A, e_B)(a, b) = (a, b)$, so $(e_A, e_B)$ is the identity, and $(a\inv, b\inv)(a, b) = (e_A, e_B)$, so it's closed under inverse. And it's closed under product because $A$ and $B$ are. So $A \times B$ is a group.
+\item $(a, b)(a', e_B)(a\inv,b\inv) = (aa'a\inv, bb\inv) = (aa'a\inv, e_B) \in A \times \{e_B\}$, so $A \times \{e_B\}$ is normal. With the same logic, $\{e_A\} \times B$ is normal. And since $e_A \in A$ and $e_B \in B$, $A \times \{e_B\} \cap \{e_A\} \times B = (e_A, e_B)$.
+\item For all $a \in A$, we have $\pi_1(a, e_B) = a$, so $\pi_1$ is surjective. And $\pi_1(e_A, b) = e_A$ for all $b\in B$, so $\{e_A\} \times B$ is the colonel of $\pi_1$. And $\pi_1((a_1, b_1)(a_2, b_2)) = \pi_1(a_1a_2, b_1b_2) = a1a2 = \pi_1((a_1, b_1))\pi_1((a_2, b_2))$, so $\pi_1$ is a homomorphism. The same logic shows that $\pi_2$ is a surjective homomorphism with colonel $A \times \{e_B\}$, and the existence of $\pi_2$ shows that $(A \times B) / (A \times \{e_B\}) \cong B$ by the homomorphism theorem.
+\item $(a_1, a_2, \ldots a_n)(a_1', a_2', \ldots a_n') = (a_1a_1', a_2a_2', \ldots a_na_n') \in P$, and $(a_1, a_2, \ldots a_n)(a_1\inv, a_2\inv, \ldots a_n\inv)) = (e_1, e_2, \ldots e_n)$, so $P$ is a group.
+\item Let $p = (p_1, p_2 \ldots p_n) \in P, a \in \tai$. Then $pap\inv = (p_1p_1\inv, p_2p_2\inv \ldots p_ia_ip_i\inv \ldots p_np_n\inv) \in \tai$, so $\tai$ is normal. For $a \in A_i, a \ra (e_1, e_2 \ldots e_{i-1}, a, e_{i+1}, \ldots e_n)$ is an isomorphism from $A_i$ to $\tai$, so $A_i \cong \tai$.
+\item Let $p = (p_1, p_2 \ldots p_n) \in P, a \in \tai'$. Then $pap\inv = (p_1a_1p_1\inv, p_2a_2p_2\inv \ldots p_ie_{A_i}p_i\inv \ldots p_na_np_n\inv) \in \tai'$, so $\tai'$ is normal. For $p = (p_1, p_2 \ldots p_n) \in P$ and any $i$, \\
+$(e_1, e_2 \ldots e_{i-1}, p_i, e_{i+1}, \ldots e_n)(p_1, p_2 \ldots p_{i-1}, e_{A_i}, p_{i+1}, \ldots p_n) = p$, so $P = A_i\tai$.
+\item If $a \in A_i$, then $\pi_i(e_1, e_2 \ldots e_{i-1}, a, e_{i+1}, \ldots e_n) = a$, so $\pi_i$ is surjective, and \\
+$\pi_i((a_1, a_2, \ldots a_n)(a_1', a_2', \ldots a_n')) = \pi_i(a_1a_1', a_2a_2', \ldots a_na_n') = a_ia_i' = \pi_i((a_1, a_2, \ldots a_n))\pi_i((a_1', a_2', \ldots a_n'))$, so $\pi_i$ is a homomorphism. Its kernel is $\tai$ because those are the points in $P$ where $a_i = e_{A_i}$. The intersection of the kernels of all the $\pi_i$ is $\{e\}$ because it is comprised of the points where $a_i = e_{A_i}$ for all $i$. $\cap_{j \not= i}\ker{\pi_j} = \{(e_1, e_2 \ldots e_{i-1}, a, e_{i+1}, \ldots e_n) : a \in A_i \}$, so $\pi_i$ maps this set onto $A_i$.
+\item $A \times (B \times C) = A \times \{ (b, c) : b \in B, c \in C\} = \{(a, (b, c)) : a \in A, b \in B, c \in C\}$ and so the map $f: (a, (b, c)) \ra ((a, b), c)$ is an isomorphism since $f((a, (b, c))(a', (b', c'))) = f((aa', (bb', cc'))) = ((aa', bb'), cc') = ((a, b), c)((a', b'), c') = f((a, (b, c)))f((a', (b', c')))$ and so is $g: (a, (b, c)) \ra (a, b, c)$ by a similar computation. 
+\item If both $A$ and $B$ are abelian, then $(a, b)(a', b') = (aa', bb') = (a'a, b'b) = (a', b')(a, b)$. If $A$ or $B$ is not abelian, let's say $A$ without loss of generality, then there exists some pair $a, a'$ such that $aa' \not = a'a$. So $(a, e_B)(a', e_B) = (aa', e_B) \not= (a'a, e_B) = (a', e_B)(a, e_B)$.
+\item If any of these groups were isomorphic to a product $A \times B$, then it would have a subgroup isomorphic to $A \times \{e_B\} \cong A$. Back in exercises for chapter 2, we enumerated the subgroups of all these groups, and all the subgroups were abelian. Any direct product of abelian groups is abelian by the previous exercise, but none of these groups is abelian, so none of them can be a product of nontrivial groups since all the candidate nontrivial groups are abelian.
+\item $a + bi = re^{i\theta}$ where $r = \sqrt{a^2 + b^2}$ and $\theta = \tan\inv(b/a)$ where you get that by representing the complex plane in polar coordinates. So $r \ge 0$ and $|e^{i\theta}| = 1$ so $(r, e^{i\theta}) \in \reals_+^* \times \mathbb{T}$. 
+\item If $n$ is odd then Example 2.7.21 delivers GL($n, \reals$)= ZSL$(n, \reals)$ and further that Z and SL$(n, \reals)$ are normal in GL($n, \reals)$. Z $\cap$ SL($n, \reals)$ = $\{E\}$ the identity matrix because that is the only real scalar multiple of the identity with determinant 1 in GL($n, \reals$) if $n$ is odd, since $\det(\lambda E) = \lambda^n$. If $n$ is even, $\lambda = -1$ is another multiple of the identity with determinant 1, and if $\reals$ is replaced by $\comps$ then all of the $n$th roots of unity, of which there are $n$, are possible values for $\lambda$, so this condition about Z $\cap$ SL($n, \reals)$ = $\{E\}$ does not hold. But with $n$ odd and only the real numbers being considered, we've shown that the conditions of Proposition 3.1.5 are in place, so GL($n, \reals) \cong $ Z $\times $ SL($n, \reals)$.
+\item $\ints_8$ has an element of order 8, namely 1, whereas $\ints_4 \times \ints_2$ has no elements of order greater than 4, so if $\psi$ is our hoped-for isomorphism from $\ints_8$ to $\ints_4 \times \ints_2$ then $\psi(1)*4 = 0 \not = \psi(1 * 4)$ no matter how you define $\psi$, since 4 can't be in the kernel of $\psi$ if it's a bijection, so $\psi$ cannot exist.
+\item $\ints_4 \times \ints_2 \times \ints_2$ has eight elements of order 4, but $\ints_4 \times \ints_4$ has four of them, so with a similar argument to Exercise 13 we see they cannot be isomorphic, where in Exercise 13 we were trying to find a value in the range to map one element of order 8 to but now we're trying to find values in the range to map 8 elements of order 4 to but similarly we cannot find them.
+\item For $g_1 \in G_1, g_2 \in G_2, k_1 \in K_1, k_2 \in K_2, (g_1, g_2)(k_1, k_2)(g_1, g_2)\inv = (g_1k_1g_1\inv, g_2k_2g_2\inv) \in K_1 \times K_2$ since $K_1$ and $K_2$ are normal, so $K_1 \times K_2$ is normal. Let $f(g_1, g_2) = (g_1K_1, g_2K_2)$. Then $f$ is a surjective homomorphism from $G_1 \times G_2$ to $(G_1 / K_1) \times (G_2 / K_2)$ with colonel $K_1 \times K_2$, so by the homomorphism theorem $(G_1 \times G_2) / (K_1 \times K_2) \cong (G_1 / K_1) \times (G_2 / K_2)$.
+\item \be
+\item For $g, h \in G$, $\psi(gh) = (\psi_1(gh), \psi_2(gh)) = (\psi_1(g), \psi_2(g))(\psi_1(h), \psi_2(h)) = \psi(g)\psi(h)$, so $\psi$ is a homomorphism. It's injective because if $\psi(g) = \psi(h)$ then $\psi(g)\psi(h)\inv = e \ra (\psi_1(gh\inv), \psi_2(gh\inv)) = (e, e) \ra gh\inv \in \ker(\psi_1) \cap \ker(\psi_2) \ra gh\inv = e \ra g = h$.
+\item For $a \in A, \psi(a, a) = (\psi_1(a, a), \psi_2(a, a)) = (a, a)$ so $\psi$ is the insertion which is not surjective in general.
+\ee
+\item We know that $\psi$ is an injective homomorphism by Exercise 16, so we just need to find when it is surjective. So suppose such maps $\theta_i$ exist. Then for $a \in A, \psi(\theta_1(a)) = (a, e)$ and for $b \in B, \psi(\theta_2(b)) = (e, b)$. Since $\psi_1$ is surjective, for any $a \in A$ there exists a $g_a \in G$ such that $\psi_1(g_a)$ = $a$, and similarly for any $b \in B$ there exists a $g_b \in G$ such that $\psi_2(g_b) = b$. So for any $(a, b) \in A \times B, \psi(\theta_1(g_a)\theta_2(g_b)) = (a, e)(e, b) = (a, b)$, so $\psi$ is surjective, so existence of these $\theta$ maps implies subjectivity of $\psi$. \\
+On the other hand, suppose $\psi$ is surjective. Then for all $(a, b) \in A \times B$ there exists a $g \in G$ such that $\psi(g) = (a, b)$. In particular, for all $a \in A, \exists g : \psi(g) = (\psi_1(g), \psi_2(g)) = (a, e)$. So define $\theta_1(a) = $ this $g$, then $\psi_1(\theta_1(a)) = a$ and $\psi_2(\theta_1(a)) = e$. Similarly, we can construct a $\theta_2$ such that $\psi_2(\theta_2(b)) = b, \psi_2(\theta_1(b)) = e$ for all $b \in B$, so existence of these maps is necessary and sufficient for surjectivity and hence bijectivity of $\psi$.
+\item \be
+\item For $g, h \in G$, $\psi(gh) = (\psi_1(gh), \psi_2(gh), \ldots \psi_r(gh)) \\
+= (\psi_1(g), \psi_2(g), \ldots \psi_r(g))(\psi_1(h), \psi_2(h), \ldots \psi_r(h)) = \psi(g)\psi(h)$, so $\psi$ is a homomorphism. It's injective because if $\psi(g) = \psi(h)$ then $\psi(g)\psi(h)\inv = e \ra (\psi_1(gh\inv), \psi_2(gh\inv), \ldots \psi_r(gh\inv)) = (e, e, \ldots e) \ra gh\inv \in \ker(\psi_1) \cap \ker(\psi_2) \cap \ldots \cap \ker(\psi_r) \ra gh\inv = e \ra g = h$.
+\item $\psi$ will be surjective if and only if for each $i, 1 \le i \le r$ there exists a map $\theta_i$ such that for $1 \le j \le r, x \in G, \psi_i(\theta_j(x)) = x$ if $i = j$, $e$ otherwise. This follows from extending the argument of Exercise 17 to an arbitrary number of subgroups.
+\ee
+\item Suppose that $x_1x_2\cdots x_r = e \ra x_1 = x_2 = \ldots = e$. Let $x \in N_1 \cap N_2N_3 \cdots N_r$, then $x = x_1 = x_2x_3\cdots x_r \ra x_1\inv x_2x_3 \cdots x_r = e \ra x_1\inv = x_1 = x_2 = \ldots = x_r =x $ by our hypothesis. So $N_1 \cap N_2N_3 \cdots N_r = \{e\}$, and the same argument holds for any $i$. \\
+Suppose now on the other hand that $N_i \cap N_1N_2\cdots N_{i-1}N_{i + 1}\cdots N_r = \{e\}$ for all $i$. Then $x_1x_2\cdots x_r = e \ra x_1 = x_2\inv x_3\inv \cdots x_r\inv \in N_2N_3\cdots N_r$ and of course $x_1 \in N_1$ so $x_1 \in N_1 \cap N_2N_3 \cdots N_r \ra x_1 = e$. Applying the same argument to the rest of the $i$, it is evident that $x_1 = x_2 = \ldots x_r = e$. 
+\item Suppose $y = x_i \mod a_i$ for all $i$ then for each $i$, $y = x_i + na_i$ for some integer $n$ so $y - x = 0 \mod a_i$ for all $i$ so $y - x$ is divisible by all the $a_i$ and so it's divisible by $a$ and so $y = x \mod a$.
+\item The existence of $x$ such that $x \equiv x_i \mod a_i$ for all $i$ is equivalent to the surjectivity of the isomorphism $\psi: \ints_a \ra \ints_{a_1} \oplus \ints_{a_2} \oplus \ldots \oplus \ints_{a_n}$, while the uniqueness of $x$ is equivalent to its injectivity.
+\item $(\psi([\sum_i x_iy_i]_a))_j = (\sum_i x_iy_i)_{a_j} = [x_jy_j]_{a_j}$ since $y_i = 0 \mod a_i$ for $i \not = j$ and since $y = 1 \mod a_j$ this simply equals $[x_j]_{a_j}$. 
+\item 165, by my calculations, fits the bill.
+\ee
+\section{Semidirect Products}
+\be
+\item $(\alpha_{a\inv}(n\inv), a\inv)(n, a) = (\alpha_{a\inv}(n\inv)\alpha_{a\inv}(n), a\inv a) = (\alpha_{a\inv}(e), e) = (e, e)$. Likewise, $(n, a)(\alpha_{a\inv}(n\inv), a\inv) = (n\alpha_a(\alpha_{a\inv}(n\inv)), aa\inv) = (nn\inv, e) = (e, e)$.
+\item For $[x], [y] \in \ints_n, j([x] + [y]) = j([x + y]) = [-x - y] = [-x] + [-y] = j([x]) + j([y])$. $j^2([x]) = j([-x]) = [--x] = [x]$, so $j$ has order 2. And $j$ is a bijection since $j([x]) = [x\inv]$ and the inverse is unique. \\
+Let $r$ and $j$ be the rotation and flip in $D_n$, and let $x \in \ints_n, y \in \ints_2$. Then $f: (x, y) \ra r^xj^y$ is an isomorphism from $\ints_n \rtimes \ints_2$ to $D_n$. Then $f((x, y)(x', y')) = f(x + j^y(x'), y + y') = f(x + (-1)^yx', y+y') = r^{x + (-1)^yx'}j^{y+y'} = r^xj^yr^{x'}j^{y'} = f(x, y)f(x', y')$ since $r^x$ is anticommutative with $j^1$ but commutative with $j^0 = e$.
+\item The map $Ax + b \ra (A, b)$ is an isomorphism from Aff($n$) to GL($n, \reals$) $\rtimes \reals^n$ because (subgroups isomorphic to) GL($n, \reals)$ and $\reals^n$ are normal in Aff($n$) as we proved last chapter and Aff($n$) = GL($n, \reals$)$\reals^n$ and GL($n, \reals$)$\cap \reals^n = (x \ra Ex + 0)$, the identity, so these are the conditions of Proposition 3.2.5.
+\item $\ints_2 \cong (e, (1, 2)) \in S_n$; $S_n = A_n\{e, (1, 2)\}$; and $A_n$ is normal, so Proposition 3.2.5 implies that $S_n \cong \ints_2 \rtimes A_n$.
+\item $E\in G$, the product of two matrices that rearrange rows and change the signs of rows is another matrix that rearranges rows and changes signs of rows, and the inverse of a matrix that rearranges and changes the signs of rows is the matrix that arranges those rows back the way they were and changes their signs back, so $G$ is a group. \\
+ $S_n$ is isomorphic to the row-interchange matrices that you get by rearranging rows of the identity matrix, because multiplication by those matrices rearranges rows of the matrices they are multiplied by in the same way that the permutations in $S_n$ permute arbitrary things. These row-interchange matrices are the matrices with entries in $\{0, 1\}$ and exactly one non-zero entry per row and column. \\
+The group of diagonal matrices with diagonal entries in $\{-1, 1\}$, let's call it $N$, is a normal subgroup of $G$. That's because for $A \in G, X \in N$, $(AXA\inv)_{ij} = \sum_{i_1 = 1}^n\sum_{i_2=1}^n A_{ii_1}X_{i_1i_2}(A\inv)_{i_2j}$. Since $X_{i_1i_2} = 0$ if $i_1 \not = i_2$, $(AXA\inv)_{ij} = 0$ if $i \not = j$. Furthermore, $A_{ij}, (A\inv)_{ij},$ and $X_{ij}$ are 0, 1, or -1, so any product of them has one of those three values. So $AXA\inv \in N$, so $N$ is normal. And each element of $G$ permutes the rows and changes the signs of some rows when it multiplies another matrix, so we can split these two operations into a matrix in $S_n$ and a matrix in $N$, so $G = S_nN$. Finally, $S_n \cap N = \{E\}$, since the identity is the only diagonal matrix whose diagonal entries are 1. By Proposition 3.2.5, $G \cong S_n \rtimes N$.
+\item The subgroup generated by [2] has 2 elements, [0] and [2], so it is isomorphic to $\ints_2$. $\ints_4 / \ints_2$ also has 2 elements, $\ints_2$ and $[1] + \ints_2$, so it is isomorphic to $\ints_2$. But the element $[1] \in \ints_4$ has order 4, but no element of $\ints_2 \times \ints_2$ has order 4, so no matter how you slice it $\ints_4$ and $\ints_2 \times \ints_2$ can't be isomorphic.
+\ee
+\section{Vector Spaces}
+\be
+\item Let $\{A_\alpha\}$ be an indexed collection of vector subspaces. Then if $x, y \in \cap_\alpha A_\alpha$, then $x + y \in A_\alpha$ for all $\alpha$, and $mx \in A_\alpha$ for all scalars $m$ for all $\alpha$, since each $A_\alpha$ is a subspace, so $x + y, mx \in \cap_\alpha A_\alpha \ra \cap_\alpha A_\alpha$ is a subspace.
+\item Let $K$ be the field that $V$ is over. Then span(span($S$)) = $\{\sum_j b_j (\sum_i a_is_i): a_i, b_i \in K, s_i \in S\} = \{\sum_i a_i (\sum_j b_j) s_i\}$ so every vector in span(span($S$)) is a linear combination of the vectors in $S$, so it is a subset of span($S$), and span($S$) $\subset$ span(span($S$)) since if $s_i \in$ span($S$) then $s_i$ can be created as a linear combination of elements of span($S$) with coefficients of $e$ for $s_i$ and 0 for the other elements. So span($S$) = span(span($S$)). \\
+Any linear subspace containing $S$ must contain span($S$), for a linear subspace contains all linear combinations of elements that it contains, which is the definition of span($S$). So span($S$) is the smallest linear subspace that contains $S$, which is equivalent to the intersection of all the subspaces that contain $S$.
+\item Let $V$ be a vector space and $S \subset V$ be closed under addition and scalar multiplication. Since it's closed under addition, $S$ is a subgroup of $V$, and the four additional hypotheses of Definition 2.3.1 trivially follow from the fact that the operations on $V$ have those properties, and the operations on $S$ are the same operations.
+\item Let $f,g$ be linear functions, $x, y \in V$ a vector space over a field $K$, and $a \in K$. Then $f(g(x + y)) = f(g(x) + g(y)) = f(g(x)) + f(g(y))$ and $f(g(ax)) = f(ag(x)) = af(g(x))$, so $f \circ g$ is linear. And if $f: X \to Y$ is a linear isomorphism, then $f(x+y) = f(x) + f(y) \lra f\inv(f(x + x')) = f\inv(f(x)) = f\inv(f(x')) \ ^1$. Since $f$ is bijective, for every $y \in Y$ there exists a unique $x \in X$ such that $f(x) = y$, so equation 1 implies that for any $y, y' \in Y, f\inv(y + y') = f\inv(y) + f\inv(y')$. Similarly, $f\inv(f(ax)) = ax = af\inv f(x)$, so the inverse of a linear isomorphism is linear, and it's an isomorphism since the inverse of a bijection is a bijection.
+\item Let $x, y \in V, T(x) \in W, a\in K$, then $T(ax) = aT(x) \in W$ since $ax \in V$ so $W$ is closed under multiplication and it's closed under addition because $T(x) + T(y) = T(x + y) \in W$. \\
+Now let $m, n\in \ker(T)$, then $T(m + n) = T(m) + T(n) = 0$ and $T(am) = aT(m) = a * 0 = 0$, so the colonel of $T$ Is a subspace of $V$. 
+\item $\bar{B}$ is a vector subspace of $\bar{V} \lra$ for all $x, y \in \bar{B}$ and $a \in K$, $ax \in \bar{B} $ and $x + y \in \bar{B} \lra aT\inv(x) = T\inv(ax) \in T\inv(\bar{B})$ and $T\inv(x) + T\inv(y) = T\inv(x + y) \in \bar{B} \lra T\inv\bar{B}$ is a subspace of $V$, completing the proof of Proposition 3.3.11. 
+\item Let $P: \bar{V} \to \bar{V}/\bar{M} = x\to x + \bar{M}$, then $P \circ T$ is a surjective linear map from $V$ to $\bar{V} / \bar{M}$ with colonel $M$, so by 3.3.10 $V / M \cong \bar{V} / \bar{M}$ and applying the same proposition to just $T$ gives $\bar{V} \cong V / N$ and applying it to the restriction of $T$ to $M$ gives $\bar{M} \cong M / N$ since $N \subset M$ is the colonel of $T$ so it's the colonel of the restriction of $T$ to $M$. Combining these three congruences, we get $V / M \cong (V / N) / (M / N)$.
+\item Let $V$ be a vector space over $K$, $A, N \subset V$. Then $A + N = \{a + n : a \in A, n \in N\}$ so if $a + n \in A + N$ then for $k \in K$, $k(a + n) = ka + kn \in A + N$ since $ka \in A$ and $kn \in N$. And $(a + n) + (a' + n') = (a + a') + (n + n') \in A + N$, so $A + N$ is a subspace. Since $0 \in A$ and $0 \in N$, $A + 0 = A \subset A + N$ and $0 + N = N \subset A + N$. So let $\psi(a + n) = a + N$, then $\psi$ is a linear map from $A + N$ to $A/N$ since $\psi(a + n + a' + n') = \psi((a + a') + (n + n')) = a + a' + N = (a + N) + (a' + N) = \psi(a + n) + \psi(a' + n')$ and $\psi(k(a + n)) = \psi(ka + kn) = ka + N = k(a + N) = k\psi(a + n)$, and $\psi$ is surjective because for all $a + N \in A / N$, $\psi(a + 0) = a + N$. The colonel of $\psi$ is $N$ and its range is $\pi(A)$, so by the homomorphism theorem $(A + N) / N \cong \pi(A)$. \\
+The restriction of $\pi$ to $A$ is a surjective homomorphism from $A$ to $A / N$ with colonel $A / (A \cap N)$ and image $\pi(A)$, so $\pi(A) \cong A / (A \cap N)$.
+\item $\dim(A \times B) = \dim(A) + \dim(B)$ since $((a_1, a_2, \ldots a_n), (b_1, b_2, \ldots b_m)) \to (a_1, a_2, \ldots a_n, b_1, b_2, \ldots b_m)$ is a linear isomorphism from $A \times B$ to a space of dimension $\dim(A) + \dim(B)$. So define the map $f: (a, b) \to a + b$, then $f$ is a surjective homomorphism from $A \times B$ to $A + B$ since $f((a, b) + (a', b')) = f((a + a', b + b')) = a + a' + b + b' = a + b + a' + b' = f(a, b) + f(a', b')$ and for all $a+b \in A + B, f(a, b) = a + b$. The colonel of $f$ is $A\cap B$, since $f(a, b) = 0 \lra a + b = 0 \lra a = -b \lra a \in B$ and $b \in A$. So by 3.3.35, $\dim(A) + \dim(B) = \dim(A \times B) = \dim(\ker(f)) + \dim($range$(f)) = \dim(A \cap B) + \dim(A + B)$. 
+\item \be
+\item $([v_1, v_2, \ldots v_n](AB))_k = \sum_i(AB)_{ik}v_i = \sum_i(\sum_jA_{ij}B_{jk})v_i$, whereas $(([v_1, v_2, \ldots v_n]A)B)_k = ([\sum_iA_{i1}v_i, \sum_iA_{i2}v_i, \ldots \sum_iA_{in}v_i]B)_k = \sum_jB_{jk}(\sum_i A_{ij}vi)$. Distributing, this equals $\sum_j\sum_i B_{jk}A_{ij}v_i = \sum_i(\sum_j A_{ij}B_{jk})v_i$, so the two vectors in question are elementwise equal so they're the same.
+\item $([v_1, v_2, \ldots v_n]A)_k = \sum_i A_{ik}v_i$ is a linear combination of the $v_i$ so if it is equal to 0 then every $A_{ik}$ must equal 0, since the $v_i$ are linear independent, so applying this to all the $k$ means that $A = 0$ if $[v_1, v_2, \ldots v_n]A = 0$.
+\ee
+\item \begin{itemize}
+\item $a \ra b$: This follows from 3.3.25 and the fact that infinity is bigger than any finite number.
+\item $b \ra a$: If $V$ were infinite-dimensional, then it would have a basis of infinite dimension, which would be an infinite linear independent set.
+\item $a \ra c$: If $V$ is finite dimensional then no linear independent set has more than $\dim V < \infty$ elements so no strictly increasing sequence of linear independent subsets can have more than $\dim V$ elements.
+\item $c \ra a$: If $V$ were infinite-dimensional, then it would have an infinite basis $\{v_1, v_2 \ldots\}$, and the sequence $\{v_1\}, \{v_1, v_2\}, \ldots$ would be an infinite increasing sequence of linear independent subsets of $V$. 
+\end{itemize}
+\item \begin{itemize}
+\item $a \ra b$: Since all vector spaces have bases, $V$ has a basis, but it has no finite-dimensional basis since it is infinite-dimensional, so it has an infinite basis. Since bases are linearly independent, this basis is an infinite linear independent subset of $V$. 
+\item $b \ra c$: For any $n$, we can take a subset of $n$ elements from our infinite linearly independent set, and that subset will be linear independent.
+\item $c \ra a$: If some set of finite cardinality $n$ is proposed as a basis for $V$, then we can find a linearly independent set of cardinality $n+1$, so our first set cannot be a basis since a basis is a maximal linearly independent set. Thus $V$ has no basis of finite cardinality, so it is infinite-dimensional.
+\end{itemize}
+\item Let $B' = [v_1, v_2, \ldots v_n, 0, 0, 0\ldots 0]$, where the list has $\dim(V)$ total elements including zeroes. Then $N \cong $ span($B'$), since the zeroes won't add up to anything but 0, and $0 \in N$ already. Similarly, let $B'' = [0, 0, 0, \ldots 0, v_{n+1}, v_{n+2}, \ldots v_{\text{dim}(V)}]$, then $M \cong$ span($B''$). span($B' + B'')$ = span($[v_1, v_2, \ldots v_{\text{dim}(V)}]) = V$, so $V \cong M \oplus N$. 
+\ee
+\section{The Dual of a Vector Space and Matrices}
+\be
+\item The book already verified that $\text{Hom}_K(V, W)$ is an abelian group. It's closed under scalar multiplication because for $\alpha \in K$ and $x, y \in V$, $\alpha T(x) = T(\alpha x)$ so $\alpha T$ is a homomorphism just like $T$. Now we check the four conditions enumerated in Definition 3.3.1: \be
+\item $1T(x) = T(1x) = T(x)$. 
+\item For $a, b \in K$, $(ab)T(x) = T((ab)x) = T(a(bx)) = aT(bx) = a(bT(x))$.
+\item $a(T + T')(x) = (T+T')(ax) = T(ax) + T'(ax) = aT(x) + aT'(x)$.
+\item $(a + b)T(x) = T((a + b)x) = T(ax + bx) = T(ax) + T(bx) = aT(x) + bT(x)$.
+\ee
+\item Let $f(x, y, z) = x - y; g(x, y, z) = y -z; h(x, y, z) = z$, then $[f, g, h]$ is your dual basis.
+\item $[w, v] = 0$ for all $w \lra v = 0$, so $\kappa$ is injective. $\kappa$ is surjective because for any map $f: w \ra [w, v]$, $\kappa(v) = f$. Finally, $\kappa(v + v')(w) = [w, v + v'] = \sum_iw_i(v_i + v'_i) = \sum_iw_iv_i + \sum_iw_iv'_i = [w, v] + [w, v'] = \kappa(v)(w) + \kappa(v')(w).$
+\item The dual basis is $\{[-1, 0, 1], [.5, .5, -.5], [1.5, -.5, .5]\}$.
+\item $v \in V \not = 0 \ra v = \sum a_iv_i$ with some $a_j \not = 0$ so $v^*v_j = a \not = 0$.
+\item \be
+\item Let $f, g \in S^o$, then $f(s) = 0 = g(s)$ for all $s \in S$, so $(f + g)(s) = f(s) + g(s) = 0$, and for $\alpha \in K$, $\alpha f(s) = \alpha 0 = 0$, so $S^o$ is a subspace of $V^*$.
+\item If $f$ is 0 on $T$, then it is 0 on any $S \subset T$ since $s \in T \forall s \in S$, so $T^o \subset S^o$, and the same logic gives $S^{oo} \subset T^{oo}$.
+\item If $t \in T$, then for all $f \in T^o, f(t) = 0$, so $T \subset T^{oo}$.
+\ee
+\item Let $q(f) = f_{|W}$, then $q(f + g) = (f + g)_{|W} = (f)_{|W} + (g)_{|W}$ since $f$ and $g$ are linear, so this equals $q(f) + q(g)$. And for $a \in K$, $q(af) = (af)_{|W} = a(f_{|W}) = aq(f)$ since $W$ is a subspace and $f$ is linear so $f(W)$ is a subspace and hence closed under scalar multiplication. The colonel of $q$ is the maps $f$ such that $f_{|W} = 0 \lra f \in W^o$.
+\item For $a \in K$ and $x\in V$ and $f, g \in (V/W)^*$, $\pi^*(f + g)(x) = (f + g)\circ \pi(x) = (f + g)(x + W) = (f(x) + W) + (g(x) + W) = (\pi^*(f)+ \pi^*(g))(x)$, and $\pi^*(af)(x) = (af) \circ \pi(x) = af(x + W) = af(x) + W = a(f(x) + W) = a(\pi^*(f))(x)$ so $\pi^*$ is linear. \\
+$g \in \ker(\pi^*) \lra g \circ \pi(v) = 0 \forall v \in V \lra g(v + W) = 0 \forall v \in V \lra g = 0$, so $\pi^*$ is injective. \\
+If $f \in W^o$, then let $g(x + W) = f(x)$ so $g \in (V/W)^*$ so for $v \in V$, $\pi^*(g)(v) = g(v + W)  = f(v)$, so $\pi^*$ is surjective. \\
+Ergo QED, $\pi^*$ is a linear isomorphism from $(V/W)^*$ onto $W^o$.
+\item By 3.3.36, dim($V$) = dim($W$) + dim($V/W$), and by Exercise 9, dim($V/W$) = dim($W^o$).
+\item \be
+\item Let $A$ be the matrix of differentiation, then $A_{ij} = i$ if $j = i + 1$, 0 otherwise.
+\item Supposing the constant of integration is 0, if $B$ is the matrix of integration then $B_{ij} = 1/i$ if $i = j + 1$, 0 otherwise.
+\item It's linear by the distributive property of multiplication over addition, and its matrix $C$ has $C_{ij} = 1$ if $i = j$, 3 if $i = j + 1$, and 2 if $i = j + 2$, 0 otherwise.
+\ee
+\item $v$ is a unique linear combination of the basis vectors, $v = \sum_i a_i v_i$, and $f$ is linear so $\langle v, f\rangle = f(v) = f(\sum_ia_iv_i) = \sum_ia_if(v_i) = \sum_i \langle v, v_i^* \rangle\langle v_i, f \rangle$.
+\item $(\text{id}_{B,C}\text{id}_{C, B})_{ij} = \sum_k(\text{id}_{B,C})_{ik}(\text{id}_{C, B})_{kj} = \sum_k\langle w_k, v_i^*\rangle\langle v_j, w_k^*\rangle = \sum_k \langle v_j, w_k^*\rangle\langle w_k, v_j^*\rangle = \langle v_j, v_i^*\rangle = \delta_{ij}$.
+\item By Proposition 3.4.11, $FT_{C, B}G\inv = E_{C', C}T_{C, B}E_{B, B'} = E_{C', C}(TE)_{C, B'} = E_{C', C}(T)_{C, B'} = (ET)_{C', B'} = T_{C', B'}$.
+\item $T$ and $T'$ are similar $\lra T = QT'Q\inv$ for some matrix $Q \lra [T]_B = [Q]_B[T']_B[Q\inv]_B$ by 3.4.12a $ \lra [T]_{B'} = [E]_{B', B}[Q]_B[T']_B[Q\inv]_B[E]_{B, B'}  = [E]_{B', B}[Q]_B[T']_B([E]_{B', B}[Q]_B)\inv\lra [T]_{B'}$ and $[T']_B$ are similar matrices. I switched around apostrophes from what the book intended but they are completely arbitrary.
+\item $\left( \begin{array}{ccc}  6 & 2 & 1 \\ 0 & 1 & 1 \\ 2 & 3 & -1 \end{array} \right)$
+\item If those matrices were similar then $ab = 1$ and $a + b = 2 \lra a = 1, b = 1$ except the identity is only similar to itself since for any invertible $Q$, $QEQ\inv = QQ\inv = E$.
+\item Let $A = \text{End}_k(V)$. For $f, g \in A$ and $v\in V, (f + g)(v) = f(v) + g(v)$, $f + g = g + f$, and the inverse of an endomorphism is an endomorphism by the corresponding theorems for linear maps and bijections, so $A$ is an abelian group. Composition of functions is associative and distributive over pointwise addition, so $A$ is a ring.
+\ee
+\section{Linear Algebra over $\ints$}
+\be
+\item If some subspace $X$ of $\rats$ is $\ints$'s complement, then $\ints \cap X = \{0\}$ but if $x \in X$, then $x = m/n$ for nonzero $n$ and so since $X$ is a subspace, $n * x = m \in X$, and $m \in \ints$ so $m \in \ints \cap X\ra m = 0$, so $X$ must be $\{0\}$ for $\ints \cap X$ to be 0, but it is not the case that $\ints + \{0\} = \rats$, the other condition for complementarity, so $\rats$ cannot be isomorphic to $\ints \times X$ for any $X$.
+\item Any two nonzero integers are linearly dependent since $\{1\}$ is the basis of $\ints$. Since $\rats$ is not the set of integer multiples of any single element, any basis for it must have at least two elements, $m/n$ and $m'/n'$. Except $n * m/n, n' * m'/n' \in \ints$, so $m/n$ and $m'/n'$ are linear dependent, so no two elements of $\rats$ are linear independent and no single element is a basis for $\rats$ so it has no basis.
+\item $B$ is a basis $\ra$ the $x_i$ are linear independent $\lra (rx_i = r'x_i \ra (r - r')x_i = 0 \ra r = r') \lra r \to rx_i$ is injective, and $B$ is a basis $\ra$ every element of $G$ is a unique integer linear combination of elements of $B$, so $G \cong \ints x_1 \times \ints x_2 \times \cdots\times \ints x_n$. The combination of linear independence (equivalent to the injectivity of $r \to r_i$) and spanning of $G$ (equivalent to $G \cong \ints x_1 \times \ints x_2 \times \cdots\times \ints x_n$) make $B$ a basis.
+\item Linear independence over $\rats$ implies linear independence over $\ints$ because $\ints \subset \rats$. And if a set $X$ is not linear independent over $\rats$ then $\sum_i (m_i/n_i)x_i = 0$ for some not-all-zero integers $m_i, n_i$ so $(\prod_in_i)\sum_i(m_i/n_i)x_i = 0$ so the coefficients $m_i\prod_{j\not=i}n_j$ are a set of nonzero integer coefficients $a_i$ such that $\sum_i a_ix_i = 0$ so $X$ is not linear independent over $\ints$.
+\item Let $f$ be an isomorphism from $\ints^m$ to $\ints^n$, then for $S\subset \ints^m$, $S$ is linear independent if and only if $f(S)$ is linear independent, because for $a_i \in \ints, x_i \in \ints^m$, $\sum_ia_ix_i = 0 \lra f(\sum_ia_ix_i) = 0$ and $f(a_i) = 0 \lra a_i = 0$. So let $S$ be a basis of $\ints^m$, and suppose without loss of generality that $m \ge n$. Then $f(S)$ must be linear independent, which it cannot be if $n < m$ since a basis for $\ints^n$ has $n$ elements and that's the maximal linearly independent set, so we must have $m = n$ for $\ints^m$ and $\ints^n$ to be isomorphic.
+\item Subgroups $G$ of $\ints$ have the form $d\ints$ for $d$ the smallest nonzero element of $G$ or zero if there's no such element, so $\{d\}$ is a basis for $G$. So if $N$ is a subgroup of $\ints^n$, then $N \cong \ints d_1 \times \ints d_2 \times \ldots \times \ints d_n$, which has a basis $\{(d_1, 0, 0, \ldots 0), (0, d_2, 0, \ldots 0), \ldots (0, 0, \ldots d_n)\}$ of cardinality no more than $n$.
+\item Let $X$ be the matrix whose $i$th column is $x_i$, and let $n \in N$. Then there exists an $a \in \ints^s$ such that $Xa = n$ so let $b = Q\inv a$, then $XQb = XQQ\inv a = Xa = n$.
+\item \blacksmiley
+\ee
+\section{Finitely Generated Abelian Groups}
+\be
+\item If $a, b \in G$ have finite order, then $o(ab) \le o(a)o(b)$ since $(ab)^{o(a)o(b)} = a^{o(a)o(b)}b^{o(a)o(b)} = e^{o(b)}e^{o(a)} = e$ so $ab$ has finite order. And the order of the inverse of $a$ is the order of $a$, which is finite, since $a^{o(a)} = 1 \lra (a^{o(a)})\inv = 1 \lra (a\inv)^{o(a)} = 1$ so $\gt$ is a subgroup of $G$. \\
+If $x + \gt$ has finite order $n$, then $xn + \gt = 0 + \gt \lra xn \in \gt \lra x \in \gt$, so $G / \gt$ is torsion free.
+\item $A \subset \gt$ since $A$ is a torsion subgroup of $G$ and $\gt$ contains all torsion subgroups of $G$, so it remains to show that $\gt \subset A$. So let $g \in \gt$, then since $G = A \times B$ there exists some pair $(a, b)$ with $a \in A, b \in B$ such that $a + b = g$. Except if $b \not = 0$, then $a + b$ has infinite order since $B$ is free abelian, so we must have $b = 0 \ra a = g \ra g \in A \ra \gt \subset A \ra \gt = A.$
+\item $\ints B$ has a basis, $B$, so it is free abelian. If $a + G / \ints B$ has infinite order for some $a \in G$, then $a\not \in$ span($B$) so $a$ is linear independent of the vectors in $B$, but there can be no such $a$ since $B$ is supposedly maximal, so $G / \ints B$ is a torsion group.
+\item A finitely generated torsion group $A$ is finite because if its generating set has $k$ elements then there are at most $\prod_ko(k)$ elements in $A$ since that is the number of distinct products of powers of elements of $A$ there are, and that number is finite. And if $A$ is not a torsion group, then it is not finite, since some element $x$ has infinite order so $nx \in A$ for all $n \in \nats$. And if $A$ is not finitely generated, then its generating subset alone is infinite, so $A$ cannot be finite.
+\item By Coronary 2.5.9, the order of any element of $G$ divides the order of $G$, so $o(G)g = 0$ for all $g \in G$ so $o(G) \in \ann(G)$ so $\ann(G)$ is nonzero. It is a subgroup of $\ints$ because if $a, b \in \ann(G)$, then $abx = a(bx) = a0 = 0$ for all $x \in G$ and $a\inv x = (-a)x = -(ax) = -0 = 0$. All subgroups $A$ of $\ints$ have the form $d\ints$ where $d$ is the least positive element of $A$ or zero if there's no such element, so in particular $\ann(G) \subset \ints$ has this form.
+\item The period is at least $b_t$ since the element of $G$ isomorphic to $(0, 0, \ldots 1)$ has order $b_t$. And the period is at most $b_t$ since for $x \in G, b_tx \cong (b_tx_1, b_tx_2 \ldots b_tx_t)$, and since $b_i$ divides $b_t$ for each $i$ all those products are 0.
+\item The elementary divisor decomposition is $(\ints_{16} \times \ints_4) \times (\ints_{27} \times \ints_9 \times \ints_9)$, and the invariant factor decomposition is $\ints_{432} \times \ints_{36} \times \ints_9$, by my calculations.
+\item 108 = $3^3 * 2^2$ so the pairs (elementary divisor decomposition, invariant factor decomposition) are $(\ints_{27} \times \ints_4, \ints_{108}), (\ints_{27} \times \ints_2 \times \ints_2, \ints_{54} \times \ints_2), (\ints_9 \times \ints_3 \times \ints_4, \ints_{36} \times \ints_3), (\ints_9 \times \ints_3 \times \ints_2 \times \ints_2, \ints_{18} \times \ints_6), (\ints_3 \times \ints_3 \times \ints_3 \times \ints_4, \ints_{12} \times \ints_3 \times \ints_3)$, and $(\ints_3 \times \ints_3 \times \ints_3 \times \ints_2 \times \ints_2, \ints_6 \times \ints_6 \times \ints_3)$.
+\item 144 = $2^4 * 3^2$ so the partitions of 4 are $(4), (3, 1), (2, 2), $ and $(2, 1, 1)$ while the partitions of 2 are $(2)$ and $(1, 1)$ so each pair of one partition of 4 and one partition of 2 corresponds to an abelian group of order 144, and you can find the elementary divisor and invariant factor decompositions as we did in exercise 8.
+\item 128 = $2^5$ so there are as many abelian groups of order 128 up to isomorphism as there are partitions of 5, which is 7 by my calculations.
+\item \be
+\item $A[2]$ is the set generated by $[9]$, and $A[3]$ is the set generated by $[4]$.
+\item $[24] = 0[9] + 6[4]$.
+\item 15
+\ee
+\item \be
+\item $A[2]$ is the set generated by $[45]$, $A[3]$ is the set generated by $[20]$, and $A[5]$ is the set generated by $[36]$.
+\item $[1] = 13[45] - 22[20] - 4[36] \ra [24] = 96[45] - 96[20] + 0[36]$.
+\item 159
+\ee
+\item Let $\pi(x) = x + A$ for $x \in \ints_{10} \times \ints_6$, then $\pi$ is a homomorphism with colonel $A$, and its range is isomorphic to $\ints_2 \times \ints_3$, since for $(a, b) \in \ints_{10} \times \ints_6, a + [[2]_{10}] = (a \mod 2)  + [[2]_{10}] = 1+ [[2]_{10}]$ or $0+ [[2]_{10}]$ and $b + [[3]_6] = (b \mod 3) + [[3]_6]$ = $0 + [[3]_6]$ or $1 + [[3]_6]$ or $2 + [[3]_6]$. 
+\item There are partitions(5) * partitions(4) such groups, which adds up to 35 by my calculations.
+\item Let $d = \gcd(a, b)$, then $(ab/d)(\ints_a \times \ints_b) = (b/d)a\ints_a \times (a/d)b\ints_b = \{0\} \times \{0\}$ so if the gcd is two or more then $\ints_a \times \ints_b$ can't be cyclic because its period is at most $ab/d$, whereas if it were cyclic its period would be equal to its order, $ab$.
+\item By Proposition 3.6.15, $G = \prod_iG[p_i]$, so $b = 0 \lra b_i = 0 \forall i$, so the order of $b$ is the smallest integer $k$ such that $b_i^k = 0$ for all $i$, which is the least common multiple of the orders of all the $b_i$, which is $\prod_io(b_i)$ since the orders of the $b_i$ are relatively prime.
+\item If $s$ divides $m_1$, then $s$ divides $m_i$ for all $i$, so $s(m_1/s, m_2/s, \ldots m_k/s) = (0, 0, \ldots 0)$, so $(m_1/s, m_2/s, \ldots m_k/s)$ has order $s$. Conversely, if $s$ does not divide $m_1$, then $\ints_{m1}$ has no elements of order $s$ by Coronary 2.5.9, so $G$ can't have any elements of order $s$.
+\item $\phi(1) = \ints_1, \phi(2) = \ints_1, \phi(3) = \ints_2, \phi(4) = \ints_2, \phi(5) = \ints_4, \phi(6) = \phi(2) \times \phi(3) = \ints_1 \times \ints_2, \phi(7) = \ints_6, \phi(8) = \ints_2 \times \ints_2, \phi(9) = \ints_3 \times \ints_2, \phi(10) = \phi(5) \times \phi(2) = \ints_4 \times \ints_1, \phi(11) = \ints_{10}, \phi(12) = \phi(4) \times \phi(3) = \ints_2 \times \ints_2, \phi(13) = \ints_{12}, \phi(14) = \phi(2) \times \phi(7) = \ints_1 \times \ints_6, \phi(15) = \phi(3) \times \phi(5) = \ints_2 \times \ints_4, \phi(16) = \ints_2 \times \ints_4, \phi(17) = \ints_{16}, \phi(18) = \phi(9) \times \phi(2) = \ints_3 \times \ints_2 \times \ints_1, \phi(19) = \ints_{18}$, and $\phi(20) = \phi(4) \times \phi(5) = \ints_2 \times \ints_4$.
+\ee
+\end{document}  
