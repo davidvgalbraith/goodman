@@ -1,30 +1,5 @@
 \documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
-\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
-\usepackage{amsthm}
-\usepackage{ textcomp }
-\usepackage{ amssymb }
-\usepackage{amsmath}
-\usepackage{ wasysym }
-\newcommand{\ints}{\mathbb{Z}}
-\newcommand{\nats}{\mathbb{N}}
-\newcommand{\reals}{\mathbb{R}}
-\newcommand{\comps}{\mathbb{C}}
-\newcommand{\rats}{\mathbb{Q}}
-\newcommand{\gt}{G_{\text{tor}}}
-\newcommand{\ann}{\text{ann}}
-\newcommand{\inv}{^{-1}}
-\newcommand{\be}{\begin{enumerate}}
-\newcommand{\ee}{\end{enumerate}}
-\newcommand{\fs}{f_1 \ldots f_k}
-\newcommand{\poly}{\sum_na_nx^n}
-\newcommand{\andd}{\text{ and }}
-\newcommand{\ra}{\rightarrow}
-\newcommand{\lra}{\leftrightarrow}
-\newcommand{\ct}{\cos\theta}
-\newcommand{\st}{\sin\theta}
-\newcommand{\cycle}{(a_1, a_2, \ldots a_n)}
-\newcommand{\picycle}{ (\pi(a_1), \pi(a_2) \ldots \pi(a_n))}
-\newcommand{\tai}{\tilde{A_i}}
+\include{davemathshortcuts}
 \geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for for rotated page geometry
 %\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
@@ -82,9 +57,9 @@ Suppose now on the other hand that $N_i \cap N_1N_2\cdots N_{i-1}N_{i + 1}\cdots
 Let $r$ and $j$ be the rotation and flip in $D_n$, and let $x \in \ints_n, y \in \ints_2$. Then $f: (x, y) \ra r^xj^y$ is an isomorphism from $\ints_n \rtimes \ints_2$ to $D_n$. Then $f((x, y)(x', y')) = f(x + j^y(x'), y + y') = f(x + (-1)^yx', y+y') = r^{x + (-1)^yx'}j^{y+y'} = r^xj^yr^{x'}j^{y'} = f(x, y)f(x', y')$ since $r^x$ is anticommutative with $j^1$ but commutative with $j^0 = e$.
 \item The map $Ax + b \ra (A, b)$ is an isomorphism from Aff($n$) to GL($n, \reals$) $\rtimes \reals^n$ because (subgroups isomorphic to) GL($n, \reals)$ and $\reals^n$ are normal in Aff($n$) as we proved last chapter and Aff($n$) = GL($n, \reals$)$\reals^n$ and GL($n, \reals$)$\cap \reals^n = (x \ra Ex + 0)$, the identity, so these are the conditions of Proposition 3.2.5.
 \item $\ints_2 \cong (e, (1, 2)) \in S_n$; $S_n = A_n\{e, (1, 2)\}$; and $A_n$ is normal, so Proposition 3.2.5 implies that $S_n \cong \ints_2 \rtimes A_n$.
-\item $E\in G$, the product of two matrices that rearrange rows and change the signs of rows is another matrix that rearranges rows and changes signs of rows, and the inverse of a matrix that rearranges and changes the signs of rows is the matrix that arranges those rows back the way they were and changes their signs back, so $G$ is a group. \\
+\item $E\in G$, the product of two matrices that rearrange rows and change the signs of rows is another matrix that rearranges rows and changes signs of rows, and the inverse of a matrix that rearranges and changes the signs of rows is the matrix that arranges those rows back the way they were and changes their signs back, so $G$ is a group. In fact, the inverse of $A \in G$ is $A^\text{T}$ since $A$ is orthonormal. \\
  $S_n$ is isomorphic to the row-interchange matrices that you get by rearranging rows of the identity matrix, because multiplication by those matrices rearranges rows of the matrices they are multiplied by in the same way that the permutations in $S_n$ permute arbitrary things. These row-interchange matrices are the matrices with entries in $\{0, 1\}$ and exactly one non-zero entry per row and column. \\
-The group of diagonal matrices with diagonal entries in $\{-1, 1\}$, let's call it $N$, is a normal subgroup of $G$. That's because for $A \in G, X \in N$, $(AXA\inv)_{ij} = \sum_{i_1 = 1}^n\sum_{i_2=1}^n A_{ii_1}X_{i_1i_2}(A\inv)_{i_2j}$. Since $X_{i_1i_2} = 0$ if $i_1 \not = i_2$, $(AXA\inv)_{ij} = 0$ if $i \not = j$. Furthermore, $A_{ij}, (A\inv)_{ij},$ and $X_{ij}$ are 0, 1, or -1, so any product of them has one of those three values. So $AXA\inv \in N$, so $N$ is normal. And each element of $G$ permutes the rows and changes the signs of some rows when it multiplies another matrix, so we can split these two operations into a matrix in $S_n$ and a matrix in $N$, so $G = S_nN$. Finally, $S_n \cap N = \{E\}$, since the identity is the only diagonal matrix whose diagonal entries are 1. By Proposition 3.2.5, $G \cong S_n \rtimes N$.
+The group of diagonal matrices with diagonal entries in $\{-1, 1\}$, let's call it $N$, is a normal subgroup of $G$. That's because for $A \in G, X \in N$, $(AXA\inv)_{ij} = \sum_{i_1 = 1}^n\sum_{i_2=1}^n A_{ii_1}X_{i_1i_2}(A\inv)_{i_2j} = \sum_kA_{ik}X_{kk}A\inv_{kj}$ since $X_{i_1i_2} = 0$ if $i_1 \not = i_2$, so this product is basically a triple dot product of the $i$th row of $A$, the diagonal of $X$, and the $j$th column of $A\inv$. Since $A\inv = A^{\text{T}}$, the $j$th column of $A\inv$ is the $j$th row of $A$, and since the rows of $A$ are orthonormal with only one nonzero entry, the triple dot product in question is equal to 0 if $i \not = j$ and $X_{kk}$ otherwise, where $k$ is the index of row $i$ of $A$ that isn't 0, which $X_{kk} = \pm 1$. So $AXA\inv \in N$, so $N$ is normal. And each element of $G$ permutes the rows and changes the signs of some rows when it multiplies another matrix, so we can split these two operations into a matrix in $S_n$ and a matrix in $N$, so $G = S_nN$. Finally, $S_n \cap N = \{E\}$, since the identity is the only diagonal matrix whose diagonal entries are 1. By Proposition 3.2.5, $G \cong S_n \rtimes N$.
 \item The subgroup generated by [2] has 2 elements, [0] and [2], so it is isomorphic to $\ints_2$. $\ints_4 / \ints_2$ also has 2 elements, $\ints_2$ and $[1] + \ints_2$, so it is isomorphic to $\ints_2$. But the element $[1] \in \ints_4$ has order 4, but no element of $\ints_2 \times \ints_2$ has order 4, so no matter how you slice it $\ints_4$ and $\ints_2 \times \ints_2$ can't be isomorphic.
 \ee
 \section{Vector Spaces}
