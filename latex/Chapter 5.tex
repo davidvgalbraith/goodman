@@ -1,0 +1,172 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\include{davemathshortcuts}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Chapter 5}
+\author{Dave}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{Group Actions On Sets}
+\be
+\item $ex = x$ so $x \sim x$, and $x \sim y \lra \exists g \in G : gx = y \lra g\inv y = x \lra y \sim x$, and $gx = y, g'y = z \ra gg'x = z$ so $\sim$ is an equivalence relation. $Gx$ is the equivalence class of $x$ because $y \in Gx \lra y = gx$ for some $g \in G \lra x \sim y$. 
+\item Let $g, h, x \in G$, then $\phi(g) = $ (left multiplication by g) is a map from $G$ to Sym($G$) since left multiplication is a bijection by Exercise 2.1.11. This bijectivity also implies there is only one orbit. $\phi(gh)(x) = (gh)x = g(hx) = \phi(g)(\phi(h)(x))$, so $\phi$ is a homomorphism. 
+\item The list $(k, \sigma(k), \ldots \sigma^n(k))$, which is the orbit of $k$ under the action of $\langle \sigma \rangle$, is a cycle that is part of the cycle decomposition of $\sigma$, which is evident from its being the output of the algorithm for finding cycles on page 21, so the set of all orbits gives the composition in disjoint cycles of $\sigma$. 
+\item For $g, g', x \in G$, let $\psi(g) = $ (left multiplication by $g$ on a coset), then $\psi(gg')(xH) = (gg')xH = g(g'xH) = \psi(g)(\psi(g')(xH))$, so $\psi$ is a homomorphism. Since $G$ is a group, for any $a, b \in G$ there exists a $c$ such that $ca = b$, so $caH = cbH$ for any cosets $aH$ and $bH$, so the action is transitive.
+\item For $g, h \in G, H$ a subgroup of $G$, $c_{gh}(H) = (gh)H(gh)\inv = ghHh\inv g\inv = c_g(c_h(H))$, so $g\to c_g$ is a homomorphism. $c_g$ is a bijection, since $c_{g\inv}$ is its inverse. So $G$ acts on its subgroups by conjugation. There are three subgroups of $S_3$ that are conjugate only to themselves: $\{e\}, \{e, (123), (123)^2\}, $ and $S_3$. There are also three conjugate subgroups: $\{e, (12)\}, \{e, (23)\}$, and $\{e, (13)\}$.
+\item $ex = x$, so $e \in $ Stab($x$). Let $a, b \in $ Stab($x$), then $abx = ax = x$ so $ab \in $ Stab($x$), and $a\inv x = a\inv ax = x $, so $a\inv \in $ Stab($x$), so Stab($x$) is a group.
+
+If $x$ and $y$ are in the same orbit, then there exists some $g \in G$ such that $gx = y$, so for all $a \in $ Stab($x$), $gag\inv y = gax = gx = y$, so $gag\inv \in $ Stab($y$), so $g$Stab($x$)$g\inv \subset$ Stab($y$), and a similar computation gives the reverse inclusion and thence equality.
+\item The orbit of $H$ is $\{\{e, (12)\}, \{e, (23)\}, \{e, (13)\}\}$. Its stabilizer is $H$. The cosets of the stabilizer are $H$, $(23)H$, and $(13)H$. Since there are three cosets of the stabilizer and three conjugates of $H$, there is a bijection between them.
+\item $x \in aN_G(H)a\inv \lra a\inv xa \in N_G(H) \lra a\inv x a H a\inv x\inv a = H\lra x(aHa\inv)x\inv = aHa\inv \lra x \in N_G(aHa\inv).$
+\item $S_3$ is clearly transitive. For $A_3 = \{e, (123), (123)^2\} = \{e, r, r^2\}$, we have for each $i, j \in (1, 2, 3)$ a permutation that maps $i$ to $j$, so the group is transitive. The other subgroups, $\{e\}, \{e, (12)\}, \{e, (23)\}, $ and $\{e, (13)\}$, do not have this feature.
+\item $N_G(H)$ is the set of all elements $g$ of $G$ such that $gHg\inv = H$, so $H$ is a normal subgroup of $N_G(H)$. So let $a, b \in A, g, h \in H$, then $agbh = a(bg'b\inv)bh$ for some $g' \in H$ since $A \subset N_G(H)$, so this is equal to $(ab)(g'h) \in AH$, so $AH$ is closed under multiplication. And $(ah)\inv = h\inv a\inv = (a\inv h'a)a\inv = ah' \in AH$ so $AH$ is closed under inverse so it's a group. By exercise 2.7.4, $|AH| = \frac{|A||H|}{|A \cap H|}$.
+\item For $a \in A, h \in H$, let $\alpha_a(h) = aha\inv$. Then $\alpha_{ab}(h) = (ab)h(ab)\inv = abhb\inv a\inv = \alpha_a(\alpha_b(h))$, so $\alpha$ is a homomorphism. And $ah = aha\inv a = \alpha_a(h)a$.
+\item There would be $9!$ ways to arrange these nine beads if they were all different, but you can permute the $n$ beads of the same color in $n!$ ways without changing the nature of the arrangement, so the total number of distinct arrangements is $\frac{9!}{4!3!2!}$.
+\item This is the size of the conjugacy class of $(1234)(5678)$, which has size $4*4*2 = 32$.
+\item Similarly, this is $2^4 * 4!$.
+\item $3^22!2^33!$
+\item $4^33!3^22!2^44!$
+\item There are $\prod_kr_k^{m_k}m_k!$ such elements because each cycle of length $r_k$ is congruent to each of its powers, of which there are $r_k$, and independently you can shuffle around the $m_k$ cycles of that length in $m_k!$ ways.
+\item Let $\phi(\pi)(a_1a_2\ldots a_k) = (\pi(a_1)\pi(a_2)\ldots\pi(a_k))$, then $\phi(\pi\tau)(a_1a_2\ldots a_k) = (\pi\tau(a_1)\pi\tau(a_2)\ldots \pi\tau(a_k)) = \phi(\pi)(\phi(\tau)(a_1 a_2 \ldots a_k))$, so $\phi$ is a homomorphism, and permutations are bijective so $\phi$ defines an action.
+\item The action from Exercise 18 remains a valid action when the order of the elements $a_j$ matters. It is transitive because given sets $(a_1a_2\ldots a_k), (b_1 b_2 \ldots b_k)$, let $\pi(a_j) = b_j$ for all $j$, then $\pi(a_1a_2\ldots a_k) = (b_1 b_2 \ldots b_k)$. The stabilizer of $(a_1a_2\ldots a_k)$ is the set of permutations $\pi$ for which $\pi(a_j) = a_j$ for all $j$, since any other permutation would disturb the order of the sequence. This set is isomorphic to $S_{n-k}$, so it has size $(n-k)!$. 
+\item A subgroup $G$ of $S_4$ will be transitive iff for every $i, j \in (1, 2, 3, 4)$, there is some $\pi \in G$ such that $\pi(i) = j$. Manual computation on the sixteen pairs $(i, j)$ reveals that $\ints_4$ and $V$ have this property, and they are contained in $D_4$, $A_4$, and $S_4$, so these subgroups are transitive. Any subgroup that satisfies the transitivity condition must have size at least 4, and these are all the subgroups of order at least 4, so these are all the subgroups. 
+\ee
+\section{Group Actions-Counting Orbits}
+\be
+\item There are $3^6$ arrangements that we have to narrow down to the unique ones. The identity has 60 orbits, and there are rotation subgroups of order 6, $\langle r \rangle$ and $\langle r^5 \rangle$, that have one orbit, and one rotation subgroup of order 3, $\langle r^2 \rangle$, that has two orbits, and $\langle r^3 \rangle$ with 3 orbits, and 6 different flip symmetries with 4 orbits each so the total bracelets is $\frac{1}{12}(729 + 2*3 + 2*3^2 + 3^3 + 3*3^4 + 3*3^3) = 92$.
+\item A similar discussion to the above gives an answer $\frac{1}{12}(90 + 1*3! + 36) = 11$.
+\item The total count is $4^{12}$ colorings; here are the symmetries: 
+\be
+\item The identity fixes all edges, so it has 12 orbits.
+\item An order-2 symmetry passing through the midpoints of opposite edges fixes the edges it passes through and exchanges the others with one other symmetry apiece, so it has six orbits. There are six such group elements.
+\item An order-3 symmetry passing through the vertices on a diagonal cyclically permutes sets of 3 edges, so it has 4 orbits. There are 8 such symmetries. 
+\item An order-4 symmetry passing through the centers of opposing faces has three orbits consisting of the top, sides and bottom of the cube. There are 6 such symmetries.
+\item An order-2 symmetry passing through the centers of opposing faces has 6 orbits, two each for the top, bottom and sides. There are 3 such group elements.
+\ee
+So the computation we get is that the total number of colorings = $\frac{1}{24}(4^{12}+6*4^6 + 8*4^4 + 6 * 4^3 + 3 * 4^6) = 700688$, or replace the 4 with $r$ to get the polynomial.
+\item The symmetries:
+\be 
+\item The identity fixes all vertices, so it has 8 orbits.
+\item A rotation through the midpoints of two edges has 4 orbits of size 2.
+\item A rotation through a diagonal of the cube fixes the vertices it goes through and has 2 other orbits of size 3.
+\item A rotation of order 4 through the centroids of faces of the cube has 2 orbits of size 4.
+\item A rotation of order 2 through the centroids of faces has 4 orbits of size 2.
+\ee
+So coloring a cube with $r$ colors gives $\frac{1}{24} (r^8 + 17r^4 + 6r^2)$ colorings which is 333 when evaluated at $r=3$.
+\item The symmetries:
+\be
+\item The identity fixes all faces, so it has 12 orbits.
+\item A rotation of order 2 has 6 orbits of size 2, and there are 15 such rotations.
+\item A rotation of order 3 has 4 orbits of size 3, and there are 20 such elements.
+\item A rotation of order 5 through the centroids of opposite faces fixes the faces it goes through and has 2 other orbits of size 5. There are 24 such elements.
+\ee
+So with $r$ colors you can color the faces of a dodecahedron in $\frac{1}{60}(r^{12} + 15r^6 + 44r^4)$ ways, which is 9099 at $r=3$.
+\ee
+\section{Symmetries of Groups}
+\be
+\item Since $\alpha$ is an isomorphism, $\alpha([k]) = k\alpha([1])$. So if $\alpha(1) = \beta(1)$, then $\alpha([k]) = \beta([k])$ for all $k$, so $\alpha = \beta$, meaning $\alpha \to \alpha(1)$ is injective. And if $[x]$ is a unit of $\ints_n$, then the map $\alpha$ where $\alpha([1]) = [x]$ and $\alpha([k]) = x[k]$ is a homomorphism by definition and a bijection since its inverse is the map $\beta$ where $\beta([1]) = [x\inv], \beta([k]) = x\inv [k]$, so $\alpha \to \alpha(1)$ is surjective.
+\item Let $g$ be a homomorphism of $\ints^2$, $m, n \in \ints$. Let $a = g(1, 0)_x, b = g(0, 1)_x, c = g(1, 0)_y, d = g(0, 1)_y$, then multiplying by $A =\twomat{a}{b}{c}{d}$ has the same effect as $g$, since $g(m, n) = mg(1, 0) + ng(0, 1) = A(m, n)$. Since they are the same map, they have the same kernel, and a matrix with a nontrivial kernel has determinant zero, so $g$ is injective $\lra \det A \not = 0$.
+
+$g$ has an inverse and so is bijective if and only if $A$ has an inverse. For $A$ to have an inverse, there must exist a matrix $A\inv$ such that $AA\inv = E$. Since the determinant of the product is the product of the determinants, and the determinant of the identity is 1, the determinants of $A$ and $A\inv$ must both be $\pm 1$, since the determinant of an integer matrix must be an integer. 
+\item The automorphism group of $\ints^n$ is the group of $n$ by $n$ integer matrices with determinant $\pm$ 1, since nothing in my previous proof depended on the 2-ness of $\ints^2$.
+\item Let $f$ be a homomorphism on $\rats$, then for $p, q \in \rats$, $f(p + q) = f(p) + f(q)$, so for any integers $m, n$, $f(m) = mf(1)$ and $f(1) = f(1/n) + f(1/n) + \ldots + f(1/n)$ where there are $n$ terms in that sum, so $f(1/n) = (1/n)f(1)$, so $f(m/n) = (m/n)f(1)$, so $f$ has the form $q \to qf(1)$. Let $r = f(1)$, then as long as $r \not = 0$, $f$ is injective, since $rp = rq \lra (1/r)rp = (1/r)rq \lra p = q$, and $f$ is surjective, since for any $q$, let $p = q/r,$ then $f(p) = rq/r = q$. 
+\item Let $g$ be a homomorphism on $\rats^2$, then $g(p, q) = pg(1, 0) + qg(0, 1)$, so let $A = \twomat{a}{b}{c}{d}$ be the matrix whose columns are $g(1, 0)$ followed by $g(0, 1)$. Then multiplying by $A$ has the same effect as invoking $g$, so $g$ is a linear map determined by a rational 2-by-2 matrix. $g$ is invertible if and only if its corresponding matrix is invertible, so the group of automorphisms is the same as the group of invertible linear maps.
+\item Our proof that $f(m/n) = (m/n)f(1)$, which we demonstrated in Exercise 4 and implicitly used in the first sentence of Exercise 5, depended on the integrality of $m$ and $n$. If $m$ and $n$ aren't necessarily integers, the proof is not valid, so our proofs of Exercises 4 and 5 fall apart.
+\item \be
+\item In order for a matrix in $\ints_2$ to be invertible, one and only one of its two diagonals must be filled with 1s. Having filled a diagonal with 1s, we have two unspecified entries; we can put a 1 in either of them and not the other, or we can put a 1 in neither of them. These are all the possibilities for the invertible matrices in $\ints_2$, and there are 6 of them. Making the multiplication table, we see that this group is isomorphic to $S_3$. The even permutations are the ones where the main diagonal is 1, and the odd permutations are those where the other diagonal is 1. 
+\item Let $s \in S_3: \{a, b, c\} \to \{x, y, z\}$, where $a, b, c, x, y, z \not= e \in \ints_2 \times \ints_2$, then $s$ is invertible, and $s(ab) = s(c) = z = xy = s(a)s(b)$ and similar computations hold for the other products, so the function $f$ with $f(e) = e, f(q) = s(q)$ for $q \in \ints_2 \times \ints_2$ is an automorphism of $\ints_2 \times \ints_2$, so automorphisms are equivalent to permutations.
+\ee
+\item By a similar argument to exercise 2, the automorphism group of $\ints_n \times \ints_n$ is the group of $2 \times 2$ matrices with entries in $\ints_n$ and determinant 1. The automorphism group of $(\ints_n)^k$ is the group of $k \times k$ matrices with entries in $\ints_n$ and determinant 1.
+\ee
+\section{Group Actions and Group Structure}
+\be
+\item If $G$ is not abelian, then $1 < |Z(G)| < |G|$. Since the center is a subgroup, its order divides $|G|$ and so is $p$ or $p^2$. Suppose its order is $p^2$. Then $G/Z(G)$ is a group of order $p$, so it is a cyclic group given by $\{a^kZ(G): 0 \le k < p\}$ for some $a \not \in Z(G)$. Except $a \not \in Z(G) \ra \exists b \in G \setminus Z(G): ab \not = ba$. The cosets of $Z(G)$ have to form a partition of $G$, so this $b$ must be in one of them. Except then $b = a^mz$ for some $m \in \{0, 1, \ldots p-1\}, z \in Z(G)$, so $ab = a(a^mz) = a^{m+1}z = za^{m+1} = za^ma = ba$, so there's no coset where you can put $b$, so the cosets of $Z(G)$ don't partition $G$ if $|Z(G)| = p^2$, so $|Z(G)|$ can't be $p^2$. This only leaves two possibilities: $|Z(G)| = p$, or $G$ is abelian.
+\item $[G:N_G(P)][N_G(P):P] = [G:P] = |G| / p^n$, so if $p$ divides $[G:N_G(P)]$ then $p$ divides $|G|/p^n$, so $p^{n+1}$ divides $|G|$, which is impossible because $n$ is the highest power of $p$ that divides $|G|$.
+\item By 5.1.10, $HP$ is a subgroup of $N_G(P)$ with $|HP| = |H||P| / |H \cap P|$, so if $|P| = p^n$ then $|HP| = \frac{p^np^s}{|H\cap P|}$. $|H\cap P|$ must be a power of $p$ since the intersection of subgroups is a subgroup, so if $|H\cap P| = p^k$ then $|HP| = p^{n + s - k}$. If $k<s$, then this exponent is greater than $n$, so $HP$ is a subgroup of $G$ with order a power of a prime that is larger than $P$, which is in contradiction of $P$'s status as a $p$-Sylow subgroup, so the only possibility is that $|H \cap P| = p^s = |H| \ra H \subset P$.
+\item Let $f([a]_p, [t]_q)_\alpha = ([a]_p, [rt]_q)_\beta$. Then $f$ is a bijection because it has inverse $f\inv: ([a]_p, [t]_q)_\beta \to ([a]_p, [st]_q)_\alpha$ since $f\inv f([a]_p, [t]_q)_\alpha = ([a]_p, [rst]_q)_\alpha = ([a]_p, [t]_q)_\alpha$. And it is a homomorphism because $f(([a]_p, [t]_q)([a]_p, [t]_q)) = f([a + \alpha_t(a')]_p, [t + t']_q) = ([a + \alpha_t(a')]_p, [r(t + t')]_q) = ([a + \beta_{rt}(a')]_p, [rt + rt']_q) = ([a]_p, [rt]_q)_\beta ([a']_p, [rt']_q)_\beta = f([a]_p, [t]_q)f([a]_p, [t]_q)$.
+\item $D_{15}$ has 15 elements of order 2, while $D_5 \times \ints_3$ has 5, $\ints_5 \times D_3$ has 3, and $\ints_{30}$ has only one, so they are mutually non-isomorphic.
+\item \be
+\item $(x, y, z) \to (R^xD^z, y)$ is an isomorphism between these groups.
+\item $(x, y, z) \to (x, R^yD^z)$ is an isomorphism between these groups.
+\item $(x, y, z) \to R^{3x+y}D^z$ is an isomorphism between these groups.
+\ee
+\item Aut $\ints_{15} \cong$ Aut($\ints_5) \times$ Aut($\ints_3$) by the last exercise in Chapter 3. Let $\theta$ be an automorphism on $\ints_5 \times \ints_3$, then $\theta(a, b) = a\theta(1, 0) + b\theta(0, 1)$, so defining $\theta'(x) = x\theta(1, 0)$ and $\theta''(x) = xf(0, 1)$ gives us the maps we seek.
+\item Every subgroup of an abelian subgroup is normal, so the cardinality of the product of the Sylow subgroups of an abelian $G$ is equal to $|G|$ so they are the same group.
+\item \begin{itemize}
+\item $p$: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+\item $p^2$: 4, 9, 25
+\item $pq$: 6, 10, 14, 15, 21, 22, 26
+\end{itemize}
+The $pq$ groups with non-abelian flavors are those of size 6, 10, 14, 21, 22, and 26, for those are the ones where $q$ divides $p-1$, taking $p > q$.
+\item Let $a = (1, 0)$ and $b = (0, 1)$, then $a$ and $b$ generate $\ints_7 \rtimes \ints_4$, $a^7 = b^4 = (0, 0)$, and $bab\inv = (0, 1)(1, 3) = (-1, 0) = a\inv$. Any "other" group with the same generators is isomorphic to $\ints_7 \rtimes \ints_4$ by the isomorphism $a \to (1, 0)$, $b \to (0, 1)$.
+\item The 4-Sylow subgroup of $D_7 \times \ints_2$ is $\{(e, 0), (e, 1), (D, 0), (D, 1)\} \cong \ints_2 \times \ints_2$. The 4-Sylow subgroup of $D_{14}$ is $\{e, d, r^7, r^7D\} \cong \ints_2 \times \ints_2$. The map $(R^kD^l, m) \to R^{k+7m}D^l$ is an isomorphism from $D_7 \times \ints_2$ to $D_{14}$.
+\item $D_{2n}$ is not isomorphic to $D_n \times \ints_2$ for all $n$, because $n = 6$ is a counter-example since $D_{12}$ has a cyclic subgroup of order 4, a feature missing from $D_6 \times \ints_2$. But for all odd $n$, it is isomorphic, with the isomorphism given by $(R^kD^l, m) \to R^{k+nm}D^l$.
+\item For $n \in N, a \in A$, let $f((n, a)_\beta) = (n, \psi\inv(a))_{\beta\psi}$, then $f((n, a)(n', a')) = f(n\beta_a(n'), aa') = (n\beta_a(n'), \psi\inv(aa')) = (n\beta_{\psi(\psi\inv(a))}(n'), \psi\inv(a)\psi\inv(a')) = (n, \psi\inv(a))_{\beta\psi}(n', \psi\inv(a'))_{\beta\psi} = f(n, a)f(n', a')$.
+\item \be
+\item The colonel of $\gamma$ is a subgroup of $\ints_2 \times \ints_2$, so its order divides 4, but its order can't be 1 since then it'd be injective and there's no injective map from a set of size 4 to a set of size 2, so the only possible order of $\ker\gamma$ is 2, and all groups of order 2 are cyclic, so ker$\gamma$ is generated by an element of $\ints_2\times \ints_2$ of order 2.
+\item $\gamma$ is zero on its kernel and one elsewhere, so it is determined by its kernel.
+\item $\ints_2 \times \ints_2$ has four elements, $e, a, b$ and $c$, so let $\ker\beta = \langle x \rangle, \ker\gamma = \langle y \rangle$, where $x$ and $y$ can be $a, b$, or $c$, and define $\phi(x) = y, \phi(y) = x, \phi(z) = z$ for $z \in \ints_2 \times \ints_2$ other than $x$ and $y$. Then $\phi$ is an automorphism on $\ints_2 \times \ints_2$, and it interchanges the colonels of $\beta$ and $\gamma$, so $\beta = \gamma \circ \phi$.
+\item Yup.
+\ee
+\item 20 = 4 *5, so a group of order 20 has a 2-Sylow subgroup $P$ of order 4 and a 5-Sylow subgroup $Q$ of order 5. The third Sylow theorem says $P$ can have 1 or 4 conjugates, and $Q$ is normal. Since we're only interested in the non-abelian groups, we'll consider the case where $P$ has 4 conjugates. Then our group will be $\ints_5 \rtimes \ints_4$ or $\ints_5 \rtimes (\ints_2 \times \ints_2)$. 
+
+For $\ints_5 \rtimes \ints_4$, we will have a group for each nontrivial homomorphism from $\ints_4 \to $ Aut($\ints_5) \cong \ints_4)$, so there are four total homomorphisms since for a homomorphism $\alpha, \alpha \to \alpha(1)$ is an isomorphism from Aut($\ints_4)$ to $\ints_4$, but one of these homomorphisms is the identity and another is the zero homomorphism so there are only two worth mentioning, and those are the homomorphisms $f(x) = -x$ and $g(x) = 2x$. The semidirect product with $f$ as the homomorphism is generated by elements $a$ and $b$ with $a^5 = b^4 = 1$ and $bab\inv = a\inv$, and the semidirect product with $g$ as the homomorphism is generated by elements $a$ and $b$ with $a^5 = b^4 = 1$ and $bab\inv = a^2$. 
+
+For $\ints_5 \rtimes (\ints_2 \times \ints_2)$, we need homomorphisms from $\ints_2 \times \ints_2$ to Aut($\ints_5$), of which there is but one: $f(x) = -x$. The semidirect product with $f$ as the homomorphism is $D_{10}$. And that's all the nonabelian groups of order 20.
+\item 18 = 9 * 2, so a group of order 18 has a 3-Sylow subgroup of order 9 and a 2-Sylow subgroup of order 2. The third Sylow theorem tells us that the 3-Sylow subgroup is normal, while the 2-Sylow subgroup can have 1, 3, or 9 conjugates. Our groups of order 18 will be  $\ints_9 \rtimes \ints_2$ or $(\ints_3 \times \ints_3) \rtimes \ints_2$, we just have to find the homomorphisms.
+
+So first let's say there's three conjugates, then the only homomorphism from $\ints_2$ to $\ints_9$ is $x\to -x$, but using that homomorphism the resulting semidirect product group has nine elements of order 2, which is too many since we also need 9 elements of order divisible by 3 to fill up our 3-Sylow subgroup. So there is no valid semidirect product group $\ints_9 \rtimes \ints_2$ if $\ints_2$ has three conjugates. But there is a valid semidirect product $(\ints_3 \times \ints_3) \rtimes \ints_2$ using the homomorphism $(x, y) \to (y, x)$, since that group only has 3 elements of order 2 leaving plenty of space for the 3-Sylow subgroup to flourish.
+
+Finally, if there's 9 conjugates, then there's a group $\ints_9 \rtimes \ints_2 \cong D_9$ using the homomorphism $x \to -x$, and there's another group for $(\ints_3 \times \ints_3) \rtimes \ints_2$ using the interchange homomorphism we used in the last paragraph. So that's all the non-abelian groups of order 18.
+\item $12 = 2^2 * 3$, so the number of 2-Sylow subgroups is odd and divides 3 so it can be 1 or 3, and the number of 3-Sylow subgroups is 1 mod 3 and divides 4 so it can be 1 or 4. So here are the possibilities: \begin{itemize}
+\item One 2-Sylow subgroup, four 3-Sylow subgroups: The candidate groups are $\ints_4 \rtimes \ints_3$ and $(\ints_2 \times \ints_2) \rtimes \ints_3$, but there are no nontrivial homomorphisms from $\ints_3$ to Aut($\ints_4) \cong \ints_2$ so that one is out. On the other hand, Aut($\ints_2 \times \ints_2) \cong S_3$, so there is a homomorphism mapping 1 to a three-cycle, and it's unique since the 3-cycles are conjugate, so there is one group of order 12 given by $(\ints_2 \times \ints_2) \rtimes \ints_3$ where there are four 3-Sylow subgroups.
+\item Three 2-Sylow subgroups, one 3-Sylow subgroup: The candidate groups are $\ints_3 \rtimes \ints_4$ and $\ints_3 \rtimes(\ints_2 \times \ints_2)$, and there exist unique homomorphisms from $\ints_4$ and $\ints_2 \times \ints_2$ to Aut($\ints_3) \cong \ints_2$ by previous exercises, so both of these are valid groups.
+\item Three 2-Sylow subgroups, four 3-Sylow subgroups: This means there are 8 elements whose order is a power of 3 and 9 elements whose order is a power of 3, which is just way too many, so there are no such groups.
+\end{itemize}
+So that's all three non-abelian groups of order 12.
+\item $S_6$ has 6 conjugate subgroups isomorphic to $S_5$, which are the subgroups fixing each of the elements from 1 to 6, and 5 is the largest power of 5 that divides 120.
+\ee
+\section{Application: Transitive Subgroups of $S_5$}
+That was easy.
+\section{Additional Exercises for Chapter 5}
+\be
+\item \be
+\item Define an equivalence relation on $G$ by $x \sim y$ if and only if $xHx\inv = yHy\inv$. $\sim$ is indeed an equivalence relation since $xHx\inv = xHx\inv, xHx\inv = yHy\inv \lra yHy\inv = xHx\inv$, and $xHx\inv = yHy\inv, yHy\inv = zHz\inv \ra xHx\inv = zHz\inv$. Then the equivalence classes associated to $\sim$ form a set partition of $G$. There are $|Y|$ equivalence classes, and each of them has $|N_G(H)|$ elements, since for each $g \in N_G(H)$, for each equivalence class $[x]$, $xgHg\inv x\inv = xHx\inv$. Therefore $|G| = |Y||N_G(H)| \ra \frac{|G|}{|H|} = \frac{|Y||N_G(H)|}{|H|} \ra \frac{|G/H|}{|Y|} = [N_G(H) : H]$.
+\item For $g, i \in gH$, we need $gHg\inv = iHi\inv $ for the map to be well-defined. Then let $ghg\inv \in gHg\inv$, then since $gH = iH$ there exists some $h'$ such that $gh = ih'$, so $ghg\inv = ih'g\inv$, and similarly, there is some $h''$ such that $g\inv = h''i\inv$, since
+ $gH = iH \ra g\inv i \in H \ra g\inv \in Hi\inv$, so 
+ $ghg\inv = ih'g\inv = ih'h''i\inv \in iHi\inv$, so the map is well-defined. The map is surjective because for any conjugate $gHg\inv$, there is a coset $gH$.
+\item Let $gHg\inv$ be a conjugate of $H$, then the inverse image of $gHg\inv$ is $\{iH: iHi\inv = gHg\inv\} = \{gxH: x\in N_G(H)\}$ since $(gx)H(gx)\inv = gxHx\inv g\inv = gHg\inv \lra xHx\inv = H$, and this set is the same as $\{g(xH) : xH \in N_G(H)/H\}$, so the map is $[N_G(H):H]$ to one.
+\ee
+\item Consider the action of $G$ on itself by conjugation, and let $f(x) = $ Stab($x$). Then for $g, x \in G$, $f(gx) =$ Stab($gxg\inv$), while $g(f(x)) = g$Stab($x)g\inv$. Let $a \in $ Stab($x$), then $axa\inv = x$, so $gag\inv gxg\inv ga\inv g\inv = gxg\inv$, so $gag\inv\in $ Stab($gxg\inv$). And if $b \in $ Stab($gxg\inv)$, then $bgxg\inv b\inv = gxg\inv \ra g\inv bgxg\inv b\inv g = x \ra g\inv bg \in $ Stab($x$) $\ra b \in g$Stab($x$)$g\inv$, so the sets are equivalent, so $f$ is $G$-equivariant.
+
+The map is surjective because for any $gHg\inv\in Y$, we have $f(gx_0g\inv) = $ Stab($gx_0g\inv$) = $g$Stab($x_0$)$g\inv$ = $gHg\inv$. And $f\inv(gHg\inv) = \{x \in G: ghg\inv xgh\inv g\inv = x \forall h \in H\} = \{x\in G: hg\inv x gh\inv = g\inv xg\} = \{x \in G: $ Stab$(g\inv xg) = H\} = \{x \in G: g\inv$Stab$(x)g = H\} = \{x \in G: $ Stab$(x) = gHg\inv\}$, so its size is the size of the orbit of $H$ under conjugacy, which is $[N_G(H):H]$ by Exercise 1a. 
+\item The orbit of $D_4$ under conjugacy has size 3, and $D_4$ has 8 elements, so by Exercise 1a $[N_{S_4}(D_4) : D_4] = 1$, so $N_{S_4}(D_4) = D_4$. That means that the map $sD_4 \to sD_4s\inv$ is bijective and $S_4$-equivariant, by exercise 2.
+\item The stabilizer of a face is the group of rotations through the centroid of that face, and that group does not fix any other face, so $F \to$ Stab($F$) is a bijection.
+\item The stabilizer group of a face is the group of rotations through that face, and it also fixes the opposite face, so $F \to $ Stab$(F)$ is 2-to-1.
+\item If $\pi(n) = m$, then $\pi H \pi\inv$ is the subgroup of $S_n$ fixing $m$ by Exercise 2.4.14a, so $H$ is its own normalizer.
+\item \be
+\item Rotation through a diagonal is a 3-cycle on the other diagonals and on the face rotation axes. Rotation through a face is a 4-cycle on the diagonals and a 2-cycle on the face rotation axes, fixing the axis you're rotating through and exchanging the others. Rotation through the midpoints of opposite edges is a product of disjoint 2-cycles on the diagonals and a 2-cycle on the face rotation axes interchanging the two that are not perpendicular to the edge midpoint rotation axis.
+\item The rotations that fix a given face rotation axis are the $90^\circ n$ rotations $R$ about that axis and the $180^\circ n$ rotations $D$ about some other face rotation axis (other fixing rotations are products of these). These are isomorphic to the $R$ and $D$ of $D_4$.
+\item There are three 4-fold rotation axes and three distinct stabilizers, so $L\to$ Stab$(L)$ is a bijection.
+\ee
+\item By Exercise 5.6.1a, the total number of conjugates of $H$ is equal to $|G|/|N_G(H)|$. Since $H \subset N_G(H)$, the most conjugates $H$ can have is $|G|/|H|$. Since each conjugate of $H$ has size $|H|$, this gives a total number of elements in the conjugates of $H$ equal to $\frac{|G|}{|H|} * |H| = |G|$, but if there is more than one conjugate then not all the elements are distinct since $e$ is in each conjugate. So the only way that the conjugates of $H$ can contain every element of $G$ is if there is one conjugate of $H$ containing all of the elements, i.e. $H = G$.
+\item The 2-Sylow subgroups are $D_4$ and its conjugates, and the 3-Sylow subgroups are the powers of some 3-cycle and its conjugates.
+\item The 2-Sylow subgroup is $V$ from Example 5.1.10 and its conjugates, and the 3-Sylow subgroups are still the powers of some 3-cycle and its conjugates.
+\item The 2-Sylow subgroups are $\{e, R^3, D, DR^3\}, \{e, R^3, DR, DR^4\}$, and $\{e, R^3, DR^2, DR^5\}$, and the 3-Sylow subgroup is $\{e, R^2, R^4\}$. 
+\item By Exercise 5.1.10, $|PN| = |P||N|/|N\cap P|$, so $|PN/N| = |P|/|P\cap N|$. $P\cap N$ is a subgroup of $P$, so it has order $p^k$ for some $k$, for $k \le n$ where $|P| = p^n$. In fact, $p^k$ is the highest power of $p$ that divides $|N|$, since if $A$ is a $p$-Sylow subgroup of $N$ then by Sylow's second there is some $g \in G$ such that $gAg\inv \subset P$, but $gAg\inv \subset N$ since $N$ is normal, so $N \cap P = gAg\inv$, a $p$-Sylow subgroup of $N$. Therefore $p^{n-k}$ is the largest power of $p$ dividing $|G/N|$, and it so happens that $p^{n-k}$ is the size of $PN/N$, so $PN/N$ is a $p$-Sylow subgroup of $G/N$.
+\item $N_G(P) \subset N_G(N_G(P))$ since $N_G(P)$ is a group. And $y \not \in N_G(P) \ra yPy\inv = Q \not = P \ra $ for any $x \in N_G(P)$ we have $yxPx\inv y\inv = Q \ra yxy\inv Q yx\inv y\inv = Q \ra yxy\inv \in N_G(Q)$, which $N_G(Q) \not = N_G(P)$ by Exercise 5.4.3.
+\item Let $p, q$ be distinct primes where $p$ divides the order of $G$. Then $\exists x\in G$ with order $q \not = p^k$ for any $k \lra \exists$ is a subgroup of $G$ of order $q$ ($\langle x \rangle$ if you're following the forward implication chain $\lra q \not=p$ divides the order of $G$. Thus, $G$ not a $p$-group $\lra$ $|G|$ not a power of a prime, so the positive double-implication holds too.
+\item $G \cong (G/N) \times N$, so $|G| = p^k$ for some $k \lra |G/N| = p^m, |N| = p^l$ for some $m, l: m + l = k$.
+\item Let $G$ act on $H$ by conjugation (it's only an action if $H$ is normal). Then by the class equation, $|H| = |Z(G) \cap H| + \sum_h\frac{|G|}{|\text{Cent}(h)|}$ where the sum is over distinct non-singleton conjugacy classes of elements of $h$. Each element in the $\sum$ is a positive power of $p$, since the first term captures all the $h \in H: $Cent$(h) = G$, so since $|H|$ is divisible by $p$, so is $|H \cap Z(G)|$ is a positive power of $p$ since it cannot be 0 since $e \in H \cap Z(G)$. 
+\item By Sylow's second theorem, there exists some $g \in G$ such that $gHg\inv \subset P$. Since $H$ is normal, $gHg\inv = H$, so $H \subset P$.
+\item Bullshit.
+\item Incompetent bullshit.
+\ee
+\end{document}
