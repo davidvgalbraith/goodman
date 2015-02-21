@@ -49,6 +49,34 @@ function Permutation(source) {
 
         return result;
     }
+    this.isEqual = function(perm) {
+        return this.source === perm.source;
+    }
+    this.isIn = function(permArr) {
+        for (var k = 0; k < permArr.length; k++) {
+            if (this.source === permArr[k].source) {
+                return true;
+            }
+        }
+    }
+    this.asCycles = function() {
+        var cycles = [];
+        var source = this.source;
+        while (source.length > 0) {
+            var cycle = source[0];
+            var nextElement = this.source[cycle[cycle.length-1]];
+            while (cycle.indexOf(nextElement) === -1) {
+                cycle += nextElement;
+                nextElement = this.source[cycle[cycle.length-1]]
+            }
+            for (var k = 0; k < cycle.length; k++) {
+                var toDel = source.indexOf(cycle[k]);
+                source = source.substring(0, toDel) + source.substring(toDel + 1);
+            }
+            cycles.push(cycle);
+        }
+        return cycles;
+    }
 }
 
 // given an array of cycles, find a number that appears in none of them

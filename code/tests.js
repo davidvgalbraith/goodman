@@ -1,40 +1,49 @@
 // playground for working on bullshit algebra problems
 var p = require('./permutations');
+var Permutation = p.Permutation;
 var _ = require('underscore');
 
-function log(perm) {
-    console.log(perm.source);
+var LOG_CYCLES = 2;
+var LOG_SORTED = 1;
+
+function log(perm, mess, info) {
+    if (_.isArray(perm)) {
+        var sources = _.pluck(perm, 'source');
+        if (info === LOG_SORTED) {
+            sources.sort();
+        }
+        if (info === LOG_CYCLES) {
+            sources = perm.map(function(x) {
+                return x.asCycles();
+            });
+        }
+        console.log(sources, mess);
+        return;
+    }
+    console.log(perm.source, mess);
 }
 
-// var horror = new p.Permutation('413205');
+var all = _.sortBy(p.assemblePermutations(4), 'source');
 //
-// var all = p.assemblePermutations(horror.source.length);
-// var count = 0;
-// horrors = [];
-// _.each(all, function(perm) {
-//     var s = perm.compose(horror).compose(perm.inverse()).source;
-//     if (s === '102354') {
-//         horrors.push(perm.source);
-//         console.log('source ', perm.source);
-//         console.log('inverse', perm.inverse().source)
-//         console.log('cycles', perm.toCycles());
-//         console.log();
-//         count++;
-//     }
-// });
-//
-// console.log(horrors.sort(), horrors.length)
-var all = p.assemblePermutations(3);
-_.each(all, function(perm) {
-    for (var k = 0; k < all.length; k++) {
-        if (perm.compose(all[k]).source !== all[k].compose(perm).source) {
-            return;
+// var r = new p.Permutation('1230');
+// var r2 = r.compose(r);
+
+function getNormalizer(subgroup, fullgroup) {
+    var normalizer = [];
+    for (var k = 0; k < fullgroup.length; k++) {
+        var perm = fullgroup[k];
+        var isIn = true;
+        for (var l = 0; l < subgroup.length; l++) {
+            var subPerm = subgroup[l];
+            var c = perm.compose(subPerm).compose(perm.inverse());
+            if (!c.isIn(subgroup)) {
+                isIn = false;
+                break;
+            }
+        }
+        if (isIn) {
+            normalizer.push(perm);
         }
     }
-    console.log(perm.source)
-});
-// var a = new p.Permutation('452301');
-// var b = new p.Permutation('230145');
-//
-// log(a.compose(b));
-// log(b.compose(a));
+    return normalizer;
+}
