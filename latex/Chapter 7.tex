@@ -1,0 +1,121 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\include{davemathshortcuts}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Chapter 7}
+\author{Dave}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{A Brief History}
+That was easy.
+\section{Solving the Cubic Equation}
+\be
+\item By Proposition 1.8.22, $a$ is a root of $f \in K[x] \lra x-a$ divides $f$. Since the degree of a cubic polynomial is 3, any proper factorization of it is by polynomials of degree 1 and 2, so it has such a factorization if and only if it has a root.
+\item $f(x) = \cubic{x} \ra f(x-a/3) = \cubic{(x-a/3)} = x^3 -3x^2a/3 + 3xa^2 / 9 - a^3 / 27 + ax^2 - 2a^2x/3 + a^3 / 9 + bx - ba/3 + c = x^3 - a^2 x / 3 + bx + 2a^3 / 27 - ab/3 + c$, as prophesied.
+\item $d\cubic{x} = 0 \lra x^3 + a/d x^2 + bx/d + c/d = 0$.
+\item Given equation 7.2.1 and $f(x) = x^3 + px + q = 0$, consider $f(v - u) = (v-u)^3 + p(v-u) + q = v^3 - 3v^2u + 3vu^2 - u^3 + p(v-u) + q = (v^3 - u^3 + q) + (p - 3vu)(v-u)$ which will be zero if both summands are zero, e.g. if 1: $v^3 - u^3 + q = 0$ and 2: $p - 3vu = 0 \ra u = p/3v$. Substituting this into 1, we get $v^3 - (p/3v)^3 + q = 0 \ra (v^3)^2 + qv^3 - p^3 / 27 = 0$. By the quadratic formula, $v^3 = \frac{-q \pm \sqrt{q^2 - 4p^3/27}}{2}$. Let $A$ be a value of $v$ that satisfies that messy thing, then $\omega A$ and $\omega^2 A$ are two other values of $v$ that satisfy that since $\omega^3 = 1 \ra (\omega A)^3 = (\omega^2 A)^3 = A^3$. Plugging back in $x = v - \frac{p}{3v}$ and using the simplification $\omega\inv = \omega^2$, you get Cardano's.
+\item $f(x-2/3) = x^3 + 2x/3 + 61/27$ so the roots of $f$ are the cube roots of $-61/54 + \sqrt{139/108}$ which are irrational. Also you could just apply the rational root test and see that any integer root must divide 3 and $\pm1, \pm3$ don't cut it.
+\item Um, I think I hear my Mom calling me.
+\item \be
+\item Computing $\det(V)$, one finds it is the same as $\delta$, so $\det(VV^T) = \det(V)\det(V^T) = \det(V)^2 = \delta^2$.
+\item \be
+\item $0=(\sum_ia_i)^2 = \sum_ia_i^2 + 2\sum_{i < j}a_ia_j \ra \sum_ia_i^2 = -2\sum_{i < j}a_ia_j = -2p$.
+\item $0=(\sum_ia_i)^3 = \sum_ia_i^3 + 3\sum_{i < j}a_i^2a_j + a_ia_j^2 + 6a_1a_2a_3 = 
+\sum_ia_i^3 + 3(a_1^2(a_2+a_3) + a_2^2(a_1 + a_3) + a_3^2(a_1+a_2)) + 6a_1a_2a_3 = 
+\sum_ia_i^3 -3\sum_ia_i^3 + 6a_1a_2a_3 
+\ra -2\sum_ia_i^3 = -6a_1a_2a_3 \ra \sum_ia_i^3 = 3a_1a_2a_3 = -3q$.
+\item $0=(a_1 + a_2 + a_3)^4 = a_1^4 + a_2^4 + a_3^4 + 4(a_1^3a_2 + a_1^3a_3 + a_1a_2^3 + a_3a_2^3 + a_1a_3^3 + a_2a_3^3) + 6(a_1^2a_2^2 + 2a_1^2a_2a_3 + a_1^2a_3^2 + 2a_1a_2^2a_3 + 2a_1a_2a_3^2 + a_2^2a_3^2) = a_1^4 + a_2^4 + a_3^4 -4(a_1^4 + a_2^4 + a_3^4) + 6(a_1a_2 + a_1a_3 + a_2a_3)^2 = -3(a_1^4 + a_2^4 + a_3^4) + 6p^2 \ra \sum_ia_i^4 = 2p^2$.
+\ee
+\item $VV^T = \threemat{3}{0}{-2p}{0}{-2p}{-3q}{-2p}{-3q}{2p^2}$ whose determinant is $3(-4p^3 - 9q^2) - 2p(-4p^2) = -4p^3 - 27q^2$. 
+\ee
+\item \be
+\item Its roots are the cube roots of 2 which are irrational so it's irreducible by exercise 1. $\delta^2 = -108, \delta = 6\sqrt{3}$.
+\item $\omega^2 + \omega + 1 = -1/2 + i\sqrt{3}/2 + -1/2 - i\sqrt{3}/2 + 1 = 0$.
+\item $A = -1/2 + \sqrt{1/4 - 1} = -1/2 + i\sqrt{3}/2$ so the roots are given by Cardano's based on that. $\delta^2 = -135$ and $\delta = i\sqrt{135}$.
+\ee
+\ee
+\section{Adjoining Algebraic Elements to a Field}
+\be
+\item Since $K \subset L$, $e_L$ acts as the identity on $K$, so by the uniqueness of $e_K$ we have $e_L = e_K$. Between this and the basic algebraic properties of fields, $L$ satisfies all the conditions of Definition 3.3.1.
+\item Let $x \in M$, then $x = \sum_i \mu_ia_i$, where $a_i \in L$, so $a_i = \sum_j \lambda_jb_j$ where $b_j \in K$, so $x = \sum_i \mu_i(\sum_j \lambda_j b_j) = \sum_i\sum_j \mu_i\lambda_jb_j$, a linear combination of the $\lambda_i\mu_j$, so $\{\lambda_i\mu_j\}$ spans $M$ over $L$.
+\item Let $L$ be the range of ev$_a$, then $L \subset \kan$ since $\kan$ is the smallest ring containing $K$ and the $a_i$ and $L$ is another such ring. And any $x \in L$ is a linear combination of powers of elements of $K$ or $[a_1, \ldots a_n]$, so it must be in any field that contains those elements, so $L \subset \kan \ra L = \kan$.
+\item Any set containing $K$ and the $a_i$ that hopes to be a field must contain at least the set of all sums of products of elements of $K$ and the $a_i$, and it must contain the inverses of each of these sums of products, by the definition of a field. This is the set in question, so it is $K(a_1, a_2, \ldots a_n)$.
+\item Yes, that is a valid proof.
+\item Since $\dim_K(L)$ is finite, there exists an $n$ such that $L = K(a_1, a_2, \ldots a_n)$, so all that remains is to show the goofy logarithm inequality, which we'll do by induction on $n$. If $n=0$, we have $0\le1$ so the statement is valid. And so if $L = K(a_1, a_2, \ldots a_{n+1})$, then let $A = K(a_1, a_2 \ldots a_n), $ and we have $L = A(a_{n+1}) \ra \dim_K(L) = \dim_K(A)\dim_A(L) \ra \log\dim_K(L) = \log\dim_K(A) + \log\dim_A(L) \ge n - 1 + \log\dim_A(L)$ by the induction hypothesis. And so since $A \not = L \lra \dim_A(L) \ge 2 \lra \log\dim_A(L) \ge 1,$ we have $n - 1 + \log\dim_A(L) \in \nats$, so the claim follows by induction.
+\item It's been established that a finite extension of a countable field is countable, and $\rats$ is countable whilst $\reals$ is uncountable, so $\reals$ cannot be a finite extension of $\rats$.
+\item \be
+\item It's cyclotronical, so exercise 6.8.2 says it's irreducible.
+\item I got $x^3 + x + 2$, but your mileage may vary on that one.
+\ee
+\item \be
+\item $\cos{2\pi/5} = \frac{\sqrt{5}-1}{4}$ which satisfies $x^2 + \frac{x}{2} - 1/4 = 0$. $\sin{2\pi/5} = \sqrt{\frac{5}{8} + \frac{\sqrt{5}}{8}}$ which satisfies $x^4 - x^2/4 - 25/32 = 0$.
+\item $\xi = \cos{2\pi/5} + i\sin{2\pi/5}$ so the splitting field of the minimal polynomial for $\xi$ over $K = \rats(\cos(2\pi/5))$ is $K(i\sqrt{\frac{5}{8} + \frac{\sqrt{5}}{8}})$ so basically the minimal polynomial for $\xi$ would be $-\cos{2\pi/5} + x^4 - x^2/4 - 25/32$.
+\ee
+\item The splitting field of $x^3 - 2$ is $\rats(2^{1/3}, \omega)$ where $\omega = e^{2\pi i/3}$ by exercise 7.2.8, and $\rats(2^{1/3})$ has order 3 over $\rats$ while $\rats(2^{1/3}, \omega)$ has order 2 over $\rats(2^{1/3})$ for a total order of 6 by Proposition 7.3.1.
+\item $7*5=35$, since no rational linear combination of fifth roots of 2 will get you a 7th root of 3.
+\item \be
+\item $2*3=6$, since no rational linear combination of cube roots of 2 will get you a square root of 2.
+\item $2*3=6$, since no rational linear combination of cube roots of 2 will get you a square root of 3.
+\ee
+\item $x^3 + 6x^2 - 12x + 3$ is irreducible by Eisenstein's. Reduce products according to the rules $x^3 = -6x^2 + 12x -3, x^4 = 48x^2 - 75x + 18$. Too lazy to invert.
+\item This one is no less trivial than the last one, so I'm over it.
+\ee
+\section{Splitting Field of a Cubic Polynomial}
+\be
+\item \be
+\item If the two roots of $f$ are both equal to $a$, then $f(x) = (x-a)^2$, which is irreducible in $K[x] \lra a \not \in K \ra f(x) \not \in K[x]$.
+\item $\alpha_1 + \alpha_2 + \alpha_3 = 0$, so if $\alpha_1 = \alpha_2$ then $\alpha_3 = -2\alpha_1$. We have $\sum_{i<j}\alpha_i\alpha_j = p$, which in this case gives us $\alpha_1^2 -4\alpha_1 - p = 0$, so $\alpha$ is the root of a quadratic polynomial with coefficients in $k$, so this polynomial divides $f$ in $K[x]$, so $f$ is not irreducible.
+\ee
+\item $\delta = (a_1-a_2)(a_1-a_3)(a_2-a_3) = a_1^2a_2 - a_1^2a_3 + a_1a_3^2 - a_1a_2^2 + a_2^2a_3 - a_2a_3^2 = a_1^2a_2 - a_1a_2^2 + (a_2^2 -a_1^2)(-a_1-a_2) + (a_1-a_2)(-a_1-a_2)^2 = 3a_1^2a_2 - 3a_1a_2^2 + 2a_1^3 - 2a_2^3 = 3a_1^2a_2 - 3a_1a_2^2 + 2pa_2 -2pa_1 =6a_1^2a_2+3a_1^3 +a_1p + 2a_2p = 6a_1^2a_2 - 2a_1p + 2a_2p - 3q$. Solving for $a_2$, we get $a_2 = \frac{\delta + 2a_1p + 3q}{2(3a_1^2 + p)}$. The denominator is not zero for if it were then $a_1$ would satisfy a polynomial of degree 2 over $K$ in which case $f$ would not be irreducible.
+\item \be 
+\item We showed in an earlier exercise or maybe example that $x^3-2$ is irreducible in $\rats$ and its roots are $\omega^i2^{1/3}, i = 0, 1, 2, \omega = e^{2\pi/3}$. So we have $\delta^2 = 0-27*4 = -108$ so $\delta$ is imaginary so the dimension is 6. $\rats(\alpha)$ has order 3 since it is $\rats(x) / (x^3 - 2)$ and $\rats(\delta)$ has order 2 since $\delta^2 + 108=0$.
+\item $\delta^2 = -4 * -27 -27 - 81 \ra \delta = 9 \in \rats$, so the dimension of the splitting field is 3 by 7.4.1. There are no intermediate fields since their order would have to divide the prime 3.
+\ee
+\item It is clear that Aut$_F(L) \subset \text{Aut}(L)$. For $f, g \in$ Aut$_F(L)$, $x \in F$, $fg(x) = f(x) = x$, and $f\inv(x) = x$ since $f(x) = x$, so Aut$_F(L)$ is a group.
+\item \be
+\item Since $\sigma$ is an automorphism, it must be a bijection, so the claim will follow if $\sigma(\{\beta_1, \beta_2, \ldots \beta_r\}) = \{\beta_1, \beta_2, \ldots \beta_r\}$, which is true because the homomorphism property of $\sigma$ means that $f(\beta_i) = 0 \ra f(\sigma(\beta_i)) = 0 \ra \sigma(\beta_i) \in \{\beta_1, \beta_2, \ldots \beta_r\}$.
+\item Let $f(\sigma) = \sigma_{|\{\beta_1, \beta_2, \ldots \beta_r\}}$, then $f(\sigma_1\sigma_2) = (\sigma_1\sigma_2)_{|\{\beta_1, \beta_2, \ldots \beta_r\}} = \sigma_{1_{|\{\beta_1, \beta_2, \ldots \beta_r\}}}\sigma_{2_{|\{\beta_1, \beta_2, \ldots \beta_r\}}} = f(\sigma_1)f(\sigma_2)$. Which I didn't really say anything there but so $f$ is a homomorphism.
+\item A splitting field is algebraic, so defining $\sigma$ on $\{\beta_1, \beta_2, \ldots \beta_r\}$ defines it on the entire splitting field, so only one $\sigma$ exists for each $\sigma_{\{\beta_1, \beta_2, \ldots \beta_r\}}$, so $\sigma \to \sigma_{\{\beta_1, \beta_2, \ldots \beta_r\}}$ is injective.
+\ee
+\item $K \subset \fix(H) \subset L$, since $H \subset \aut_K(L)$. And so if $x, y \in \fix(H)$, then for $\sigma \in H$ we have $\sigma(xy) = \sigma(x)\sigma(y) = xy$ and $\sigma(x + y) = \sigma(x) + \sigma(y) = x + y$ and $\sigma(x\inv) = \sigma(x)\inv = x\inv$, so $\fix(H)$ is a field.
+\item \be
+\item $H_i$ fixes $a_i$ and $K$, so $K(a_i) \subset \fix(H_i)$, and $H_i$ does not fix $a_j$ for $j \not= i$, so $\fix(H_i) \subset K(a_i)$.
+\item $A_3$ fixes $K$ and $\delta = (a_1-a_2)(a_1-a_3)(a_2-a_3)$, and $A_3$ does not fix any of the $a_i$, so $\fix(A_3) = K(\delta)$.
+\ee
+\item \be
+\item $\sigma \in \aut_{K(\alpha_i)} \lra \sigma$ fixes $K$ and $\alpha_i$ and nothing else $\lra \sigma \in H_i$.
+\item $\delta \in K(\delta)$, so $L$ has dimension 3 over $K(\delta)$, so $\aut_{K(\delta)} \cong A_3$ by 7.4.4.
+\item Yup.
+\ee
+\item Since $\delta \not \in K$, $L$ has dimension 6 over $K$, so $\aut_K(L) \cong S_3$. By Exercise 7.4.9, this means the intermediate subrings of $K$ and $L$ correspond to subrings of $S_3$, and Exercise 7.4.8 fills in the rest of the correspondence as depicted in the picture.
+\item \be
+\item $L=\rats(i)$ with no intermediates.
+\item One root of $f$ is $\alpha = \sqrt{\frac{1}{2} + \sqrt{\frac{5}{4}}}$, so $L = \rats(\alpha, \omega)$ with the subgroup chart as in figure 7.4.2.
+\item $L = \rats(3^{1/3}, \omega)$ with the subgroup chart as in figure 7.4.2.
+\ee
+\ee
+\section{Splitting Fields of Polynomials in $\comps[x]$}
+\be
+\item $f$ has degree 4 and $f(\pm\sqrt{2}) = f(\pm\sqrt{3}) = 0$, so those are all the roots. No linear combination of square roots of 2 adds up to square roots of 3, so the splitting field is $\rats(\sqrt{2}, \sqrt{3})$ of degree 4. $\alpha$ fixes $\sqrt{2}$ but not $\sqrt{3}$, so $\fix(\{e, \alpha\}) = \rats(\sqrt{2})$. Similarly, $\fix(\{e, \beta\}) = \rats(\sqrt{3})$. $\alpha\beta$ fixes neither $\sqrt{2}$ nor $\sqrt{3}$, but $\alpha\beta\sqrt{6} = \alpha(\beta(\sqrt{3})\beta(\sqrt{2})) = \alpha(-\sqrt{3})\alpha(\sqrt{2}) = \sqrt{6}$, so $\fix(\alpha\beta) = \rats(\sqrt{6})$. 
+\item $\tau\sigma\tau(i\sqrt{2}) = \tau\sigma(-i\sqrt{2}) = \tau(\sqrt{2}) = \sqrt{2} = \sigma\inv(\sqrt{2})$, and $\tau\sigma\tau(i) = \tau\sigma(-i) = \tau(-i) = i = \sigma\inv(i)$, so $\tau\sigma\tau = \sigma\inv$. Since $\tau$ has order 2 and $\sigma$ has order 4, these are the generating relations of $D_4$.
+\item Verified!
+\item $\angles{\tau} = \angles{(2 4)} = \rats(\sqrt[4]{2})$, $\angles{(13)} = \rats(i\sqrt[4]{2})$, $\angles{(13)(24)} = \rats(\sqrt{2}, i)$, $\angles{(12)(34)} = \rats(i\sqrt{2}, \sqrt{2})$, $\angles{(14)(23)} = \rats(i, i\sqrt{2})$, $\angles{V} = \rats(i\sqrt{2})$, $\angles{V'} = \rats(\sqrt{2})$, $\angles{\sigma} = \rats(i)$. 
+\item Each power of $\xi$ between 0 and $p-1$ is a root of $x^p-1$, and by the fundamental theorem of algebra there only $p$ roots of $x^p-1$, so $\rats(\xi)$ is the splitting field $L$ of $x^p-1$, and the Galois group is cyclic of order $p$ generated by $\xi$. $\dim_\rats(L) = |\aut(\ints_p)| = p-1$ by Coronary 5.3.4. For $p=7$, the intermediate fields are generated by $(16)$ and $(124)$ where we're regarding the elements of $\aut(\ints_7)$ as contained in $S_6$.
+\item \be
+\item This is the splitting field of $(x^2-2)(x^2-7)$, and the analysis of its Galois subgroups is the same as example 7.5.10.
+\item This is the splitting field of $(x^2+1)(x^2-7)$, and it has the same analysis as a.
+\item This is the splitting field of $x^4 - 18x^2 + 25$. $\frac{(\sqrt{2} + \sqrt{7})^3 - 13(\sqrt{2} + \sqrt{7})}{10} = \sqrt{2}$, and a similar computation shows that this field extension also contains $\sqrt{7}$, so $\rats(\sqrt{2}, \sqrt{7}) \subset \rats(\sqrt{2} + \sqrt{7})$, and it is clear that $\rats(\sqrt{2}\ + \sqrt{7}) \subset \rats(\sqrt{2}, \sqrt{7})$, so $\rats(\sqrt{2}, \sqrt{7}) = \rats(\sqrt{2} + \sqrt{7})$.
+\item This is exercise 5.
+\item This is the splitting field of $x^2 + 3$, and its Galois field is $\ints_2$ which has no subgroups.
+\ee
+\item $G$ is generated by elements $a$ of order 8 and $b$ of order 2 with $bab = a^3$. The subgroup of $G$ in addition to $D_8$ and its subgroups is $\ints_8$, which contains the subgroup $\ints_4$. 
+\item $x^3 - 2$ is irreducible in $\rats[x]$, it has one root $\sqrt[3]{2} \in \rats(\sqrt[3]{2})$, and the Galois group of $\rats(\sqrt[3]{2})$ is $\ints_3$ which is abelian. And yet $\rats(\sqrt[3]{2})$ is not the splitting field of $x^3-2$, so this exercise is broken.
+\ee
+\end{document}
