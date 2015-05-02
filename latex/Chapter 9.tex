@@ -1,0 +1,154 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\include{davemathshortcuts}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Chapter 9}
+\author{Dave}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{Finite and Algebraic Extensions}
+\be
+\item Let $E = K(a_1, a_2, \ldots a_n)$, then $E \subset F(a_1, \ldots a_n)$ since $K \subset F$, and it is clear that $F \subset F(a_1, \ldots a_n)$, so $F(a_1, \ldots a_n)$ is an algebraic extension of $F$ containing $F$ and $E$ so $E \circ F \subset F(a_1, \ldots a_n)$ so $E \circ F$ is algebraic.
+\item By part a, $E \circ F$ is an algebraic extension of the algebraic extension $F$, so it follows from Proposition 9.1b that $E \circ F$ is algebraic.
+\item As noted in Exercise 1, $E \circ F \subset F(a_1, \ldots a_n)$, which has dimension at most $\dim_K(K(a_1, \ldots a_n)) = \dim_K(E)$.
+\item 4
+\ee
+\section{Splitting Fields}
+\be
+\item If the degree of $f$ is one then $f$ is already factored into linear factors over $K[x]$. Suppose there exists an extension field $L$ of $K$ for any polynomial $g$ of degree less than $n$ such that $g$ factors into linear factors over $L[x]$. Then if $f$ has degree $n$, then let $\alpha$ be a root of $f$ that is not in $K$, and it follows that $f(x) = (x-\alpha)g(x)$, where $g$ has degree $n-1$, so by the induction hypothesis $g$ factors into linear factors over some extension of $K$, so $f$ does too.
+\item Verified!
+\item \be
+\item For each $n \in \nats$, only finitely many polynomials of degree $n$ exist over a finite field $K$, so since infinitely many polynomials are irreducible, there must exist irreducible polynomials of arbitrarily large degree.
+\item By Proposition 9.2.1, every polynomial over $K$ has a splitting field, so polynomials of arbitrarily large degree induce splitting fields of arbitrarily large degree.
+\item Let $\alpha$ be an element by which we're extending $K$, and let $f$ be the minimal polynomial for $\alpha$, of degree $n$. Then $K(\alpha) \subset K \cup (\cup(\sum_{i=0}^nk_ix^i))$  over all $k_i \in K$. Both sets in the right-hand union are finite, and the union of finite sets is finite, so $K(\alpha)$ is finite. Inductively, any finite-dimensional extension of a finite field is finite.
+\ee
+\ee
+\section{The Derivative and Multiple Roots}
+\be
+\item Let $f(x) = \sum_nk_nx^n, g(x) = \sum_nl_nx^n$, then $D(f(x) + g(x)) = D(\sum_nk_nx^n + \sum_nl_nx^n) = D(\sum_n(k_n+l_n)x^n) = \sum_nn(k_n + l_n)x^{n-1} = \sum_nnk_nx^{n-1} + \sum_nnl_nx^{n-1} = D(f(x)) + D(g(x))$. 
+
+And $D(f(x)g(x)) = D(\sum_i\sum_j(l_ik_j)x^{i + j}) = \sum_i\sum_j(l_ik_j(i+j))x^{i + j - 1} = \sum_i\sum_j(l_ik_ji)x^{i + j - 1} + \sum_i\sum_j(l_ik_jj)x^{i + j - 1} = fDg + gDf.$ 
+\item \be
+\item $f$ is constant $\lra \exists k \in K: f(x) = k = kx^0 \lra Df(x) = 0k = 0$. The "only if" part of that last $\lra$ holds only in a field of characteristic 0.
+\item $f(x) = g(x^p) \lra p$ divides the exponent of every $x$ in $f \lra p$ divides the coefficient of every $x$ in $Df \lra Df = 0$.
+\ee
+\item $a$ is a multiple root of $f \lra (x-a)$ divides $g \lra g(a) = 0 \lra Df(a) = D((x-a)g)(a) = D(x-a)(a)g(a) + (x-a)Dg(a) = 0 + 0 = 0$, since the second term is always 0. 
+\item The quotient and remainder upon dividing one element of $K[x]$ by another are both elements of $K[x]$, regardless of what extension field of $K[x]$ they are being considered as elements of. Since iterative quotient-remainder calculation is all there is to the GCD formula, it follows that the GCD of two elements of $K[x]$ is the same whether the elements are regarded as elements of $K[x]$ or $L[x]$ for any extension $L$.
+\item By exercise 9.3.3, $(x-a)$ is a common divisor of $f$ and $Df$.
+\item \be
+\item If $Df$ isn't 0 then by the previous exercise $f$ and $Df$ have a common factor of positive degree, so $f$ can't be irreducible since the degree of $Df$ is at most one less than the degree of $f$, so this common factor has degree less than $f$. Thus, if $f$ is irreducible and has a multiple root, then $Df = 0$.
+\item $f$ has a multiple root $\ra Df = 0$ by part a $\ra f$ is constant by Exercise 9.3.2. But a constant polynomial has only simple roots, so it cannot be the case that $f$ has a multiple root.
+\ee
+\item The binomial coefficient $\binom{p}{k}$ is divisible by $p$ whenever $0 < k < p$, so $(x + a)^p = \sum_{k=0}^p\binom{p}{k}x^k = x^p + (\sum_{k=1}^{p-1}\binom{p}{k}x^k) + a^p = x^p + (\sum_{k=1}^{p-1}0x^k) + a^p = x^p + a^p$.
+\ee
+\section{Splitting Fields and Automorphisms}
+\be
+\item \be
+\item If $f \in H$ fixes $a, b \in L$, then $f(a + b) = f(a) + f(b) = a + b$, and $f(ab) = f(a)f(b) = ab$, so $f$ fixes $a + b$ and $ab$ so $\fix(H)$ is a subfield of $L$.
+\item $H$ fixes the points fixed by $H$, so since it is a group it is a subgroup of the group of permutations fixing the points it fixes, aka $\aut_{\fix(H)}(L)$.
+\item The automorphisms that fix $K$ fix $K$, so $K$ is a subset of the points fixed by the set of automorphisms that fix $K$, aka $\fix(\aut_K(L))$.
+\ee
+\item \be
+\item Any permutation that fixes $H_2$ must also fix $H_1$, since $H_1 \subset H_2$, so $H_1^\circ \supset H_2^\circ$.
+\item Any automorphism that fixes $K_2$ must also fix $K_1$, since $K_1 \subset K_2$, so $K_1' \supset K_2'$.
+\ee
+\item \be
+\item $(H^\circ)'^\circ = \fix(\aut_{\fix(H)}(L))$, which is the set fixed by the automorphisms that fix $\fix(H)$, namely $\fix(H)$, so $(H^\circ)'^\circ = H^\circ$.
+\item $(K')^\circ ' = \aut_{\fix(\aut_K(L))}(L)$, so the automorphisms on $L$ that fix the set by the automorphisms on $L$ that fix $K$ is precisely the set of automorphisms that fix $K$, so $(K')^\circ ' = K'$.
+\ee
+\item Since $f$ is separable in $K[x]$, it has only simple roots in any extension of $K[x]$, so in the extension $M[x]$ of $K[x]$ it has only simple roots, so it is simple over $M$.
+\ee
+\section{The Galois Correspondence}
+\be
+\item The union of the finite-dimensional intermediate extensions $M$ is a subset of $L$ since it is a union of subsets of $L$, and for any $x\in L$, we have $K(x)$ a finite-dimensional algebraic extension of $K$, since $L$ is algebraic, so $L$ is a subset of the union of finite-dimensional intermediate extensions. 
+\item \be
+\item $p(x)$ splits in $A(\alpha)$ since it splits in $K(\alpha)$ and $K \subset A$, so $A(\alpha) = A \circ B$ is the splitting field of $p$ over $A$, so $A \circ B$ is Galois.
+\item Restriction is a homomorphism. Every $\tau \in \aut_A(A \circ B)$ is the identity on $A$, so if $\tau_{|B}$ is the identity then $\tau$ is the identity on $A$ and $B$, so $\tau$ is the identity on $A \circ B$, so $\tau \to \tau_B$ is injective.
+\item Indeed.
+\ee
+\ee
+\section{Symmetric Functions}
+\be
+\item \be
+\item Sums and scalar products of polynomials of total degree $d$ also have total degree $d$, and the number of total polynomials of degree $d$ in $n$ variables is the number of sets of $n$ nonnegative integers whose sum is $d$, which is finite, so $\kd$ is a finite-dimensional subspace of $\kn$.
+\item I got a recursive formula for it, at least. Let $f(n, d)$ be the number of polynomials in $n$ variables of degree $d$. Then $f(n, 0) = f(1, d) = 1$ for all $n, d$, since the unique monic polynomial in $n$ variables of total degree 0 is $f(x_1, \ldots x_n) = 1$ and the unique monic polynomial of degree $d$ in one variable is $f(x) = x^d$. And $f(n, d) = \sum_{i=0}^df(n-1, i)$, because to get all the polynomials of degree $d$ in $n$ variables, you take all the polynomials of degree $\le d$ in fewer than $n$ variables and multiply the ones of total degree $k$ by $x^{d-k}$. 
+\item $\sum_ia_ix^{\alpha_i} \to (\sum_{|\alpha_j| = 1}a_jx^{\alpha_j}, \sum_{|\alpha_j| = 2}a_jx^{\alpha_j}, \ldots \sum_{|\alpha_j| = d}a_jx^{\alpha_j}, \ldots)$ is an isomorphism between the two groups.
+\ee
+\item \be
+\item Let $f, g \in K[x]$, then $\sigma(f + g)(\xton) = (f+g)(x_{\sigma(1)}, \ldots x_{\sigma(n)}) = f(x_{\sigma(1)}, \ldots x_{\sigma(n)}) + g(x_{\sigma(1)}, \ldots x_{\sigma(n)}) = \sigma(f)(\xton) + \sigma(g)(\xton)$. And $\sigma(fg)(\xton) = (fg)(x_{\sigma(1)}, \ldots x_{\sigma(n)}) = f(x_{\sigma(1)}, \ldots x_{\sigma(n)})g(x_{\sigma(1)}, \ldots x_{\sigma(n)}) = (\sigma f(\xton))(\sigma g(\xton)).$ Similar proofs hold for $K(x)$, so $S_n$ acts on $K[x]$ and $K(x)$ by ring/field automorphisms.
+\item Let $f, g \in \ks$, $\sigma \in S_n$, then $\sigma(f + g) = \sigma(f) + \sigma(g) = f + g$, and $\sigma(fg) = \sigma(f)\sigma(g) = fg$, so $\ks$ is a subring of $\kn$, and similarly $K^S(\xton)$ is a subring of $K(\xton)$.
+\item If $f$ and $g$ are symmetric, then for $\sigma \in S_n$, $\sigma(f/g) = \sigma(f) / \sigma(g) = f/g$, so $f/g$ is symmetric. On the other hand, let $f/g$ be a symmetric rational function, then $\frac{f}{g} + \sigma(\frac{f}{g}) = \frac{f\sigma(g) + g\sigma(f)}{g\sigma(g)} = 2\frac{f}{g}$, so equating denominators we find that $\sigma(g)$ divides $f\sigma(g) + g\sigma(f)$, so in particular it divides $g\sigma(f)$, but it can't divide $\sigma(f)$ or else $\sigma(f/g) = f/g$ would be reducible as a fraction. So $\sigma(g)$ divides $g$, and it follows that $\sigma(g) = g$ since $\sigma$ is just a permutation so it can't be multiplying $g$ by any non-identity element of $K$. It follows that $\sigma(f) = f$, so $f/g$ is symmetric $\lra$ $f$ and $g$ are symmetric, so the field of symmetric rational polynomials is the field of fractions of the ring of symmetric polynomials.
+\ee
+\item \be
+\item Let $x = \prod_ix_i^{a_i} \in \kd$, then $\sum_ia_i = d$ so $\sum_ia_{\sigma(i)} = d$ for any $\sigma \in S_n$, so $\sigma(x) \in \kd$ so $\kd$ is invariant under the action of $S_n$.
+\item Sums and scalar products of monomials of total degree $d$ have total degree $d$, so $\kds$ is a vector subspace of $\ks$.
+\item Same proof as exercise 1c, just use $\ks$ instead of $K[\xton]$.
+\ee
+\item If $n = 1$, then the expression simplifies to 1=1, which follows from the reflexive property of equality. So suppose $\sum_{k=0}^{n-1}(-1)^k\epsilon_kx^{n-k} = \prod_{k=0}^{n-1}(x-x_k)$. Then $\prod_{k=0}^{n}(x-x_k) = (x-x_n)\sum_{k=0}^{n-1}(-1)^k\epsilon_kx^{n-k} = x\sum_{k=0}^{n-1}(-1)^k\epsilon_kx^{n-k} - x_n\sum_{k=0}^{n-1}(-1)^k\epsilon_kx^{n-k} = \sum_{k=0}^{n}(-1)^k(\epsilon_k(x_1, \ldots x_{n-1}) + x_n\epsilon_{k-1}(x_1, \ldots x_{n-1}))x^{n-k}$, so the conclusion will follow as long as $\epsilon_k(x_1, \ldots x_{n-1}) + x_n\epsilon_{k-1}(x_1, \ldots x_{n-1}) = \epsilon_{k}(\xton)$ which holds because the first summand is the sum of all products of $k$ monomials $x_i$ that don't have $x_n$ as a factor, while the second one is the sum of all products of $k$ monomials $x_i$ that do have $x_n$ as a factor, while $\epsilon_k(\xton)$ is just the sum of all products of $k$ monomials $x_i$. 
+\item Every monomial $\epsilon_i$ of total degree 1 is equivalent to $\epsilon_{(i)}$ under the definition, so if all polynomials of total degree $n-1$ correspond to some $\epsilon_\lambda$, then any monomial of total degree $n$ is the product of a monomial of total degree $n-1$ and some $\epsilon_j$, so the monomial $\epsilon_{(\lambda, j)}$ is equal to it.
+\item $|\lambda_i|$ is the number of nonzero entries in row $i$ of the matrix $A$ representing $\lambda$. So $|\lambda^*_i|$ is the number of nonzero entries in row $i$ of $A^T$, which is the number of nonzero entries in column $i$ of $A$. $A_{ij} = 1 \lra \lambda_i \ge j$, so column $j$ of $A$ has precisely as many nonzero elements as there are entries in $\lambda$ with size $\ge j$, so $\lambda_j^* = |\{i: \lambda_i \ge j\}|$.
+\item $\epsilon_\lambda(\xton) = \prod_i\epsilon_{\lambda_i}(\xton)$, and each $\epsilon_{\lambda_i}$ is homogeneous of total degree $\lambda_i$, and the product of homogeneous polynomials of degree $i$ and $j$ is a homogeneous polynomial of degree $i + j$, so $\epsilon_\lambda$ is homogeneous of total degree $|\lambda|$.
+\item Let $f(x) = \sum_ik_ix^{\alpha_i} \in \kds$, where $\alpha_i = (\alpha_{i1}, \alpha_{i2}, \ldots \alpha_{in})$ and $\sum_k\alpha_{ik} = d$ for all $i$, then for each $\alpha_i$ in the expansion $f$, the orbit of $\alpha_i$ occurs as well in the expansion of $f$, all with the same coefficient $k_i$, since $f$ is symmetric. So $f(x) = \sum_ik_im_{\alpha_i}(\xton)$. So the $m_\lambda$ span $\kds$, and $x^{\alpha_i}$ and $x^{\alpha_j}$ are linear independent if and only if $\alpha_i \not = \alpha_j$, so the $m_\lambda$ are linearly independent, so the $m_\lambda$ are a basis of $\kds$.
+\item An $\epsilon_\lambda$ of degree $d$ is an integer linear combination of monomials $x^\alpha$ of total degree $d$ by its definition. Since the $m\lambda$ are a basis of $\kds$ by the previous exercise, and $\epsilon_\lambda \in \kds$, it follows that $\epsilon_\lambda$ is an integer linear combination of $m_\lambda$.
+\item The determinant of an upper-triangular integer matrix $T$ with ones on the main diagonal is 1 since any permutation of the rows leaves a 0 on the main diagonal, so $T$ has some inverse. The last row of $TT\inv$ is the last row of $T\inv$ since the last row of $T$ is $(0, 0, \ldots 0, 1)$. Therefore, the last row of $T\inv$ is also $(0, 0, \ldots 0, 1)$, since that is the last row of the identity. The second-to-last row of $TT\inv$ is the second-to-last row of $T\inv$ plus the last entry in the second-to-last row of $T$ times the last row of $T\inv$. Since the last row of $T\inv$ is $(0, 0, \ldots 0, 1)$, this implies that the second-to-last-row of $T\inv$ is $(0, 0, \ldots 1, a)$ where $a$ is arbitrary. So continuing in this way from the last row to the first, it comes about that $T\inv$ is upper-triangular with ones on the main diagonal.
+\item $m_{331} = x_1^3x_2^3x_3 + x_1^3x_2x_3^3 + x_1x_2^3x_3^3, m_{321} = x_1^3x_2^2x_3 + x_1^3x_2x_3^2 + x_1^2x_2^3x_3 + x_1^2x_2x_3^3 + x_1x_2^3x_3^2 + x_1x_2^2x_3^3$. 
+\item Yep.
+\item \be
+\item This is $\epsilon_3\epsilon_2$.
+\item This is example 9.6.9.
+\ee
+\item OK
+\item If $x_m = x_n$ for some $m \not = n$, then $f(\xton) = 0$ because $\sigma_{mn}f(\xton) = -f(\xton) = f(\xton)$, where $\sigma_{mn}$ is the permutation interchanging $x_m$ and $x_n$. So let $h_k(x) = f(x_1, x_2, \ldots x_{k-1}, x, x_{k+1}, \ldots x_n)$, then $h_k(x_m) = 0 \forall m \not = k$, so $(x-x_m)$ divides $f$ for all such $m$. So $h(x) = \prod_{m \not = k}(x-x_m)g(x)$ where $g$ is arbitrary. So $f(x) = h(x_k) = \prod_{m \not = k} (x_k - x_m)g(x)$. Repeating for all values of $1 \le k \le n$, it follows that every $(x_i - x_j)$ where $i \not = j$ divides $f$. We can conveniently group these values into $f(x) = (\prod_{i < j}(x_i - x_j))g(x)$. Since $\prod_{i < j}(x_i - x_j)$ is antisymmetric and $f$ is antisymmetric, it follows that $g$ is symmetric.
+\ee
+\section{The General Equation of Degree $n$}
+\be
+\item \be
+\item The discriminant is -59, which isn't a square, so the Galois field is $S_3$.
+\item The discriminant is 1, which is a square, so the Galois field is $A_3$.
+\item The discriminant is -27, which isn't a square, so the Galois field is $S_3$.
+\ee
+\item $\delta^2(f)$ is negative, so the Galois field is $S_3$. $\rats(\alpha)$, where $\alpha$ is a root of $f$, is an extension of degree 3, and $\rats(\delta)$ is an extension of degree 2.
+\item The highest lexicographic term in $\delta^2$ is $x_1^{2n-2}x_2^{2n-4}\cdots x_{n-1}^2$, which is the first term of $\epsilon_1^2\epsilon_2^2\cdots \epsilon_{n-1}^2$. This is the highest-degree monomial in the expansion of $\delta^2$ in the symmetric polynomials, because any higher-degree monomial in the $\epsilon$ would be higher lexicographically. Therefore, $\delta^2$ is a polynomial of degree $2n-2$ in the symmetric polynomials.
+\item By the previous exercise, $\delta^2$ is a polynomial in the $\epsilon_k(\alpha_1, \ldots \alpha_n), \delta^2(f) = a_n^{2n-2}\sum_kc_k\epsilon_k^{n_k}$, and by 9.6.4 $\epsilon_k(\alpha_1, \ldots \alpha_n) = (-1)^ka_{n-k}/a_n$, so $\delta^2(f) = a_n^{2n-2}\sum_kc_k((-1)^ka_{n-k}/a_n)^{n_k}$, a symmetric polynomial of degree $2n-2$ in the coefficients $a_i$.
+\item When $n=2$, $\delta^2(f) = b^2 - 4ac$; when $n=3$, $\delta^2(f)$ is as in Example 9.7.3.
+\item We can compute that $f$ has no root in $\ints_3$, so the only possible factorization is by two irreducible quadratics, but if $f(x) = (ax^2 + bx + c)(a'x^2 + b'x + c') = aa'x^4 + (ab' + a'b)x^3 + (ac' + bb' + a'c)x^2 + (bc' + b'c)x + cc'$, then we must have $aa' = 1, ab' + a'b = 0, ac' + bb' + ca' = 1, bc' + b'c = 1, cc' = 1 \lra a=a' \not = 0, c = c' \not = 0 \ra a(b + b') = 0 \ra b + b' = 0$, but also $c(b + b') = 1$, a contradiction that precludes such a factorization, so $f$ is irreducible.
+\item Gulp.
+\item They are.
+\item Let $\{\alpha_i\}$ be the roots of $f$, $\{\beta_i\}$ be the roots of $g$, then $f(x) = \prod_i(x-\alpha_i), g(x) = \prod_i(x-\beta_i)$, so $f\psi = g\phi \lra \psi(x)\prod_i(x-\alpha_i) = \phi(x)\prod_i(x-\beta_i)$ so each factor $x-\alpha_i$ must divide the right side, and since the degree of $\phi$ is only at most $n-1$, at least one of the $x-\alpha_i$ must divide $\prod_i(x-\beta_i) = g(x)$, so this $x-\alpha_i$ is a nonconstant common factor of $f$ and $g$.
+\item \be
+\item $R(f, g) = a_n^mb_m^n\prod_i\prod_j(\xi_i - \eta_j) = (-1)^{m+n}a_n^mb_m^n\prod_i\prod_j(\eta_j - \xi_i) = R(g, f)$.
+\item $g(x) = b_m^n\prod_j(x-\eta_j) \ra a_n^m\prod_ig(\xi_i) = a_n^mb_m^n\prod_i\prod_j(\xi_i - \eta_j)  = R(f, g)$.
+\item Apply b to the right side of a.
+\ee
+\item The product is fixed under permutations of the $x_i$ and the $y_j$, so it is a polynomial in the symmetric functions on the $x_i$ and on the $y_j$. Its total degree in the $\epsilon_i(\xton)$ is $m$ because there's one factor of each $x_i$ for each $y_j$, a total of $m$, and similarly the total degree in the $\epsilon_j(y_1, \ldots y_n)$ is $n$.
+\item $\det(\mathcal{R}(f, g)) = 0 \lra f$ and $g$ have a common root $\lra \xi_i = \eta_j$ for some $(i, j)$. Then by the argument of Exercise 9.6.15, $\det(\mathcal{R}(f, g))$ is divisible by $\prod_i\prod_j(\xi_i - \eta_j) = R(f, g)$. 
+\item Koff
+\ee
+\section{Quartic Polynomials}
+\be
+\item $h(y) = (y-\theta_1)(y-\theta_2)(y-\theta_3) = y^3 - (\theta_1 + \theta_2 + \theta_3)y^2 + (\theta_1\theta_2 + \theta_1\theta_3 + \theta_2\theta_3)y - \theta_1\theta_2\theta_3$. And so then $\theta_1 + \theta_2 + \theta_3 = (\alpha_1 + \alpha_2)(\alpha_3 + \alpha_4) + (\alpha_1 + \alpha_3)(\alpha_2 + \alpha_4) + (\alpha_1 + \alpha_4)(\alpha_2 + \alpha_3) = 2(\alpha_1\alpha_2 + \alpha_1\alpha_3 + \alpha_1\alpha_4 + \alpha_2\alpha_3 + \alpha_2\alpha_4 + \alpha_3\alpha_4) = 2\epsilon_2(\alpha_1, \alpha_2, \alpha_3, \alpha_4) = 2p$. And $\theta_1\theta_2 + \theta_1\theta_3 + \theta_2\theta_3 = \epsilon_2(\alpha_1, \alpha_2, \alpha_3, \alpha_4)^2 - 4\epsilon_4$. And $\theta_1\theta_2\theta_3 = \epsilon_3^2$. Thus, by 9.6.4, $h(y) = y^3 - 2py^2 + (p^2 - 4r) y + q^2$.
+\item If $\alpha$ is a root of $f(x)$, then $\alpha - c$ is a root of $f(x + c)$, so $\delta^2(f(x + c)) = \prod_{i < j}(\alpha_i - c - (\alpha_j - c)) = \prod_{i < j}(\alpha_i - \alpha_j) = \delta^2(f)$. 
+\item Divide the polynomial by the leading coefficient since the roots of $f(x) / a_n$ are the same as the roots of $f(x)$. The roots are all we care about in this section, so that's all you need to do.
+\item Consider one factor of the discriminant of $h$, $(\theta_1 - \theta_2)^2 = [(\alpha_1 + \alpha_2)(\alpha_3 + \alpha_4) - (\alpha_1 + \alpha_3)(\alpha_2 + \alpha_4)]^2 = [\alpha_1\alpha_3 + \alpha_2\alpha_4 - \alpha_1\alpha_2 - \alpha_3\alpha_4]^2 = [(\alpha_1 - \alpha_4)(\alpha_3 - \alpha_2)]^2$. Similar computations reveal that the other factors of $\delta^2(h)$ reduce to the other factors of $\delta^2(f)$, $[(\alpha_1 - \alpha_3)(\alpha_2-\alpha_4)]^2$ and $[(\alpha_1 - \alpha_2)(\alpha_3 - \alpha_4)]^2$.
+\item If the resolvent polynomial $h$ is not irreducible in $K$, then at least one of its roots, say $\theta_1$, is in $K$. The only possibilities are that only $\theta_1 \in K$, or all three of the roots are in $K$, since a cubic factors into either three linear factors or an irreducible quadratic and a linear factor. If all three of the roots are in $K$, then $\delta \in K$ and the splitting field of $h$ is $K = K(\delta)$. If only $\theta_1 \in K$, then $\delta \not \in K$ by the argument in "case 1B" on page 463, and the splitting field of $H$ is quadratic over $K$ since $h$ factors into a linear factor and an irreducible quadratic. $K(\delta)$ is a subset of the splitting field of $h$, and it's a nontrivial extension of $K$ since $\delta \not \in K$, so since there are no proper intermediate fields between $K$ and any quadratic splitting field it follows that $K(\delta)$ is the splitting field. If $h$ is irreducible, then cases 1A and 1B on page 463 cover all possibilities for the splitting field, and in neither case is it $K(\delta)$. 
+\item It's irreducible by the Eisenstein Criterion, and the discriminant is 4725, which isn't a square in $\rats$, and the resolvent cubic is $h(x) = x^3 - 12x + 9 = (x-3)(x^2 + 3x - 3)$, which isn't irreducible but doesn't split in $\rats$, so we use the $H(x)$ polynomial from Llama 9.8.1 which is $(x^2 + 3)(x^2 - 3x + 3)$ which doesn't split, so the Galois field is $D_4$. 
+\item It's irreducible by the Eisenstein Criterion, and the discriminant is $256p^3 - 27p^4$, which is 22981 when $p=7$ and negative for all greater primes, so it's never a square in $\rats$. The resolvent cubic is $h(x) = x^3 - 4px + p^2$, so the only possible linear factors of $h$ are $(x \pm p)$, since the constant term is $p^2$, so if $x-p$ is a divisor then we get a factorization $h(x) = x^3 + 0x^2 - 4px + p^2 = (x-p)(x^2 + bx - p) = x^3 + (b-p)x^2 - (p+b)x + p^2$ for some $b$, so lining up the quadratic coefficients gives us $b = p$, but lining up the linear coefficients gives us $b = p + 3$, so there is no factorization of $h$ by $x-p$.
+
+And if $x+p$ is a factor of $h$ then we have a factorization $h(x) = x^3 + 0x^2 - 4px + p^2 = (x+p)(x^2 + bx + p) = x^3 + (b+p)x^2 + (p+bp)x + p^2$ for some $b$, but lining up quadratic coefficients we get $b = -p$, and lining up linear coefficients we get $b + 5 = 0$, so $b = -5$ and $p=5$ is the only situation where $h$ is factorable, so for $p > 5$, $h$ is irreducible, so the Galois group of $x^4 + px + p$ is $S_4$. 
+\item It's irreducible since $x^2 + 5x + 3$ is irreducible, and the discriminant is 8112 which is not a square, and the resolvent cubic is $x^3 - 10x^2 + 13x$, which always has a factor $x$ corresponding to a root $\theta = 0$, so the 9.8.1 polynomial $H(x) = x^2(x^2 - 5x + 3)$, which does not split, so the Galois group is $D_4$.
+\item The discriminant is $16r(4r-p^2)^2$, so $\delta = (16r-4p^2)\sqrt{r}$, so $\delta \in \rats$ precisely when $r$ is a square, so $K(\delta) = K(\sqrt{r})$. The resolvent cubic of $f$ is $y^3 - 2py^2 + (p^2-4r)y$, which always admits the factor $y$, so the Galois group is $\mathcal{V}$ precisely when $\delta \in K \lra r$ is a square. (This only applies when $f$ is irreducible.)
+\item For the Galois group to be $\ints_4$, we need $f$ to be irreducible, $r$ not to be a square, and $x^2 - px + r$ to split over $K(\sqrt{r})$. $x^4 - 5$ meets these criteria. For the Galois group to be $D_4$, we need $f$ to be irreducible, $r$ not to be a square, and $x^2 - px + r$ not to split over $K(\sqrt{r})$. $x^4 + 6x^2 + 47$ meets these criteria.
+\item Oof.
+\ee
+\section{Galois Groups of Higher Degree Polynomials}
+\be
+\item Erk.
+\ee
+\end{document}
