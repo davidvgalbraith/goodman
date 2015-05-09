@@ -1,0 +1,77 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\include{davemathshortcuts}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Chapter 10}
+\author{Dave}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{Composition Series and Solvable Groups}
+\be
+\item \be
+\item If $n$ = 1, then our group has prime order, so it's $\ints_p$, which is simple so it has the required composition series. If the hypothesis holds for all values of $n$ up to $k-1$, then a group $G$ of order $p^k$ has a subgroup $pG$ of order $p^{k-1}$, and $pG$ is normal since for $x, y \in G, y(px)y\inv = p(yxy\inv) \in pG$, and $G/pG \cong \ints_p$ which is simple, so $\{1\} \subset \ldots \subset pG \subset G$ is a composition series for $G$ in which successive quotients are $\ints_p$.
+\item The primary decomposition of a finite abelian group gives $M \cong \oplus_iM[p_i]$, where $M[p_i]$ has order $p_i^k$ for some $k \in \nats$ and is normal in $M$. By part a, each of these $M[p_i]$ has a decomposition series where successive quotients are cyclic of prime order, $\{1\} \subset M[p_i]_1 \subset M[p_i]_2 \subset \ldots \subset M[p_i]$. So $\oplus_i\{1\} \subset M[p_1]_1 \oplus (\oplus_{i > 1}\{1\}) \subset M[p_1]_2 \oplus (\oplus_{i > 1}\{1\}) \subset \ldots \subset M[p_1] \oplus (\oplus_{i > 1}\{1\}) \subset M[p_1] \oplus M[p_2]_1 \oplus (\oplus_{i > 2}\{1\}) \subset \ldots \subset M[p_1] \oplus M[p_2] \oplus (\oplus_{i > 2}\{1\}) \subset \ldots \subset \oplus_iM[p_i]$ is a composition series for $M$ in which successive quotients are cyclic of prime order.
+\ee
+\item Three composition series of $\ints_{45}$ are $1 \subset \ints_3 \subset \ints_9 \subset \ints_{45}, 1 \subset \ints_5 \subset \ints_{15} \subset \ints_{45}$, and $1 \subset \ints_3 \subset \ints_{15} \subset \ints_{45}$.
+\item The quotients of a composition series are abelian $\lra$ they are cyclic of prime order $\lra$ they are simple by exercise 1, so this follows from the definitions of "solvable" and "composition series".
+\item $\{e\} \subset S_2; \{e\} \subset A_3 \subset S_3; $ and $\{e\} \subset \{e, (12)(34)\} \subset \mathcal{V} \subset A_4 \subset S_4$ are composition series for $S_2$, $S_3$ and $S_4$.
+\ee
+\section{Commutators and Solvability}
+\be
+\item We recall that $D_n$ is defined by the elements $D$ and $R$ with $D^2 = R^n = 1$ and $DR = R^{n-1}D$. Since powers of $R$ commute, the only not-necessarily-trivial elements of the commutator group are the elements $DR^kDR^{n-k} = R^{2(n-k)}$. Taking all $1 \le k \le n$, we find that when $n$ is odd, the commutator subgroup is the rotation subgroup, and when $n$ is even, the commutator subgroup is the even powers of $R$.
+\item The symmetric group of $S_n$ is $A_n$ because for $x, y \in S_n$, $yxy\inv$ has the same cycle structure as $x$, so $x(yxy\inv)$ has even cycle structure, so $G' \subset A_n$, and for any $\sigma \in A_n$, $\sigma$ is the product of an even number of disjoint 2-cycles and the orbit of an arbitrary 2-cycle under $A_n$ is the set of all disjoint 2-cycles since $A_n$ is transitive, so every product of an even number of disjoint 2-cycles is in $G'$, so $A_n \subset G'$. 
+\item \be
+\item Let $h \in H, k \in K$, then $hkh\inv k\inv = h(kh\inv k\inv) = hh'$ for some $h' \in H$ since $H$ is normal. Similarly, $hkh\inv k\inv \in K$, so $[H, K] \subset H \cap K$. And $g(hkh\inv k\inv)g\inv = gh(gg\inv)k(gg\inv)h\inv(gg\inv)k\inv g\inv = (ghg\inv)(gkg\inv)(gh\inv g\inv)(gk\inv g\inv) = h'k'(h')\inv(k')\inv$ for some $h' \in H, k' \in K$, so $[H, K]$ is normal in $G$.
+\item Hyup.
+\item Both the base case and the induction step are given by part b.
+\ee
+\item $(aba\inv b\inv)(ba) = ab$, so $ab + X = ba + X \lra aba\inv b\inv \in X$, so $G'$, the set of all products $aba\inv b\inv$, is the smallest group $X$ such that $G/X$ is abelian.
+\item The commutator of a subset of $G$ is a subset of the commutator of $G$, so if $G^{(k)}$ is trivial for some $k$ as in Theorem 10.2.2 then for $H \subset G, H^{(k)}$ is trivial too, so $H$ is solvable.
+\item A quotient of $G$ by a subgroup of $G$ is isomorphic to a subgroup of $G$, so this follows from the previous exercise.
+\item The direct sum of solvable groups is solvable by the construction used in Exercise 10.1.1b, so since $G \cong N \oplus G/N$ it follows that $G$ is solvable whenever $N$ and $G/N$ are.
+\ee
+\section{Simplicity of the Alternating Groups}
+\be
+\item For $\sigma \in Z(S_n), \tau \in S_n$, we have $\tau\sigma\tau\inv = \tau\tau\inv\sigma = \sigma$, so the conjugacy class of $\sigma$ is only $\sigma$. For $n > 2$, the only element in $S_n$ with a single-element conjugacy class is the identity, so $Z(S_n)$ is trivial.
+\item The orbit of each of its generators under conjugacy is contained in $\mathcal{V}$, so it is normal.
+\item Let $x \in Z(a), a \in A, g \in G$, then $agxg\inv = (gg\inv)agxg\inv = g(g\inv ag)xg\inv = gx(g\inv ag)g\inv = gxg\inv a$, so every element of $A$ commutes with $gxg\inv$, so $Z(A)$ is normal in $G$.
+\item \be
+\item Same proof as in exercise 1, since $A_4$ is transitive.
+\item For $n > 4$, $A_n$ contains an isomorphic copy of $A_4$, so it's not abelian.
+\item The center of $A_n$ is normal in $A_n$, so it's normal in $G$ by exercise 3, so it's $\{e\}$ or $A_n$ since those are the normal subgroups of $S_n$ for $n \ge 5$, but by part b the center is not $A_n$ since $A_n$ is not abelian, so it must be $\{e\}$.
+\ee
+\item Let $x\in M$, then for $g \in A_n$, $gxg\inv = \sigma(\sigma\inv(gxg\inv)) = \sigma(\sigma\inv(g)\sigma\inv(x)\sigma\inv(g\inv))$. Since $\sigma\inv(x) \in N$ and $N$ is normal, $\sigma\inv(g)\sigma\inv(x)\sigma\inv(g\inv) \in N$, so  $ \sigma(\sigma\inv(g)\sigma\inv(x)\sigma\inv(g\inv)) \in M$, so $M$ is normal.
+\item A simple nonabelian group $G$ is not solvable because in particular it is not cyclic of prime order, and since it has no normal subgroups its only composition series is $\{1\} \subset G$, which does not meet the criteria for solvability.
+\ee
+\section{Cyclotomic Polynomials}
+\be
+\item $(\xi^r)^n = (\xi^n)^r = 1^r = 1$, and if $(\xi^r)^d = 1$ for some $d$ then $\xi^{rd} = \xi^{rn} \ra rd = 0 \mod n \ra rd$ is divisible by $n \ra n$ divides $d$ since $r$ and $n$ are relatively prime. So $n$ is the smallest power to which $\xi$ is equal to 1.
+\item $\psi_1(x) = x-1; x^2 - 1 = \psi_1\psi_2 = \psi_2 * (x-1) \ra \psi_2 = x + 1; x^3 - 1 = \psi_1\psi_3 = \psi_3 * (x-1) \ra \psi_3(x) = x^2 + x + 1; x^4  - 1 = \psi_1\psi_2\psi_4 = \psi_4*(x^2 - 1) \ra \psi_4(x) = x^2 + 1$ etc.
+\item Shure does/is.
+\item $\rats[x] \subset \comps[x]$ and $\rats[x] \subset \rats(x)$, so $\rats[x] \subset \rats(x) \cap \comps[x]$. And if $p(x) \in \rats(x) \cap \comps[x]$, then $p(x) = \frac{p_1(x)}{p_2(x)}$, where $p_1, p_2 \in \rats[x]$, but also $p(x) = p_3(x)$ where $p_3(x) \in \comps[x]$, so $p_2(x)$ must equal 1 and $p_3(x) = p_1(x) = p(x) \in \rats[x]$.
+\item $\psi_n$ is irreducible $\lra$ it is the minimal polynomial of $\xi$ over $\rats$. Since $\psi_n$ has the properties b, c, and d, the statement will follow if any of those implies a. The minimal polynomial $f$ of $\xi$ in part b divides $\psi_n$ since it is minimal, and if $\xi^p$ is a root of $f$ for all $p$ not dividing $n$ then $(x - \xi^p)$ divides $f$ for all such $p$, so since $\psi_n$ is just the product of all such $(x-\xi^p)$ it follows that $\psi_n$ divides $f$ and hence is equal to it and hence is irreducible since $f$ is minimal.
+\item Since $n$ is not divisible by the characteristic of $K$, the derivative of $x^n, nx^{n-1}$, is not uniformly zero over $K$, so $x^n-1$ must have $n$ distinct roots. There are only $n$ $n$th roots of unity, some of which are primitive, so the splitting field $E$ of $x^n-1$ must contain a primitive $n$th root of unity $\xi$. Then the other primitive $n$th roots of unity are the powers of $\xi^p$ where $p$ does not divide $n$, and if $f \in \aut_K(E)$ then $f(\xi)$ is a primitive root $\xi^r$ since otherwise $f$ wouldn't be an automorphism. $f$ is entirely defined by $f(\xi)$, since every $n$th root of unity is a power of $\xi$, so the Galois group of $x^n-1$ is a subgroup of the group of units in $\ints_n$. 
+\ee
+\section{The Equation $x^n - b = 0$}
+\be
+\item Let $f$ be the map in question, then for $\sigma, \tau \in \aut_{K(u)}(E)$, we have $\sigma(a) = u^ia, \tau(a) = u^ja$, where $i,j \in \nats, u$ is a primitive $n$th root of unity as in this section. So then $f(\sigma\tau) = (\sigma\tau)(a)a\inv = u^{i+j}aa\inv = u^{i+j} = u^iaa\inv u^jaa\inv = f(\sigma)f(\tau)$, so $f$ is a homomorphism. And $f$ is injective because $f(\tau) = 1$ precisely when $\tau(a) = a$, and $\tau$ is determined by its action on $a$ so must be the identity in this case.
+\item Let $\xi$ be a primitive 13th root of unity, then this group is $\rats(\xi)$ with no subgroups.
+\item Let $\xi$ be a primitive 13th root of unity, then this group is $\rats(\xi, \sqrt{2})$ with subgroups $\rats(\xi)$ and $\rats(\sqrt{2})$.
+\item By 10.4.5, the Galois group of $x^n-1$ is congruent to $\Phi(n)$, and by 3.6.27, $\Phi(n) \cong \Phi(p_1^{m_1}) \times \Phi(p_2^{m_2}) \times \ldots \times \Phi(p_n^{m_n})$, which is isomorphic to the direct products of the Galois groups for $x^{p_i^{m_i}} - 1$ by 10.4.5 again. The other assertions then follow immediately.
+\ee
+\section{Solvability by Radicals}
+That was easy.
+\section{Radical Extensions}
+\be
+\item $g(\sigma\tau) = (\sigma\tau)(a)a\inv = \sigma(\tau(a)a\inv a)a\inv = \sigma(\tau(a)a\inv)\sigma(a)a\inv = (\sigma(a)a\inv)\sigma(\tau(a)a\inv) = g(\sigma)\sigma(g(\tau))$.
+\item $\prod_i\sigma^i(b) = 1$ since the Galois group is cyclic with generator $\sigma$ and $N(b) = 1$, so $f$ is well defined. Let $x = \sigma^i, y = \sigma^j$, then $f(xy) = f(\sigma^{i+j}) = \prod_{k=0}^{i+j-1}\sigma^k(b) = [\prod_{k=0}^{i-1}\sigma^k(b)][\prod_{l=i}^{i+j-1}\sigma^l(b)] = [\prod_{k=0}^{i-1}\sigma^k(b)][\sigma^i(\prod_{l=i}^{j-1}\sigma^l(b))]= f(x)xf(y)$.
+\ee
+
+\end{document}

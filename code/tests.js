@@ -20,7 +20,11 @@ function log(perm, mess, info) {
         console.log(sources, mess);
         return;
     }
-    console.log(perm.source, mess);
+    if (mess) {
+        console.log(perm.source, mess);
+    } else {
+        console.log(perm.source);
+    }
 }
 
 var all = _.sortBy(p.assemblePermutations(4), 'source');
@@ -47,3 +51,33 @@ function getNormalizer(subgroup, fullgroup) {
     }
     return normalizer;
 }
+
+function commutator(p1, p2) {
+    return p1.compose(p2).compose(p1.inverse()).compose(p2.inverse());
+}
+
+var comms = [];
+_.each(all, function(p1) {
+    var perp1 = [];
+    _.each(all, function(p2) {
+        // console.log(p1.asCycles(), p2.asCycles(), commutator(p1, p2).asCycles());
+        comms.push(commutator(p1, p2));
+        perp1.push(commutator(p1, p2).source);
+    });
+    // console.log(p1.source, _.uniq(perp1).length);
+});
+
+comms = _.uniq(comms, 'source');
+
+var comms2 = [];
+_.each(comms, function(p1) {
+    var perp1 = [];
+    _.each(all, function(p2) {
+        console.log(p1.asCycles(), p2.asCycles(), commutator(p1, p2).asCycles());
+        comms2.push(commutator(p1, p2));
+        perp1.push(commutator(p1, p2).source);
+    });
+    console.log(p1.source, _.uniq(perp1).length);
+});
+
+console.log(JSON.stringify(_.uniq(_.pluck(comms2, 'source'))));
