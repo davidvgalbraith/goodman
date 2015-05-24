@@ -1,0 +1,94 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\include{davemathshortcuts}
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\newcommand{\ta}{\tau(a)}
+\newcommand{\tb}{\tau(b)}
+\newcommand{\tab}{\tau(a + b)}
+
+\title{Chapter 11}
+\author{Dave}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{More on Isometries of Euclidean Space}
+\be
+\item There are two points $p$ and $p'$ equidistant from $\alpha, \beta, \andd \gamma$: one on each side of the plane between them. Since $\delta$ is not coplanar with the other points, it must be on one side of the plane through them, so it is not equidistant from $p$ and $p'$. 
+\item $x \in P_\alpha \lra x_0 + x \in x_0 + P_\alpha$, and $\angles{x + x_0, \alpha} = \angles{x, \alpha} + \angles{x_0, \alpha} = \angles{x_0, \alpha}$ since $\angles{x, \alpha} = 0$ for all $x \in P_{\alpha}$. 
+\item Let $\{p_1, p_2, \ldots p_n\}$ be the points, then $p_1 + $span$(p_2 - p_1, p_3 - p_1, \ldots p_n - p_1)$ is an affine hyperplane containing them.
+\item $||x-a|| = ||x-b|| \lra ||x-a|| - ||x-b|| = 0 \lra \angles{x-a, x-a} - \angles{x-b, x-b} = 0 \lra \angles{x, x-a} - \angles{a, x-a} -\angles{x, x-b} + \angles{b, x-b} = 0 \lra \angles{x, x} - \angles{x, a} - \angles{a, x} + \angles{a,a} - \angles{x, x} + \angles{x, b} + \angles{b, x} - \angles{b, b} = 0 \lra \angles{a, a} - 2\angles{x, a} + 2\angles{x, b} - \angles{b, b} = 0 \lra 2\angles{x, b-a} = ||b||^2 - ||a||^2 = 2\angles{\frac{a+b}{2}, a-b}$ which by exercise 11.1.2 is the equation of the hyperplane $(\frac{a+b}{2}) + P_{b-a}$.
+\item If those $n$ vectors are linearly independent then their span is $\rn$ and no vector in $\rn$ is perpendicular to $\rn$. If they are not linearly independent then their span is an at-most $n-1$-dimensional subspace of $\rn$, which is a hyperplane. 
+\item $||\tau(a+b) - \tau(a) - \tau(b)|| = \angles{\tau(a+b) - \tau(a) - \tau(b), \tau(a+b) - \tau(a) - \tau(b)} = \angles{\tau(a + b), \tau(a+b) - \tau(a) - \tau(b)} - \angles{\tau(a) ,\tau(a+b) - \tau(a) - \tau(b)} - \angles{\tau(b), \tau(a+b) - \tau(a) - \tau(b)} = \angles{\tab, \tab} - \angles{\tab, \ta} - \angles{\tab, \tb} - \angles{\ta, \tab} + \angles{\ta, \ta} + \angles{\ta, \tab} - \angles{\tb, \tab} + \angles{\tb, \ta} + \angles{\tb, \tb} = 0$, so $\tab = \ta + \tb$. So for all $n \in \ints$, $\tau(na) = n\tau(a)$. And $\tau(\frac{p}{q}a) = p\tau(\frac{1}{q}a) = \frac{p}{q}\tau(a)$ since $q\tau(\frac{1}{q}a) = \ta$. So $\lim_{x\to y}\tau(xa) = y\tau(a)$ for even irrational $y$, so since isometries are continuous it follows that $\tau(ya) = y\tau(a)$ for all $y \in \reals$.
+\item \be
+\item For a 2-cycle $\sigma$, $T(\sigma\inv) = T(\sigma) = T(\sigma)^T$ since the matrix of a 2-cycle is symmetric (since switching rows $i$ and $j$ of the identity is tantamount to switching columns $i$ and $j$). Any permutation $\tau$ is a product of 2-cycles $\prod_{i=1}^n\sigma_i$, so $\tau\inv = (\prod_{i=1}^n\sigma_i)\inv = \prod_{i=n}^1\sigma_i\inv$, so $T(\tau)\inv = T((\prod_{i=1}^n\sigma_i)\inv) = T(\prod_{i=n}^1\sigma_i\inv) = \prod_{i=n}^1(T(\sigma_i)\inv)=\prod_{i=n}^1(T(\sigma_i))^T = T(\tau)^T$, so the range of $T$ is in $O(n,\reals)$.
+\item The effect of both of them on a point $x$ is to switch the $a$th and $b$th coordinates of $x$.
+\item The determinant of $T(\sigma)$ for a 2-cycle $\sigma$ is -1, so $T(\pi)$'s determinant is 1 if and only if $\pi$ is the product of an even number of 2-cycles.
+\item This follows from Theorem 11.1.7 and part b above.
+\ee
+\item $\sigma\tau_b\sigma\inv(x) = \sigma(\sigma\inv(x) + b) = x + \sigma(b)$.
+\item $T_{A, b} \to \twomat{A}{b}{0}{1}$ is a bijection between the sets and $\twomat{A}{b}{0}{1}\twomat{C}{d}{0}{1} = \twomat{AC}{Ad + b}{0}{1}$ and $T_{A, b}T_{C, d} = T_{AC, Ad+b}$, so it's an isomorphism.
+\ee
+\section{Euler's Theorem}
+\be
+\item $e=fp/2, v=fp/q \ra fp/q - fp/2 + f = 2 \ra 2fp - fpq + 2qf = 4q \ra f = \frac{4q}{2p-2q+2q}$. Similar computations give the other fractions, and since $v$, $e$ and $f$ must be posititve it follows that $2p+2q>qp$.
+\item If $p\ge3, q=2$, then the graph is a cycle of $p$ edges.
+\item By Burnside's Lemma, the number of orbits of an action is equal to $\frac{1}{|G|}\sum_{g\in G}\fix(g)$. Since the rotation groups are transitive on the vertices and faces, it follows that $|G| = \sum_{g\in G}\fix(g)$ for the action of $G$ on the faces and vertices. Consider the action of $G$ on the vertices. Then the identity fixes $v$ vertices, and the non-identity rotations through a vertex fix that vertex. There are $(q-1)v$ such rotations (or $(q-1)v/2$ with each one fixing two vertices, if the axis of rotation passes through two vertices), and no other symmetry fixes any vertices. Therefore $|G| = v + 1*(q-1)v = qv$. Similarly considering the action of $G$ on the faces, the identity fixes $f$ faces and there are $p-1$ rotation symmetries each fixing a single face (or $(p-1)/2$ each fixing two faces), and no other symmetry fixes a face, so $|G| = f + (p-1)f = pf$. 
+\item The theorem is totally wrong: only connected trees with more than one vertex have a vertex with valence 1, so we'll prove that. A tree with two vertices can support only one edge so its vertices have valence 1. And suppose you have a connected tree of $n$ vertices, one of which, $v$, has valence 1, and you add another vertex $v'$. Then if you don't add an edge between $v$ and $v'$, then $v$ still has valence 1. And if you do add an edge between $v$ and $v'$, then you can't add any other edges to $v'$ without creating a cycle since your tree of $n$ vertices was connected. Therefore, any connected tree with more than one vertex has a vertex of valence 1.
+
+If there are two paths $P$ and $P'$ between vertices $A$ and $B$ in a graph, then let $C$ be the vertex at which they diverge and $D$ be the vertex at which they come together again. $C$ and $D$ both exist and are distinct because otherwise the paths would not be distinct. So by taking the $P$ path from $C$ to $D$ and the $P'$ path back from $D$ to $C$, we get a cycle so we don't have a tree.
+\ee
+\section{Finite Rotation Groups}
+\be
+\item SO($2, \reals)$ consists of rotations $r_\theta = \twomat{\cos{\theta}}{\sin{\theta}}{-\sin{\theta}}{\cos{\theta}}$ of $\theta$ degrees. If $G$ is a finite subgroup, then let $r_\theta$ be the nonidentity rotation of fewest degrees in $G$. $\angles{r_\theta} \subset G$ since $G$ is a group, and if $r_{\theta'} \in G$ then we can implement a division with remainder such that $r_{\theta'} = (r_\theta)^kr_{\theta''}$ for some $k$ where $\theta'' < \theta$ but since $\theta$ is minimal we have $\theta'' = 0$ so $r_{\theta'} = r_\theta^k$ and so $G \subset \angles{r_\theta}$ so $G$ is cyclic.
+\item Since a pole $p$ is defined as a point which some nonidentity $g \in G$ stabilizes, the stabilizer of $p$ must be nontrivial. And it must be cyclic by exercise 1 since it's a subgroup of the two-dimensional rotations. The four poles whose closest point on the tetrahedron is a vertex of the tetrahedron are in the same orbit since $G$ is transitive on the vertices, and similarly the four poles whose closest point on the tetrahedron is the center of a face are in one orbit. Finally, there are six poles whose closest point on the tetrahedron is the center of an edge, and these are also an orbit.
+\item By 11.3.3, $\frac{1}{2} + \frac{1}{2} + \frac{1}{n} = 1 + \frac{2}{|G|} \ra |G| = 2n$. By 5.1.14, $|O(x)| = \frac{|G|}{|\stab(x)|}$, so the orbits have size $n, n$ and 2. The orbit of size 2 must consist of a pair of poles $\{x, -x\}$, and it stabilizer is a group of $n$ rotations about the line containing $x$. So put points at $360\degrees /k$ for $1\le k \le n$, and the result is a regular $n$-gon inscribed in the polar sphere. If $n$ is odd, rotations of $180\degrees$ about lines between vertices and the midpoints of their opposite edges fix the poles that they are through and no others; for even $n$, use lines between opposite vertices. This gives $2n$ elements of $G$, all of which act as rotations on the $n$-gon, so $G=D_n$.
+\item $G$ has order 4 and is not $\ints_4$; $\ints_2 \times \ints_2$ is the only other group of order 4.
+\item $|G| = 12$ by 11.3.3 as in exercise 3. The orbit sizes follow from 5.1.14. Let $u \in O$ where $O$ is one of the orbits of size 4, and let $g \in G$ fix $u$. Then for $v \not = u \in O$, there exists an $f \in G: fu=v$, so $gfu = gv \ra (f\inv g\inv)(gv) = u \ra gv \in O$ and similarly $g^2 v \in O$. Since $O$ has size 4, $O = \{u, v, gv, g^2v\}$. Since $\angles{g}$ is a rotational subgroup of order 3, it follows that $g$ is rotation by 120$\degrees$ and $v, gv, g^2v$ are the vertices of an equilateral triangle in a plane, so $|u-v| = |u-gv| = |u-g^2v|$. Repeating the argument with $g'$ the generator of the stabilizer of $v$, we have $|u-v| = |g'u-v| = |g'^2u-v|$, so $u, v, gv$ and $g^2v$ are the vertices of tetrahedron, and $G$ acts as rotations on this tetrahedron, so $G$ is the rotational group of the tetrahedron.
+\item The sizes of $G$ and the orbits are calculated as in the foregoing. Consider the orbit $S$ of size 6, then let $u, -u, v \in S$, and let $g$ be the rotation of $90\degrees$ about $u$, then following the argument of the previous exercise it follows that $v, gv, g^2v, g^3v$ are the vertices of a square in a plane. Symmetrically, rotations of 90$\degrees$ through $v$ put $\{u, gv, -u, g^3v\}$ on the vertices of a square, so $\{u, -u, v, gv, g^2v, g^3v\}$ are the vertices of an octahedron of which $G$ is the symmetry group.
+\item The sizes of $G$ and the orbits are calculated as in the foregoing. Consider the orbit $O$ of size 12, then let $u, v \in O$ and let $G$ be the rotation of $72\degrees$ about $u$, then following the argument of the previous exercise it follows that $v, gv, g^2v, g^3v, g^4v$ are the vertices of a regular pentagon in a plane. Since vertices are not directly across from vertices in a pentagon, $-v$ is not a vertex of the pentagon, so the plane cannot bisect $\{u, -u\}$. The $g^iv$ all lie on the same side of the bisector of $\{u, -u\}$ since we generated them by rotations in a plane perpendicular to it. Rotating the figure 180$\degrees$ about the plane bisecting $\{u, -u\}$, we find that the orbit of $-v$ under $g$ is also part of our vertex set. So our vertex set is $\{\pm u, \pm g^iv: 0 \le i \le 4\}$, which form the vertices of an icosahedron since there is a rotation of degree 5 mapping $v$ to $u$. 
+\item $f \in$ SO($3, \reals)\lra -f \in$ O($3, \reals) \setminus$ SO($3, \reals$), since the determinant of $-M$ is -1 iff $M$ has determinant 1, so $G = H \cup iH \cong H \times \ints_2$ where the isomorphism is $g \to (h, n)$ where $h = g$ and $n = 0$ if $g$ has determinant 1 and $h=-g$ and $n=1$ if $g$ has determinant -1. The direct product of groups is a group, so $H \times \ints_2$ is a subgroup of O$(3, \reals)$ for $H$ on the list of Theorem 11.3.1.
+\item \be
+\item $\psi$ is a homomorphism by the multiplicativity of determinant and surjective onto its range like all functions. The only way it could not be injective is if $-g$ were in $G$ for some $g \in G$. But if this were the case then $g\inv (-g) = -1$ (the inversion) would be in $G$. $H$ is a normal subgroup of $\tilde{G}$ since for $g \in \tilde{G}, h \in H, \psi\inv(ghg\inv) = \psi\inv(g)\psi\inv(h)\psi\inv(g\inv) = \frac{ghg\inv}{(\det{g})^2\det{h}} \ra ghg\inv \in H$. And for $g, g' \in G \setminus H$, we have $\psi(gg') =( \det{gg'})gg' = (-1)^2gg' = gg'$, so $H$ has index 2 in $G$. 
+\item If $g, g' \in G$ then either $g \in H$ or $g \in -RH$ so $gg' = $ either $hh' \in H$ for $h, h' \in H$, $(-R)hh' \in -RH$, or $(-R)h(-R)h' \in H$ since $H$ has index 2. That shows $G$ is closed under multiplication. $1 \in H$, and since $H$ is a group $G$ is closed under inverse, so $G$ is a subgroup of O$(3, \reals)$. $-1 \not \in H \ra R \not \in (-R)H \ra -1 = (-R)R \not \in G$. $G$ is not contained in SO($3, \reals)$ because $-R \not \in$ SO($3, \reals)$. And $\psi(G) = \tilde{G}$ by definition.
+\item Each of the listed pairs is an index-2 pair in SO($3, \reals$) and we've categorized previously the subgroups of $\ints_n$ and $D_n$ and found there are no normal subgroups besides the listed. The rotational group of the tetrahedron is isomorphic to $A_4$ which is the only normal subgroup of $S_4$ the group of the cube, and $A_4$ has no normal subgroups of its own, so there are no normal subgroups of the rotational group of the tetrahedron and no other normal subgroups of the cube. Finally any index-2 subgroup of the rotations of the dodecahedron would have order 30 and the only subgroups of SO($3, \reals)$ of order 30 are $\ints_{30}$ and $D_{15}$, neither of which is a subgroup of the rotations of the dodecahedron.
+\ee
+\ee
+\section{Crystals}
+\be
+\item Let the lattice be generated by $(1, 0)$ and $(0, 1)$, and let the pattern be the lines $y = n, y = 0.5 + n, y = n + 1$ for $n \in \ints$, then the translations in $L$ are by 1 but a translation by 0.5 up and any amount to the left or right also fixes the crystal.
+\item $L$ is normal in $G$ so $G \cong L \rtimes (G \setminus L) = L \rtimes (G \cap O(V)) \ra G/L \cong G \cap O(V)$.
+\item I drew some pretty pictures but I won't upload them.
+\item \be
+\item $||a+b||^2 = \sum_i(a_i+b_i)^2 = \sum_ia_i^2 + \sum_i2a_ib_i + \sum_i b_i^2 = ||a||^2 + 2\angles{a, b} + ||b||^2 \ge ||b||^2 \ra ||a||^2 \ge -2\angles{a, b}$, and replacing $a$ with $-a$ if necessary to make the inner product positive, it follows that $||a||^2 / 2 \ge |\angles{a, b}|$.
+\item Since $a$ and $b$ are linearly independent, they span $\reals^2$. So any $w \in \reals^2 = as + tb$ for some $a, b \in \reals$. Since $L_0$ contains all integer multiples of $a$ and $b$, $w$ is equivalent modulo $L_0$ to $v = s'a + t'b$, where $s'$ and $t'$ are the decimal parts of $s$ and $t$. If $s'$ or $t'$ is greater than 1/2, then subtract another 1 from it and the result will be less than 1/2 in absolute value. This gives us the $v$ we seek.
+\item $||v||^2 = ||s'a + t'b||^2 = s'^2||a||^2 + 2s't'\angles{a, b} + t'^2 ||b||^2 \le ||a||^2/4 + \angles{a, b}/2 + ||b||^2 / 4.$ By part a, $|\angles{a, b}| \le ||a||^2/2 \le ||b||^2/2$, so $||v||^2 \le ||b||^2 / 4 + ||b||^2 / 4 + ||b||^2/4 = 3||b||^2/4.$ Since $b$ is the minimal nonzero vector outside the span of $a$ and $v$ is outside the span of $a$ and has length less than $b$, $v = 0$.
+\item We've shown that any vector in $L \setminus L_0$ is equal to zero but zero is in $L_0$ so there are no vectors in $L \setminus L_0$.
+\ee
+\item If $a$ is a vector of minimal length in $L$ and $Ra$ is the rotated version of this vector then $|Ra| = |a|$ so $Ra$ has minimal length in $L \setminus \reals a$, then by the previous exercise $\{a, Ra\}$ is a basis for $L$, and $\{a, Ra\}$ is the basis of the geometric figures mentioned in Lemma 11.4.10 for the given values of $R$.
+\item \be
+\item Each of the summands of $\angles{\angles{x|y}}$ is nonnegative since $\angles{x, y}$ is an inner product, so $\angles{\angles{x|y}}$ is positive definite, and $\angles{\angles{a + b|c}} = \sum_{g \in G} \angles{g(a+b), gc} = \sum_{g \in G}\angles{ga, gc} + \angles{gb, gc} = \angles{\angles{a|c}} + \angles{\angles{b|c}}$, so $\angles{\angles{x|y}}$ is an inner product.
+\item $g\inv \in G$, so each summand on the right is included in the summands on the left, and $g \in G$, so each summand on the right is included in the summands on the left.
+\item I so conclude, because that follows from $\angles{\angles{gx|gy}}$ = $\angles{\angles{x|y}}$.
+\item I so conclude.
+\ee
+\item \be
+\item $\phi(g)\phi(h) = (TgT\inv)(ThT\inv) = TghT\inv = \phi(gh)$, and $\phi$ is a bijection because it's invertible, so $\phi$ is an isomorphism.
+\item $\phi(g\inv) = \phi(g)\inv$ and $g\inv = g^*$ since $g \in$ O($n, \reals)$, so $\phi(g^*) = \phi(g)^*$.
+\item Yes.
+\item Yes.
+\ee
+\item By 11.4.4, $u$ and $v$ are a basis of $L$ since $u$ is minimal and $|v| = |u|$. $u=sa+tb$, $v=sa-tb$ for some $0 \le |s|, |t| \le 1$ by the same argument as in exercise 11.4.4b. So $u + v \in \reals a$ and by the minimality of $u$, $v$ and $a$ it follows that $u + v = a$, and similarly $u - v = b$.
+\item The given details are sufficiently filled-in, in my estimation.
+\item The given details are sufficiently filled-in, in my estimation.
+\item The given details are sufficiently filled-in, in my estimation.
+\item pretty pretty pictures yay
+\ee
+
+\end{document}
